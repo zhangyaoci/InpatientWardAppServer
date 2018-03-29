@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="domain.Patient" table="patient" schema="impatientwardapp">
+        <id name="patientId" column="patientId">
+            <generator class="native" ></generator>
+        </id>
+        <property name="name" column="name"/>
+        <property name="sex" column="sex"/>
+        <property name="phone" column="phone"/>
+        <property name="dateOfBirth" column="dateOfBirth"/>
+        <property name="address" column="address"/>
+        <property name="introduction" column="introduction"/>
+        <property name="remarks" column="remarks"/>
+        <set name="userPatients" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.UserPatient"></one-to-many>
+        </set>
+        <set name="advices" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Advice"></one-to-many>
+        </set>
+        <set name="informations" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Information"></one-to-many>
+        </set>
+        <set name="bloodglucoses" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Bloodglucose"></one-to-many>
+        </set>
+        <set name="bloodoxygensaturations" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Bloodoxygensaturation"></one-to-many>
+        </set>
+        <set name="bloodpressures" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Bloodpressure"></one-to-many>
+        </set>
+        <set name="heartrates" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Heartrate"></one-to-many>
+        </set>
+        <set name="temperatures" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Temperature"></one-to-many>
+        </set>
+        <set name="hospitalizations" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Hospitalization"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

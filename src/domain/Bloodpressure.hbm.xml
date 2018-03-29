@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="domain.Bloodpressure" table="bloodpressure" schema="impatientwardapp">
+        <id name="bpId" column="BPId">
+            <generator class="native" ></generator>
+        </id>
+        <property name="value" column="value"/>
+        <property name="time" column="time"/>
+        <property name="remarks" column="remarks"/>
+        <many-to-one name="patient" class="domain.Patient" column="patientId"></many-to-one>
+    </class>
+</hibernate-mapping>

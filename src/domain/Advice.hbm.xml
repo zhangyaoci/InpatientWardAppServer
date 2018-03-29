@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="domain.Advice" table="advice" schema="impatientwardapp">
+        <id name="adviceId" column="adviceId">
+            <generator class="native" ></generator>
+        </id>
+        <property name="content" column="content"/>
+        <property name="time" column="time"/>
+        <property name="remarks" column="remarks"/>
+        <many-to-one name="patient" class="domain.Patient" column="patientId"></many-to-one>
+        <many-to-one name="doctor"  class="domain.Doctor" column="doctorId"></many-to-one>
+    </class>
+</hibernate-mapping>

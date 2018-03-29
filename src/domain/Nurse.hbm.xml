@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="domain.Nurse" table="nurse" schema="impatientwardapp">
+        <id name="nurseId" column="nurseId">
+            <generator class="native" ></generator>
+        </id>
+        <property name="name" column="name"/>
+        <property name="sex" column="sex"/>
+        <property name="phone" column="phone"/>
+        <property name="introduction" column="introduction"/>
+        <property name="remarks" column="remarks"/>
+        <set name="hospitalizations" cascade="all">
+            <key column="nurseId"></key>
+            <one-to-many class="domain.Hospitalization"></one-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
