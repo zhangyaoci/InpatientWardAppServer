@@ -25,7 +25,6 @@ public class TestApp {
         User user = new User();
         user.setName("jack");
         user.setPassword("123456");
-        user.setUserId(11111);
         String xmlPath = "spring.cfg.xml";
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);

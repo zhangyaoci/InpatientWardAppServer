@@ -37,6 +37,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findUserByPhone(String phone) {
+        return this.userDao.getUserByPhone(phone);
+    }
+
+    @Override
     public List<User> findAllUser() {
         return (List<User>) this.userDao.findAll();
     }

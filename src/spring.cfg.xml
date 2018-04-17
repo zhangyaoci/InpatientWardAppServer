@@ -10,7 +10,7 @@
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"
           p:driverClass="com.mysql.jdbc.Driver"
-          p:jdbcUrl="jdbc:mysql://localhost:3307/inpatientWardApp"
+          p:jdbcUrl="jdbc:mysql://localhost:3307/inpatientWardAppDatabase"
           p:password=""
           p:user="root"/>
 

@@ -3,8 +3,10 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import domain.User;
 import service.UserService;
+import util.MD5Util;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -13,13 +15,17 @@ public class LoginAction extends ActionSupport{
     private User user;
     private UserService userService;
 
-    private Map<String,Object> jsonData;
 
+    //成功向前台传入的数据,springMVC 默认是单例模式
+    private Map<String,Object> jsonDataOfSuccess = new HashMap<String,Object>(); ;
+    //失败向前台传入的数据
+    private Map<String,Object> jsonDataOfError = new HashMap<String,Object>();
 
 
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
@@ -28,28 +34,70 @@ public class LoginAction extends ActionSupport{
         this.userService = userService;
     }
 
-
-
-    public void setJsonData(Map<String, Object> jsonData) {
-        this.jsonData = jsonData;
+    public Map<String, Object> getJsonDataOfSuccess() {
+        return jsonDataOfSuccess;
     }
-    public Map<String, Object> getJsonData() {
-        return jsonData;
+
+    public void setJsonDataOfSuccess(Map<String, Object> jsonDataOfSuccess) {
+        this.jsonDataOfSuccess = jsonDataOfSuccess;
+    }
+
+    public Map<String, Object> getJsonDataOfError() {
+        return jsonDataOfError;
+    }
+
+    public void setJsonDataOfError(Map<String, Object> jsonDataOfError) {
+        this.jsonDataOfError = jsonDataOfError;
     }
 
     //登录验证
     public String login(){
-
         if(this.user!=null) {
-            this.user.getName();
+            List<User> users =this.userService.findUserByPhone(this.user.getPhone());
+            if(users.size()!=0){
+               User userForVerification= users.get(0);
+               if(MD5Util.verify(user.getPassword(),userForVerification.getPassword())){
+                   jsonDataOfSuccess.put("message","登录成功");
+                   return  SUCCESS;
+               }else{
+                   jsonDataOfError.put("message","密码错误");
+                   return  ERROR;
+               }
+            }
+            else {
+                jsonDataOfError.put("message","该手机号码还没有注册");
+                return ERROR;
+            }
         }
-
-        jsonData = new HashMap<String,Object>();
-        jsonData.put("one","one's apple");
-
-
-        System.out.println("11111111");
-        return SUCCESS;
+        else {
+            jsonDataOfError.put("message","登录失败");
+            return ERROR;
+        }
     }
 
+    //用户信息注册
+    public  String register(){
+        if (this.user!=null){
+            try {
+                List<User> users= this.userService.findUserByPhone(this.user.getPhone());
+                if(users.size()!=0){
+                    jsonDataOfError.put("message","该电话已经被注册过");
+                    return ERROR;
+                }
+                else{
+                    this.user.setPassword(MD5Util.generate(this.user.getPassword()));
+                    this.userService.saveUser(user);
+                    jsonDataOfSuccess.put("message","注册成功");
+                    return SUCCESS;
+                }
+            }
+            catch (Exception e){
+                jsonDataOfError.put("message","注册失败");
+                return ERROR;
+            }
+        }else{
+            jsonDataOfError.put("message","注册失败");
+            return ERROR;
+        }
+    }
 }

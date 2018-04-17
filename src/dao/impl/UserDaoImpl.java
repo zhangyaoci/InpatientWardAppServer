@@ -34,6 +34,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> getUserByPhone(String phone) {
+        return  (List<User>) this.hibernateTemplate.findByNamedParam("from User where phone=:phone","phone",phone);
+    }
+
+    @Override
     public List<?> findAll() {
         return  this.hibernateTemplate.find("from User ");
     }
