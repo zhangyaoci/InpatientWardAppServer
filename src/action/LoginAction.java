@@ -17,7 +17,7 @@ public class LoginAction extends ActionSupport{
 
 
     //成功向前台传入的数据,springMVC 默认是单例模式
-    private Map<String,Object> jsonDataOfSuccess = new HashMap<String,Object>(); ;
+    private Map<String,Object> jsonDataOfSuccess = new HashMap<String,Object>();
     //失败向前台传入的数据
     private Map<String,Object> jsonDataOfError = new HashMap<String,Object>();
 
@@ -100,4 +100,24 @@ public class LoginAction extends ActionSupport{
             return ERROR;
         }
     }
+
+    //用户修改密码
+    public String amendPassword(){
+        if(this.user!=null){
+            List<User> users = this.userService.findUserByPhone(user.getPhone());
+            if(users.size()!=0){
+                users.get(0).setPassword(MD5Util.generate(this.user.getPassword()));
+                this.userService.updateUser(users.get(0));
+                jsonDataOfSuccess.put("message","密码修改成功");
+                return SUCCESS;
+            }else{
+                jsonDataOfError.put("message","不存在该用户手机号码");
+                return ERROR;
+            }
+        }else {
+            jsonDataOfError.put("message","密码修改失败");
+            return ERROR;
+        }
+    }
+
 }

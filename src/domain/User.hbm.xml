@@ -13,7 +13,7 @@
         <property name="sex" column="sex"/>
         <property name="phone" column="phone"/>
         <property name="remarks" column="remarks"/>
-        <set name="userPatients" cascade="all">
+        <set name="userPatients" cascade="all" >
             <key column="userId"></key>
             <one-to-many class="domain.UserPatient"></one-to-many>
         </set>

@@ -8,6 +8,7 @@
 
     <package name="default" extends="json-default" namespace="/">
         <global-allowed-methods>regex:.*</global-allowed-methods>
+
         <action name="loginAction_*" class="loginAction" method="{1}">
             <interceptor-ref name="json"/>
             <result name="success" type="json">
@@ -17,6 +18,21 @@
                 <param name="root">jsonDataOfError</param>
             </result>
         </action>
+
+        <action name="userAction_*" class="userAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonDataOfSuccess</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">jsonDataOfError</param>
+            </result>
+        </action>
+
+
+
+
+
     </package>
 
 </struts>
