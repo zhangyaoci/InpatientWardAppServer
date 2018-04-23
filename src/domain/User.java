@@ -11,6 +11,7 @@ public class User {
     private String password;
     private byte sex;
     private String phone;
+    private String address;
     private String remarks;
 
 
@@ -63,6 +64,14 @@ public class User {
         this.phone = phone;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getRemarks() {
         return remarks;
     }
@@ -86,7 +95,6 @@ public class User {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(userId, name, password, sex, phone, remarks);
     }
 }

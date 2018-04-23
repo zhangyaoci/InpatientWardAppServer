@@ -15,6 +15,39 @@ public class Patient {
     private String introduction;
     private String remarks;
 
+    //描述当前病人是否正在住院
+    private String hospitalState;
+
+    //描述当前病人与用户之间的关系
+    private String relationShip;
+
+    //描述当前病人在住院时的房间号
+    private String roomNumber;
+
+    //描述当前病人是否正在住院
+    public String getHospitalState() {
+        return hospitalState;
+    }
+
+    public void setHospitalState(String hospitalState) {
+        this.hospitalState = hospitalState;
+    }
+
+    public String getRelationShip() {
+        return relationShip;
+    }
+
+    public void setRelationShip(String relationShip) {
+        this.relationShip = relationShip;
+    }
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
 
     //采用两个一对多实现多对多(病人和用户家属之间的关系)
     private Set<UserPatient> userPatients = new HashSet<UserPatient>();

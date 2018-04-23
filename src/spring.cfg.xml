@@ -45,6 +45,16 @@
     </bean>
 
 
+    <bean id="patientDao" class="dao.impl.PatientDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="patientService" class="service.impl.PatientServiceImpl">
+        <property name="patientDao" ref="patientDao"></property>
+    </bean>
+    <bean id="peopleAction" class="action.PeopleAction">
+        <property name="patientService" ref="patientService"></property>
+    </bean>
+
 
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>

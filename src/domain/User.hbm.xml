@@ -12,6 +12,7 @@
         <property name="password" column="password"/>
         <property name="sex" column="sex"/>
         <property name="phone" column="phone"/>
+        <property name="address" column="address"/>
         <property name="remarks" column="remarks"/>
         <set name="userPatients" cascade="all" >
             <key column="userId"></key>

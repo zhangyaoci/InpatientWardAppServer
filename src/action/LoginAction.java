@@ -57,7 +57,8 @@ public class LoginAction extends ActionSupport{
             if(users.size()!=0){
                User userForVerification= users.get(0);
                if(MD5Util.verify(user.getPassword(),userForVerification.getPassword())){
-                   jsonDataOfSuccess.put("message","登录成功");
+                   users.get(0).setUserPatients(null);
+                   jsonDataOfSuccess.put("user",users.get(0));
                    return  SUCCESS;
                }else{
                    jsonDataOfError.put("message","密码错误");
