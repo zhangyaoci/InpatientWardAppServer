@@ -10,6 +10,7 @@ public  interface UserDao {
     public void  delete(User user);
     public User  findById(String id);
     public List<User>  getUserByPhone(String phone);
+    public User getUserOfGuardianByPatientId(int patientId);
 
     public List<?> findAll();
 }

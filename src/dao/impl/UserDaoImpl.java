@@ -1,9 +1,12 @@
 package dao.impl;
 
 import dao.UserDao;
+import domain.Patient;
 import domain.User;
+import domain.UserPatient;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import java.util.List;
+import java.util.Set;
 
 public class UserDaoImpl implements UserDao {
 
@@ -36,6 +39,18 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getUserByPhone(String phone) {
         return  (List<User>) this.hibernateTemplate.findByNamedParam("from User where phone=:phone","phone",phone);
+    }
+
+    @Override
+    public User getUserOfGuardianByPatientId(int patientId) {
+        Set<UserPatient> userPatients= this.hibernateTemplate.get(Patient.class,patientId).getUserPatients();
+        for(UserPatient userPatient :userPatients){
+            if(userPatient.getGuardian().equals("1")){
+                return userPatient.getUser();
+            }
+        }
+
+        return null;
     }
 
     @Override

@@ -4,6 +4,27 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <!--在一个请求的生命周期中 session 是永远打开的-->
+    <filter>
+        <filter-name>openSession</filter-name>
+        <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+        <init-param>
+            <param-name>singleSession</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>flushMode</param-name>
+            <param-value>AUTO</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>openSession</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
     <!--struts2配置-->
     <filter>
         <filter-name>struts2</filter-name>
@@ -13,6 +34,9 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+
+
 
     <!-- Spring配置 -->
     <context-param>

@@ -51,9 +51,8 @@ public class PatientDaoImpl implements PatientDao {
             Patient patient = userPatient.getPatient();
             patient.setRelationShip(userPatient.getRelation());
 
-            System.out.println(patient+"wewewe"+userPatient.getRelation());
 
-            /*这里很可能引起空指针异常*/
+            /*这里很可能引起空指针异常*//*
             patient.setBloodglucoses(null);
             patient.setBloodoxygensaturations(null);
             patient.setBloodpressures(null);
@@ -62,6 +61,7 @@ public class PatientDaoImpl implements PatientDao {
             patient.setHospitalizations(null);
             patient.setAdvices(null);
             patient.setInformations(null);
+            patient.setUserPatients(null);*/
 
             patients.add(patient);
         }

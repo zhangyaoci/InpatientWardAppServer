@@ -55,6 +55,18 @@
         <property name="patientService" ref="patientService"></property>
     </bean>
 
+    <bean id="hospitalizationDao" class="dao.impl.HospitalizationDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="hospitalizationService" class="service.impl.HospitalizationServiceImpl">
+        <property name="hospitalizationDao" ref="hospitalizationDao"></property>
+    </bean>
+    <bean id="hospitalizationAction" class="action.HospitalizationAction">
+        <property name="hospitalizationService" ref="hospitalizationService"></property>
+    </bean>
+
+
+
 
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>

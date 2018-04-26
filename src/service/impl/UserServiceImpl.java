@@ -37,6 +37,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserOfGuardianByPatientId(int patientId) {
+        return this.userDao.getUserOfGuardianByPatientId(patientId);
+    }
+
+    @Override
     public List<User> findUserByPhone(String phone) {
         return this.userDao.getUserByPhone(phone);
     }

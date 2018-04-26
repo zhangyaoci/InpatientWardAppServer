@@ -5,6 +5,7 @@ import java.util.Objects;
 public class UserPatient {
     private int userPatientId;
     private String relation;
+    private String guardian;
     private String remarks;
 
 
@@ -42,6 +43,14 @@ public class UserPatient {
 
     public void setRelation(String relation) {
         this.relation = relation;
+    }
+
+    public String getGuardian() {
+        return guardian;
+    }
+
+    public void setGuardian(String guardian) {
+        this.guardian = guardian;
     }
 
     public String getRemarks() {

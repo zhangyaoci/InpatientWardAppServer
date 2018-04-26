@@ -41,6 +41,15 @@
         </action>
 
 
+        <action name="hospitalizationAction_*" class="hospitalizationAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonDataOfSuccess</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">jsonDataOfError</param>
+            </result>
+        </action>
 
 
 

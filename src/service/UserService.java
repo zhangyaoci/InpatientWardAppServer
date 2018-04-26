@@ -10,6 +10,8 @@ public interface UserService {
     public void deleteUser(User user);
 
     public  User findUserById(String id);
+    public  User getUserOfGuardianByPatientId(int patientId);
+
     public  List<User> findUserByPhone(String phone);
     public List<User> findAllUser();
 }

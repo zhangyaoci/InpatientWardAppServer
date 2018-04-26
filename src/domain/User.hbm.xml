@@ -14,7 +14,7 @@
         <property name="phone" column="phone"/>
         <property name="address" column="address"/>
         <property name="remarks" column="remarks"/>
-        <set name="userPatients" cascade="all" >
+        <set name="userPatients" cascade="all" inverse="true">
             <key column="userId"></key>
             <one-to-many class="domain.UserPatient"></one-to-many>
         </set>

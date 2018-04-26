@@ -16,6 +16,15 @@ public class UserAction extends ActionSupport {
     private UserService userService;
 
 
+    private Integer patientId;
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
+
     //成功向前台传入的数据,springMVC 默认是单例模式
     private Map<String,Object> jsonDataOfSuccess = new HashMap<String,Object>();
     //失败向前台传入的数据
@@ -64,8 +73,8 @@ public class UserAction extends ActionSupport {
         if(this.phone!=null){
             List<User> users =  this.userService.findUserByPhone(this.phone);
             if(users.size()!=0){
-                //消除空对象，json转换的错误
-                users.get(0).setUserPatients(null);
+                /*消除空对象，json转换的错误
+                users.get(0).setUserPatients(null); json在转换时是调用user集合中的get方法，发现这里是一个代理属性，者赋值为null*/
                 jsonDataOfSuccess.put("user", users.get(0));
                 return SUCCESS;
             }
@@ -97,6 +106,19 @@ public class UserAction extends ActionSupport {
             jsonDataOfError.put("message","用户修改信息失败");
             return ERROR;
         }
+    }
+
+    //通过病人的Id来获取他的监护人信息
+    public String getUserOfGuardianByPatientId(){
+
+        if(patientId!=null){
+           User userOfGuardian = this.userService.getUserOfGuardianByPatientId(patientId);
+           jsonDataOfSuccess.put("user",userOfGuardian);
+           return SUCCESS;
+
+        }
+
+        return ERROR;
     }
 
 
