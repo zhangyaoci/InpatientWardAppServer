@@ -12,18 +12,6 @@ public class Nurse {
     private String introduction;
     private String remarks;
 
-
-    //住院对应的护士，一对多
-    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
-
-    public Set<Hospitalization> getHospitalizations() {
-        return hospitalizations;
-    }
-
-    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
-        this.hospitalizations = hospitalizations;
-    }
-
     public int getNurseId() {
         return nurseId;
     }
@@ -71,6 +59,17 @@ public class Nurse {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
+
+
+    //病人的住院对应的护士，一个护士可以对多个住院记录
+    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
+    public Set<Hospitalization> getHospitalizations() {
+        return hospitalizations;
+    }
+    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
+        this.hospitalizations = hospitalizations;
+    }
+
 
     @Override
     public boolean equals(Object o) {

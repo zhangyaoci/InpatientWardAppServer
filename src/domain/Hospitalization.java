@@ -10,40 +10,6 @@ public class Hospitalization {
     private String room;
     private String remarks;
 
-
-    //住院记录对应护士
-    private Nurse nurse;
-
-    public Nurse getNurse() {
-        return nurse;
-    }
-
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
-
-    //住院记录对应医生
-    private  Doctor doctor;
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    //住院记录对应病人
-    private Patient patient;
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public int getHospitalId() {
         return hospitalId;
     }
@@ -82,6 +48,35 @@ public class Hospitalization {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //某个病人住院记录对应护士
+    private Nurse nurse;
+    public Nurse getNurse() {
+        return nurse;
+    }
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+
+    //某个病人住院记录对应医生
+    private  Doctor doctor;
+    public   Doctor getDoctor() {
+        return doctor;
+    }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    //住院记录所对应病人
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

@@ -14,13 +14,14 @@
         <property name="department" column="department"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>
-        <set name="advices" cascade="all">
-            <key column="doctorId"></key>
-            <one-to-many class="domain.Advice" ></one-to-many>
-        </set>
+
         <set name="hospitalizations" cascade="all">
             <key column="doctorId"></key>
             <one-to-many class="domain.Hospitalization"></one-to-many>
+        </set>
+        <set name="informations" cascade="all">
+            <key column="doctorId"></key>
+            <one-to-many class="domain.Information"></one-to-many>
         </set>
     </class>
 </hibernate-mapping>

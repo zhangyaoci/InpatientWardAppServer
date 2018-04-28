@@ -1,7 +1,6 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.net.httpserver.Authenticator;
 import domain.Hospitalization;
 import service.HospitalizationService;
 

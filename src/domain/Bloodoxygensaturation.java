@@ -4,20 +4,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Bloodoxygensaturation {
+
     private int bosId;
     private Double value;
     private Timestamp time;
     private String remarks;
-
-
-    //血氧饱和度
-    private  Patient patient;
-    public Patient getPatient() {
-        return patient;
-    }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 
     public int getBosId() {
         return bosId;
@@ -49,6 +40,16 @@ public class Bloodoxygensaturation {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+    //血氧饱和度的值对应的病人
+    private  Patient patient;
+    public   Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

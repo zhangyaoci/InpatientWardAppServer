@@ -14,144 +14,8 @@ public class Patient {
     private String address;
     private String introduction;
     private String remarks;
-
-    //描述当前病人是否正在住院
-    private String hospitalState;
-
-    //描述当前病人与用户之间的关系
-    private String relationShip;
-
-    //描述当前病人在住院时的房间号
+    private int hospitalState;//数据库中 1代表正在住院 0代表已经出院
     private String roomNumber;
-
-    //描述当前病人是否正在住院
-    public String getHospitalState() {
-        return hospitalState;
-    }
-
-    public void setHospitalState(String hospitalState) {
-        this.hospitalState = hospitalState;
-    }
-
-    public String getRelationShip() {
-        return relationShip;
-    }
-
-    public void setRelationShip(String relationShip) {
-        this.relationShip = relationShip;
-    }
-
-    public String getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    //采用两个一对多实现多对多(病人和用户家属之间的关系)
-    private Set<UserPatient> userPatients = new HashSet<UserPatient>();
-
-    public Set<UserPatient> getUserPatients() {
-        return userPatients;
-    }
-
-    public void setUserPatients(Set<UserPatient> userPatients) {
-        this.userPatients = userPatients;
-    }
-
-    //病人的医嘱，一对多
-    private Set<Advice> advices = new HashSet<Advice>();
-
-    public Set<Advice> getAdvices() {
-        return advices;
-    }
-
-    public void setAdvices(Set<Advice> advices) {
-        this.advices = advices;
-    }
-
-    //病人的消息提醒，一对多
-    private  Set<Information>  informations = new HashSet<Information>();
-
-    public Set<Information> getInformations() {
-        return informations;
-    }
-    public void setInformations(Set<Information> informations) {
-        this.informations = informations;
-    }
-
-    //病人的血糖，一对多
-    private  Set<Bloodglucose> bloodglucoses = new HashSet<Bloodglucose>();
-
-    public Set<Bloodglucose> getBloodglucoses() {
-        return bloodglucoses;
-    }
-
-    public void setBloodglucoses(Set<Bloodglucose> bloodglucoses) {
-        this.bloodglucoses = bloodglucoses;
-    }
-
-
-    //病人的血压饱和度，一对多
-    private Set<Bloodoxygensaturation> bloodoxygensaturations = new HashSet<Bloodoxygensaturation>();
-
-    public Set<Bloodoxygensaturation> getBloodoxygensaturations() {
-        return bloodoxygensaturations;
-    }
-
-    public void setBloodoxygensaturations(Set<Bloodoxygensaturation> bloodoxygensaturations) {
-        this.bloodoxygensaturations = bloodoxygensaturations;
-    }
-
-
-    //病人的血压， 一对多
-    private  Set<Bloodpressure> bloodpressures = new HashSet<Bloodpressure>();
-
-    public Set<Bloodpressure> getBloodpressures() {
-        return bloodpressures;
-    }
-
-    public void setBloodpressures(Set<Bloodpressure> bloodpressures) {
-        this.bloodpressures = bloodpressures;
-    }
-
-    //病人的心率，一对多
-    private Set<Heartrate> heartrates = new HashSet<Heartrate>();
-
-    public Set<Heartrate> getHeartrates() {
-        return heartrates;
-    }
-
-    public void setHeartrates(Set<Heartrate> heartrates) {
-        this.heartrates = heartrates;
-    }
-
-
-    //病人的体温，一对多
-    private Set<Temperature> temperatures = new HashSet<Temperature>();
-
-    public Set<Temperature> getTemperatures() {
-        return temperatures;
-    }
-
-    public void setTemperatures(Set<Temperature> temperatures) {
-        this.temperatures = temperatures;
-    }
-
-    //病人对应的住院记录
-    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
-
-    public Set<Hospitalization> getHospitalizations() {
-        return hospitalizations;
-    }
-
-    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
-        this.hospitalizations = hospitalizations;
-    }
-
-
-
 
     public int getPatientId() {
         return patientId;
@@ -216,6 +80,116 @@ public class Patient {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
+
+    public int getHospitalState() {
+        return hospitalState;
+    }
+
+    public void setHospitalState(int hospitalState) {
+        this.hospitalState = hospitalState;
+    }
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+
+
+
+    //描述当前病人与用户之间的关系，不在数据库存储（为方便操作临时添加的字段）
+    private String relationShip;
+    public String getRelationShip() {
+        return relationShip;
+    }
+    public void setRelationShip(String relationShip) {
+        this.relationShip = relationShip;
+    }
+
+
+
+
+
+    //采用两个一对多实现多对多(病人和用户家属之间的关系)
+    private Set<UserPatient> userPatients = new HashSet<UserPatient>();
+    public Set<UserPatient> getUserPatients() {
+        return userPatients;
+    }
+    public void setUserPatients(Set<UserPatient> userPatients) {
+        this.userPatients = userPatients;
+    }
+
+
+
+    //病人的消息（生理数据超标和医嘱）提醒，一对多
+    private  Set<Information>  informations = new HashSet<Information>();
+    public Set<Information> getInformations() {
+        return informations;
+    }
+    public void setInformations(Set<Information> informations) {
+        this.informations = informations;
+    }
+
+    //病人对应的住院记录
+    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
+    public Set<Hospitalization> getHospitalizations() {
+        return hospitalizations;
+    }
+    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
+        this.hospitalizations = hospitalizations;
+    }
+
+
+    //病人的血糖，一对多
+    private  Set<Bloodglucose> bloodglucoses = new HashSet<Bloodglucose>();
+    public Set<Bloodglucose> getBloodglucoses() {
+        return bloodglucoses;
+    }
+    public void setBloodglucoses(Set<Bloodglucose> bloodglucoses) {
+        this.bloodglucoses = bloodglucoses;
+    }
+
+    //病人的血压饱和度，一对多
+    private Set<Bloodoxygensaturation> bloodoxygensaturations = new HashSet<Bloodoxygensaturation>();
+    public Set<Bloodoxygensaturation> getBloodoxygensaturations() {
+        return bloodoxygensaturations;
+    }
+    public void setBloodoxygensaturations(Set<Bloodoxygensaturation> bloodoxygensaturations) {
+        this.bloodoxygensaturations = bloodoxygensaturations;
+    }
+
+    //病人的血压， 一对多
+    private  Set<Bloodpressure> bloodpressures = new HashSet<Bloodpressure>();
+    public Set<Bloodpressure> getBloodpressures() {
+        return bloodpressures;
+    }
+    public void setBloodpressures(Set<Bloodpressure> bloodpressures) {
+        this.bloodpressures = bloodpressures;
+    }
+
+    //病人的心率，一对多
+    private Set<Heartrate> heartrates = new HashSet<Heartrate>();
+    public Set<Heartrate> getHeartrates() {
+        return heartrates;
+    }
+    public void setHeartrates(Set<Heartrate> heartrates) {
+        this.heartrates = heartrates;
+    }
+
+    //病人的体温，一对多
+    private Set<Temperature> temperatures = new HashSet<Temperature>();
+    public Set<Temperature> getTemperatures() {
+        return temperatures;
+    }
+    public void setTemperatures(Set<Temperature> temperatures) {
+        this.temperatures = temperatures;
+    }
+
+
+
 
     @Override
     public boolean equals(Object o) {

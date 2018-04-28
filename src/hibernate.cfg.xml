@@ -14,7 +14,6 @@
     <property name="hbm2ddl.auto">update</property>
 
 
-    <mapping resource="domain/Advice.hbm.xml"/>
     <mapping resource="domain/Bloodglucose.hbm.xml"/>
     <mapping resource="domain/Bloodoxygensaturation.hbm.xml"/>
     <mapping resource="domain/Bloodpressure.hbm.xml"/>

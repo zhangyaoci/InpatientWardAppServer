@@ -9,17 +9,6 @@ public class Heartrate {
     private Timestamp time;
     private String remarks;
 
-
-    //病人的心率
-    private Patient patient;
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public int getHrId() {
         return hrId;
     }
@@ -50,6 +39,17 @@ public class Heartrate {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //心率值对应的病人
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

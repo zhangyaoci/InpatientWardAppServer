@@ -8,27 +8,6 @@ public class UserPatient {
     private String guardian;
     private String remarks;
 
-
-    //多对多关系的实现
-    private User user;
-    private Patient patient;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public int getUserPatientId() {
         return userPatientId;
     }
@@ -59,6 +38,26 @@ public class UserPatient {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //多对多关系的实现，用户
+    private User user;
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    //多对多关系实现，病人
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

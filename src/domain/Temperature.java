@@ -9,18 +9,6 @@ public class Temperature {
     private Timestamp time;
     private String remarks;
 
-
-    //病人的体温
-    private Patient patient;
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public int getTemperatureId() {
         return temperatureId;
     }
@@ -51,6 +39,17 @@ public class Temperature {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //病人某个时间段对于的体温值，一对多
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

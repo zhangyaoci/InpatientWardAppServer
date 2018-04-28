@@ -9,17 +9,6 @@ public class Bloodglucose {
     private Timestamp time;
     private String remarks;
 
-    //病人的血糖
-    private Patient patient;
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
     public int getBgId() {
         return bgId;
     }
@@ -50,6 +39,16 @@ public class Bloodglucose {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+    //血糖值对应的病人
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

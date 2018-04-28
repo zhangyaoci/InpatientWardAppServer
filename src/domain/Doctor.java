@@ -13,30 +13,6 @@ public class Doctor {
     private String introduction;
     private String remarks;
 
-
-
-    //医生可以提出多个医嘱
-    private Set<Advice> advices = new HashSet<Advice>();
-
-    public Set<Advice> getAdvices() {
-        return advices;
-    }
-    public void setAdvices(Set<Advice> advices) {
-        this.advices = advices;
-    }
-
-    //医生对应的住院记录，一对多
-    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
-
-    public Set<Hospitalization> getHospitalizations() {
-        return hospitalizations;
-    }
-
-    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
-        this.hospitalizations = hospitalizations;
-    }
-
-
     public int getDoctorId() {
         return doctorId;
     }
@@ -91,6 +67,26 @@ public class Doctor {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //医生和病人的关系是由对应的住院记录来维系，医生和住院记录是一对多的情况
+    private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();
+    public  Set<Hospitalization> getHospitalizations() {
+        return hospitalizations;
+    }
+    public void setHospitalizations(Set<Hospitalization> hospitalizations) {
+        this.hospitalizations = hospitalizations;
+    }
+
+    //医生和消息对应的一对多的关系（医生负责发布医嘱）
+    private Set<Information> informations= new HashSet<Information>();
+    public Set<Information> getInformations() {
+        return informations;
+    }
+    public void setInformations(Set<Information> informations) {
+        this.informations = informations;
     }
 
     @Override

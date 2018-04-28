@@ -7,18 +7,8 @@ public class Information {
     private int informationId;
     private String content;
     private Timestamp time;
+    private int isRead;
     private String remarks;
-
-
-    //病人对应的消息提醒
-    private Patient patient;
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 
     public int getInformationId() {
         return informationId;
@@ -44,12 +34,39 @@ public class Information {
         this.time = time;
     }
 
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
+
     public String getRemarks() {
         return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+    //消息提醒对应的病人
+    private Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    //消息提醒对应的医生，如果当前的值为null，就默认是系统发出的消息提醒（该消息默认是病人的生理超出正常的标准值发出的消息提醒）
+    private Doctor doctor;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     @Override

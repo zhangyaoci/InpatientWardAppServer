@@ -18,7 +18,7 @@ import javax.swing.*;
 import java.sql.Date;
 
 
-public class TestApp {
+public class TestUnit {
 
     @Test
     public void  demo01(){

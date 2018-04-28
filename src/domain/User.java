@@ -14,16 +14,6 @@ public class User {
     private String address;
     private String remarks;
 
-
-    //采用两个一对多实现多对多
-    private Set<UserPatient> userPatients = new HashSet<UserPatient>();
-    public Set<UserPatient> getUserPatients() {
-        return userPatients;
-    }
-    public void setUserPatients(Set<UserPatient> userPatients) {
-        this.userPatients = userPatients;
-    }
-
     public int getUserId() {
         return userId;
     }
@@ -78,6 +68,17 @@ public class User {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+
+    //用户对应病人的关系表，采用两个一对多实现（多个病人、多个用户对应一个用户病人关系表）
+    private Set<UserPatient> userPatients = new HashSet<UserPatient>();
+    public Set<UserPatient> getUserPatients() {
+        return userPatients;
+    }
+    public void setUserPatients(Set<UserPatient> userPatients) {
+        this.userPatients = userPatients;
     }
 
     @Override

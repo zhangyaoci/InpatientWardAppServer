@@ -4,22 +4,11 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Bloodpressure {
+
     private int bpId;
     private Double value;
     private Timestamp time;
     private String remarks;
-
-
-    //病人对应的血压
-    private  Patient patient;
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 
     public int getBpId() {
         return bpId;
@@ -51,6 +40,16 @@ public class Bloodpressure {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+
+    //血压值所对应的病人
+    private  Patient patient;
+    public Patient getPatient() {
+        return patient;
+    }
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     @Override

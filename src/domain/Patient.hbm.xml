@@ -21,13 +21,13 @@
             <key column="patientId"></key>
             <one-to-many class="domain.UserPatient"></one-to-many>
         </set>
-        <set name="advices" cascade="all">
-            <key column="patientId"></key>
-            <one-to-many class="domain.Advice"></one-to-many>
-        </set>
         <set name="informations" cascade="all">
             <key column="patientId"></key>
             <one-to-many class="domain.Information"></one-to-many>
+        </set>
+        <set name="hospitalizations" cascade="all">
+            <key column="patientId"></key>
+            <one-to-many class="domain.Hospitalization"></one-to-many>
         </set>
         <set name="bloodglucoses" cascade="all">
             <key column="patientId"></key>
@@ -49,9 +49,6 @@
             <key column="patientId"></key>
             <one-to-many class="domain.Temperature"></one-to-many>
         </set>
-        <set name="hospitalizations" cascade="all">
-            <key column="patientId"></key>
-            <one-to-many class="domain.Hospitalization"></one-to-many>
-        </set>
+
     </class>
 </hibernate-mapping>
