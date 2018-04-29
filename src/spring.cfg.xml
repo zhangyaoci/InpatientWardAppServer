@@ -68,6 +68,22 @@
 
 
 
+    <bean id="informationDao" class="dao.impl.InformationDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="informationUserDao" class="dao.impl.InformationUserDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean  id="informationService"   class="service.impl.InformationServiceImpl">
+        <property name="informationDao" ref="informationDao"></property>
+        <property name="informationUserDao" ref="informationUserDao"></property>
+    </bean>
+    <bean id="informationAction" class="action.InformationAction">
+        <property name="informationService" ref="informationService"></property>
+    </bean>
+
+
+
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>

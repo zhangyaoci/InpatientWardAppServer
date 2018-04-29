@@ -11,6 +11,5 @@ public  interface UserDao {
     public User  findById(String id);
     public List<User>  getUserByPhone(String phone);
     public User getUserOfGuardianByPatientId(int patientId);
-
     public List<?> findAll();
 }

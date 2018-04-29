@@ -4,12 +4,11 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="domain.Information" table="information" schema="impatientwardapp">
+    <class name="domain.Information" table="information" schema="inpatientWardAppDatabase">
         <id name="informationId" column="informationId">
             <generator class="native" ></generator>
         </id>
         <property name="content" column="content"/>
-        <property name="isRead" column="isRead"/>
         <property name="time" column="time"/>
         <property name="remarks" column="remarks"/>
         <many-to-one name="patient" class="domain.Patient" column="patientId"></many-to-one>

@@ -52,6 +52,13 @@
         </action>
 
 
+        <!--消息提醒模块-->
+        <action name="informationAction_*" class="informationAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result type="json">
+                <param name="root">jsonData</param>
+            </result>
+        </action>
 
 
     </package>

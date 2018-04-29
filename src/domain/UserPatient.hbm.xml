@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="domain.UserPatient" table="user_patient" schema="impatientwardapp">
+    <class name="domain.UserPatient" table="userPatient" schema="inpatientWardAppDatabase">
         <id name="userPatientId" column="userPatientId">
             <generator class="native" ></generator>
         </id>

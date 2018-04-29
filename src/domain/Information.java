@@ -7,7 +7,6 @@ public class Information {
     private int informationId;
     private String content;
     private Timestamp time;
-    private int isRead;
     private String remarks;
 
     public int getInformationId() {
@@ -32,14 +31,6 @@ public class Information {
 
     public void setTime(Timestamp time) {
         this.time = time;
-    }
-
-    public int getIsRead() {
-        return isRead;
-    }
-
-    public void setIsRead(int isRead) {
-        this.isRead = isRead;
     }
 
     public String getRemarks() {

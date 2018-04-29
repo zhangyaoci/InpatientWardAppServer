@@ -21,6 +21,7 @@
     <mapping resource="domain/Heartrate.hbm.xml"/>
     <mapping resource="domain/Hospitalization.hbm.xml"/>
     <mapping resource="domain/Information.hbm.xml"/>
+    <mapping resource="domain/InformationUser.hbm.xml"/>
     <mapping resource="domain/Nurse.hbm.xml"/>
     <mapping resource="domain/Patient.hbm.xml"/>
     <mapping resource="domain/Temperature.hbm.xml"/>

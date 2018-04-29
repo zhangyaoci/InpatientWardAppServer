@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="domain.InformationUser" table="informationUser" schema="inpatientWardAppDatabase">
+        <id name="informationUserId" column="informationUserId">
+            <generator class="native" ></generator>
+        </id>
+        <property name="isRead" column="isRead"/>
+        <many-to-one name="information" class="domain.Information" column="informationId"></many-to-one>
+        <many-to-one name="user"  class="domain.User" column="userId"></many-to-one>
+    </class>
+</hibernate-mapping>
