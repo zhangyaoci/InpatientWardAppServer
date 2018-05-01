@@ -9,7 +9,7 @@ public interface UserService {
     public void updateUser(User user);
     public void deleteUser(User user);
 
-    public  User findUserById(String id);
+    public  User findUserById(int id);
     public  User getUserOfGuardianByPatientId(int patientId);
 
     public  List<User> findUserByPhone(String phone);

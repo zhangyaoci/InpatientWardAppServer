@@ -11,7 +11,7 @@
         <property name="relation" column="relation"/>
         <property name="guardian" column="guardian"/>
         <property name="remarks" column="remarks"/>
-        <many-to-one name="user" class="domain.User" column="userId" cascade="all"></many-to-one>
-        <many-to-one name="patient" class="domain.Patient" column="patientId" cascade="all"  lazy="false"></many-to-one>
+        <many-to-one name="user" class="domain.User" column="userId" cascade="all" lazy="false"></many-to-one>
+        <many-to-one name="patient" class="domain.Patient" column="patientId" cascade="all" lazy="false"></many-to-one>
     </class>
 </hibernate-mapping>

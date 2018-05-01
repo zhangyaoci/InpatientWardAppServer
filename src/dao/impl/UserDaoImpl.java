@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User findById(String id) {
+    public User findById(Integer id) {
         return this.hibernateTemplate.get(User.class,id);
     }
 

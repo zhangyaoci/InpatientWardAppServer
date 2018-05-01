@@ -17,8 +17,9 @@ public class HospitalizationDaoImpl implements HospitalizationDao {
     }
 
     @Override
-    public Set<Hospitalization> getHospitalizationBypatientId(int patientId) {
-       Set<Hospitalization> hospitalizations= hibernateTemplate.get(Patient.class,patientId).getHospitalizations();
+    public List<Hospitalization> getHospitalizationBypatientId(int patientId) {
+       List<Hospitalization> hospitalizations=(List<Hospitalization>) this.hibernateTemplate.findByNamedParam(
+               "from Hospitalization where patient.patientId=:patientId","patientId",patientId);
        return hospitalizations;
     }
 }

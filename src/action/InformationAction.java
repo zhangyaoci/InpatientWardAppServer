@@ -36,11 +36,15 @@ public class InformationAction extends ActionSupport {
         this.jsonData = jsonData;
     }
 
+
+
     /*根据需要提醒的用户ID，获取该用户还未阅读的消息*/
-    public void  acquireInformation(){
+    public String acquireInformation(){
         if(this.userId!=null){
             List<Information> informationList =this.informationService.getInformationByUserId(this.userId);
             jsonData.put("success",informationList);
+            return  SUCCESS;
         }
+        return ERROR;
     }
 }

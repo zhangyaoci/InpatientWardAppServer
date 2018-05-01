@@ -27,14 +27,14 @@
 
 
 
-
-
+    <!--登录和用户模块-->
     <bean id="userDao" class="dao.impl.UserDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
 
     <bean id="userService" class="service.impl.UserServiceImpl">
         <property name="userDao" ref="userDao"></property>
+        <property name="userPatientDao" ref="userPatientDao"></property>
     </bean>
 
     <bean id="loginAction" class="action.LoginAction" scope="prototype">
@@ -45,14 +45,20 @@
     </bean>
 
 
+
+
+
+
+    <!--病人相关模块-->
     <bean id="patientDao" class="dao.impl.PatientDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
+    <bean id="userPatientDao" class="dao.impl.UserPatientDaoImpl">
+        <property name="hibernateTemplate"  ref="hibernateTemplate"></property>
+    </bean>
     <bean id="patientService" class="service.impl.PatientServiceImpl">
         <property name="patientDao" ref="patientDao"></property>
-    </bean>
-    <bean id="peopleAction" class="action.PeopleAction">
-        <property name="patientService" ref="patientService"></property>
+        <property name="userPatientDao" ref="userPatientDao"></property>
     </bean>
 
     <bean id="hospitalizationDao" class="dao.impl.HospitalizationDaoImpl">
@@ -61,13 +67,18 @@
     <bean id="hospitalizationService" class="service.impl.HospitalizationServiceImpl">
         <property name="hospitalizationDao" ref="hospitalizationDao"></property>
     </bean>
-    <bean id="hospitalizationAction" class="action.HospitalizationAction">
+
+    <bean id="peopleAction" class="action.PeopleAction" scope="prototype">
+        <property name="patientService" ref="patientService"></property>
         <property name="hospitalizationService" ref="hospitalizationService"></property>
     </bean>
 
 
 
 
+
+
+    <!--消息模块-->
     <bean id="informationDao" class="dao.impl.InformationDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
@@ -78,7 +89,7 @@
         <property name="informationDao" ref="informationDao"></property>
         <property name="informationUserDao" ref="informationUserDao"></property>
     </bean>
-    <bean id="informationAction" class="action.InformationAction">
+    <bean id="informationAction" class="action.InformationAction" scope="prototype">
         <property name="informationService" ref="informationService"></property>
     </bean>
 

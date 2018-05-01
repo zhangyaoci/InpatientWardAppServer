@@ -1,9 +1,12 @@
 package service.impl;
 
 import dao.PatientDao;
+import dao.UserPatientDao;
 import domain.Patient;
+import domain.UserPatient;
 import service.PatientService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PatientServiceImpl implements PatientService {
@@ -13,13 +16,27 @@ public class PatientServiceImpl implements PatientService {
         this.patientDao = patientDao;
     }
 
+    private UserPatientDao userPatientDao;
+    public void setUserPatientDao(UserPatientDao userPatientDao) {
+        this.userPatientDao = userPatientDao;
+    }
+
     @Override
     public void save(Patient patient) {
         patientDao.save(patient);
     }
 
+
+    /*通过用户的ID号，获取相关的病人列表*/
     @Override
     public List<Patient> getPatientByUserId(int userId) {
-        return this.patientDao.getPatientByUserId(userId);
+      List<UserPatient> userPatientList =  this.userPatientDao.findUserPatientByUserId(userId);
+      List<Patient> patientList  = new ArrayList<>();
+      for(UserPatient userPatient:userPatientList){
+          Patient patient = this.patientDao.getPatientById(userPatient.getPatient().getPatientId());
+          patient.setRelationShip(userPatient.getRelation());
+          patientList.add(patient);
+      }
+      return patientList;
     }
 }

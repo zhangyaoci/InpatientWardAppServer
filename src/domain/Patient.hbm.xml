@@ -17,35 +17,36 @@
         <property name="roomNumber" column="roomNumber"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>
-        <set name="userPatients" cascade="all">
+
+        <set name="userPatients" cascade="all" lazy="true">
             <key column="patientId"></key>
             <one-to-many class="domain.UserPatient"></one-to-many>
         </set>
-        <set name="informations" cascade="all">
+        <set name="informations" cascade="all" lazy="true">
             <key column="patientId"></key>
-            <one-to-many class="domain.Information"></one-to-many>
+            <one-to-many class="domain.Information" ></one-to-many>
         </set>
-        <set name="hospitalizations" cascade="all">
+        <set name="hospitalizations" cascade="all" lazy="true">
             <key column="patientId"></key>
             <one-to-many class="domain.Hospitalization"></one-to-many>
         </set>
-        <set name="bloodglucoses" cascade="all">
+        <set name="bloodglucoses" cascade="all" lazy="true">
             <key column="patientId"></key>
             <one-to-many class="domain.Bloodglucose"></one-to-many>
         </set>
-        <set name="bloodoxygensaturations" cascade="all">
+        <set name="bloodoxygensaturations" cascade="all" lazy="true">
             <key column="patientId"></key>
-            <one-to-many class="domain.Bloodoxygensaturation"></one-to-many>
+            <one-to-many class="domain.Bloodoxygensaturation" ></one-to-many>
         </set>
-        <set name="bloodpressures" cascade="all">
+        <set name="bloodpressures" cascade="all" lazy="true">
             <key column="patientId"></key>
-            <one-to-many class="domain.Bloodpressure"></one-to-many>
+            <one-to-many class="domain.Bloodpressure" ></one-to-many>
         </set>
-        <set name="heartrates" cascade="all">
+        <set name="heartrates" cascade="all" lazy="true">
             <key column="patientId"></key>
             <one-to-many class="domain.Heartrate"></one-to-many>
         </set>
-        <set name="temperatures" cascade="all">
+        <set name="temperatures" cascade="all" lazy="true">
             <key column="patientId"></key>
             <one-to-many class="domain.Temperature"></one-to-many>
         </set>

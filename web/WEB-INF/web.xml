@@ -5,7 +5,7 @@
          version="3.1">
 
 
-    <!--在一个请求的生命周期中 session 是永远打开的-->
+    <!--在一个请求的生命周期中 session 是永远打开的 容易造成缓存错误
     <filter>
         <filter-name>openSession</filter-name>
         <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
@@ -21,8 +21,7 @@
     <filter-mapping>
         <filter-name>openSession</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
+    </filter-mapping>-->
 
 
     <!--struts2配置-->

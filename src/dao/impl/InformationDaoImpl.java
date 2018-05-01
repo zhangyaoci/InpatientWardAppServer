@@ -15,6 +15,7 @@ public class InformationDaoImpl implements InformationDao {
     /*通过消息id,查找消息，其中如果patientID为null时默认是系统发布的消息*/
     @Override
     public Information findInformationByInformationId(int informationId) {
-        return null;
+       Information information = this.hibernateTemplate.get(Information.class,informationId);
+       return  information;
     }
 }

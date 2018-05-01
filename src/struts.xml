@@ -9,6 +9,8 @@
     <package name="default" extends="json-default" namespace="/">
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
+
+        <!--登录模块-->
         <action name="loginAction_*" class="loginAction" method="{1}">
             <interceptor-ref name="json"/>
             <result name="success" type="json">
@@ -19,44 +21,77 @@
             </result>
         </action>
 
+
+        <!--用户模块-->
         <action name="userAction_*" class="userAction" method="{1}">
             <interceptor-ref name="json"/>
             <result name="success" type="json">
-                <param name="root">jsonDataOfSuccess</param>
-            </result>
-            <result name="error" type="json">
-                <param name="root">jsonDataOfError</param>
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">success.*.userPatients</param>
             </result>
         </action>
 
 
+
+        <!--病人管理模块(包括医生、护士、住院记录)-->
         <action name="peopleAction_*" class="peopleAction" method="{1}">
             <interceptor-ref name="json"/>
             <result name="success" type="json">
-                <param name="root">jsonDataOfSuccess</param>
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    success.*.userPatients,
+                    success.*.informations,
+                    success.*.hospitalizations,
+                    success.*.bloodglucoses,
+                    success.*.bloodoxygensaturations,
+                    success.*.bloodpressures,
+                    success.*.heartrates,
+                    success.*.temperatures
+                </param>
             </result>
-            <result name="error" type="json">
-                <param name="root">jsonDataOfError</param>
+
+            <result name="hospitalizationSuccess" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    success.*.patient,
+                    success.*.doctor.hospitalizations,
+                    success.*.doctor.informations,
+                    success.*.nurse.hospitalizations
+                </param>
+            </result>
+
+            <result name="DoctorAndNurseSuccess" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    successOfDoctor.*.hospitalizations,
+                    successOfDoctor.*.informations,
+                    successOfNurse.*.hospitalizations
+                </param>
             </result>
         </action>
 
 
-        <action name="hospitalizationAction_*" class="hospitalizationAction" method="{1}">
-            <interceptor-ref name="json"/>
-            <result name="success" type="json">
-                <param name="root">jsonDataOfSuccess</param>
-            </result>
-            <result name="error" type="json">
-                <param name="root">jsonDataOfError</param>
-            </result>
-        </action>
 
 
         <!--消息提醒模块-->
         <action name="informationAction_*" class="informationAction" method="{1}">
             <interceptor-ref name="json"/>
-            <result type="json">
+            <result type="json"  name="success">
+                <!--默认是返回action中所有带有get方法的属性值，改配置只返回jsonData数据，只返回根部-->
                 <param name="root">jsonData</param>
+                <!-- 指定是否序列化空的属性 -->
+                <!--<param name="excludeNullProperties">true</param>-->
+                <!--  <param name="includeProperties">root.*\.id,age</param>-->
+                <param name="excludeProperties">
+                    success.*.patient.userPatients,
+                    success.*.patient.informations,
+                    success.*.patient.hospitalizations,
+                    success.*.patient.bloodglucoses,
+                    success.*.patient.bloodoxygensaturations,
+                    success.*.patient.bloodpressures,
+                    success.*.patient.heartrates,
+                    success.*.patient.temperatures
+                </param>
             </result>
         </action>
 

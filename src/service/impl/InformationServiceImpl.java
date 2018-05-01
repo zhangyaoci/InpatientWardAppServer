@@ -29,8 +29,9 @@ public class InformationServiceImpl implements InformationService {
         List<Information> informationList = new ArrayList<>();
         List<InformationUser> informationUserList =this.informationUserDao.findInformationUserByUserId(userId);
         for (InformationUser informationUser:informationUserList){
-           Information information= this.informationDao.findInformationByInformationId(informationUser.getInformation().getInformationId());
-           informationList.add(information);
+            System.out.println("消息的ID号" + informationUser.getInformation().getInformationId());
+            Information information= this.informationDao.findInformationByInformationId(1);
+            informationList.add(information);
         }
         return  informationList;
     }

@@ -25,7 +25,8 @@ public class InformationUserDaoImpl implements InformationUserDao{
 
         Integer[] values = new Integer[]{0,useId};
 
-        return (List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where isRead=:isRead and user.userId=:userId"
+        List<InformationUser> informationUserList =(List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where isRead=:isRead and user.userId=:userId"
                 ,paramName,values);
+        return informationUserList;
     }
 }
