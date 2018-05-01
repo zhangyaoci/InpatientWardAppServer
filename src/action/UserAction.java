@@ -79,22 +79,22 @@ public class UserAction extends ActionSupport {
         }
     }
 
-    //修改用户信息
+    /*修改用户信息*/
     public String editUser(){
         if(this.user!=null){
             try{
                 this.userService.updateUser(this.user);
-                jsonData.put("message","用户修改信息成功");
+                jsonData.put("success","用户修改信息成功");
                 return  SUCCESS;
             }
             catch (Exception e){
-                jsonData.put("message","用户修改信息失败");
-                return ERROR;
+                jsonData.put("error","用户修改信息失败");
+                return SUCCESS;
             }
 
         }else {
-            jsonData.put("message","用户修改信息失败");
-            return ERROR;
+            jsonData.put("error","用户修改信息失败");
+            return SUCCESS;
         }
     }
 
