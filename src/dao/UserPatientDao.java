@@ -11,4 +11,7 @@ public interface UserPatientDao {
 
     /*通过病人ID号找到与该病人相关的用户*/
     public  List<UserPatient> findUserPatientByPatientId(int patientId);
+
+    /*找到病人和用户之间的亲戚关系*/
+    public String findRelationShipByUserIdAndPatientId(Integer userId,Integer patientId);
 }

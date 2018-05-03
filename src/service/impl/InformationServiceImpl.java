@@ -30,9 +30,17 @@ public class InformationServiceImpl implements InformationService {
         List<InformationUser> informationUserList =this.informationUserDao.findInformationUserByUserId(userId);
         for (InformationUser informationUser:informationUserList){
             System.out.println("消息的ID号" + informationUser.getInformation().getInformationId());
-            Information information= this.informationDao.findInformationByInformationId(1);
+            Information information= this.informationDao.findInformationByInformationId(informationUser.getInformation().getInformationId());
             informationList.add(information);
         }
         return  informationList;
+    }
+
+    /*修改消息状态为已读*/
+    @Override
+    public String alterReadingStateByUserIdAndInformationId(Integer userId, Integer informationId) {
+
+        String result = this.informationUserDao.updateReadStateByInformationIdAndUserId(userId,informationId);
+        return result;
     }
 }

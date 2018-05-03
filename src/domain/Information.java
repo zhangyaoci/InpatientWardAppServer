@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Information {
     private int informationId;
+    private String title;
     private String content;
     private Timestamp time;
     private String remarks;
@@ -15,6 +16,14 @@ public class Information {
 
     public void setInformationId(int informationId) {
         this.informationId = informationId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {

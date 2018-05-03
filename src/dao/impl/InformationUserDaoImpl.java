@@ -29,4 +29,23 @@ public class InformationUserDaoImpl implements InformationUserDao{
                 ,paramName,values);
         return informationUserList;
     }
+
+    /*修改消息的状态为已读*/
+    @Override
+    public String updateReadStateByInformationIdAndUserId(Integer userId, Integer informationId) {
+        String[] paramName= new String[]{"userId","informationId"};
+        Integer[] values = new Integer[]{userId,informationId};
+
+        List<InformationUser> informationUserList = (List<InformationUser>) this.hibernateTemplate.findByNamedParam(
+                "from InformationUser where user.userId =:userId and information.informationId=:informationId order by information.time ",
+                paramName,values);
+
+        if(informationUserList.size()!=0){
+            informationUserList.get(0).setIsRead(1);
+            this.hibernateTemplate.save(informationUserList.get(0));
+            return "succesOfUpdatingState";
+        }
+
+        return  "errorOfUpdatingState";
+    }
 }

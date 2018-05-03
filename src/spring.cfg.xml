@@ -56,10 +56,15 @@
     <bean id="userPatientDao" class="dao.impl.UserPatientDaoImpl">
         <property name="hibernateTemplate"  ref="hibernateTemplate"></property>
     </bean>
+
     <bean id="patientService" class="service.impl.PatientServiceImpl">
         <property name="patientDao" ref="patientDao"></property>
         <property name="userPatientDao" ref="userPatientDao"></property>
     </bean>
+    <bean id="userPatientService" class="service.impl.UserPatientServiceImpl">
+        <property name="userPatientDao" ref="userPatientDao"></property>
+    </bean>
+
 
     <bean id="hospitalizationDao" class="dao.impl.HospitalizationDaoImpl">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
@@ -91,6 +96,7 @@
     </bean>
     <bean id="informationAction" class="action.InformationAction" scope="prototype">
         <property name="informationService" ref="informationService"></property>
+        <property name="userPatientService" ref="userPatientService"></property>
     </bean>
 
 

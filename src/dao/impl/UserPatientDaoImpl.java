@@ -31,4 +31,20 @@ public class UserPatientDaoImpl implements UserPatientDao {
         return userPatientList;
     }
 
+    /*根据病人和用户ID号找到两者之间的亲戚关系*/
+    @Override
+    public String findRelationShipByUserIdAndPatientId(Integer userId, Integer patientId) {
+        String[] paramName = new String[]{"userId","patientId"};
+        Integer[]  values = new Integer[]{userId,patientId};
+        List<UserPatient> userPatientList = (List<UserPatient>) this.hibernateTemplate.findByNamedParam(
+                "from UserPatient where user.userId=:userId and patient.patientId=:patientId",
+                paramName,values);
+
+        if(userPatientList.size()!=0){
+          return  userPatientList.get(0).getRelation();
+        }
+
+        return null;
+    }
+
 }

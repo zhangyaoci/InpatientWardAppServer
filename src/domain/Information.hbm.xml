@@ -8,6 +8,7 @@
         <id name="informationId" column="informationId">
             <generator class="native" ></generator>
         </id>
+        <property name="title" column="title"/>
         <property name="content" column="content"/>
         <property name="time" column="time"/>
         <property name="remarks" column="remarks"/>
