@@ -90,7 +90,9 @@
                     success.*.patient.bloodoxygensaturations,
                     success.*.patient.bloodpressures,
                     success.*.patient.heartrates,
-                    success.*.patient.temperatures
+                    success.*.patient.temperatures,
+                    success.*.doctor.hospitalizations,
+                    success.*.doctor.informations
                 </param>
             </result>
         </action>

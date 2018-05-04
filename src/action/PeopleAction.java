@@ -68,7 +68,10 @@ public class PeopleAction extends ActionSupport {
             this.jsonData.put("success",patientList);
             return SUCCESS;
         }
-        return ERROR;
+        else{
+            this.jsonData.put("error","获取用户当前关注病人信息失败");
+            return SUCCESS;
+        }
     }
 
     /*根据病人的ID号，获取病人的住院记录*/
