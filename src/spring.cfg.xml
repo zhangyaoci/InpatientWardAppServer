@@ -100,6 +100,27 @@
     </bean>
 
 
+    <!--病人生理数值模块-->
+    <bean  id="bloodPressureDao" class="dao.impl.BloodPressureDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+
+    <bean id="bloodPressureService" class="service.impl.BloodPressureServiceImpl">
+        <property name="bloodPressureDao" ref="bloodPressureDao"></property>
+    </bean>
+
+    <bean  id="physiologyAction" class="action.PhysiologyAction" >
+        <property name="bloodPressureService" ref="bloodPressureService"></property>
+    </bean>
+
+
+
+
+
+
+
+
+
 
     <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>

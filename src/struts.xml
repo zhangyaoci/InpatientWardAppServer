@@ -97,6 +97,14 @@
             </result>
         </action>
 
+        <!--病人生理数据模块-->
+        <action name="physiologyAction_*" class="physiologyAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+            </result>
+        </action>
+
 
     </package>
 
