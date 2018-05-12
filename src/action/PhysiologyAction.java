@@ -23,7 +23,6 @@ public class PhysiologyAction extends ActionSupport {
     public Date getStartTime() {
         return startTime;
     }
-
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
@@ -33,19 +32,8 @@ public class PhysiologyAction extends ActionSupport {
     public Date getEndTime() {
         return endTime;
     }
-
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    /*判断前台需要的是那种生理数据*/
-    private String physiologyType;
-    public String getPhysiologyType() {
-        return physiologyType;
-    }
-
-    public void setPhysiologyType(String physiologyType) {
-        this.physiologyType = physiologyType;
     }
 
 
@@ -80,7 +68,6 @@ public class PhysiologyAction extends ActionSupport {
     public HashMap<String, Object> getJsonData() {
         return jsonData;
     }
-
     public void setJsonData(HashMap<String, Object> jsonData) {
         this.jsonData = jsonData;
     }
