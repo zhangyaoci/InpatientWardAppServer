@@ -21,8 +21,8 @@ public class BloodPressureDaoImpl implements BloodPressureDao {
     public List<Bloodpressure> findBloodpressureByPatientIdAndTime(Integer patientId, Date startTime, Date endTime) {
 
         String[] params = new String[]{"patientId","startTime","endTime"};
-
-       // this.hibernateTemplate.findByNamedParam("frome Bloodpressure where ",params,1);
-        return null;
+        Object[] values = new Object[]{patientId,startTime,endTime};
+        List<Bloodpressure> bloodPressureList = (List<Bloodpressure>)this.hibernateTemplate.findByNamedParam("from Bloodpressure where patient.patientId=:patientId and (time>=:startTime and time<=:endTime)", params, values);
+        return bloodPressureList;
     }
 }

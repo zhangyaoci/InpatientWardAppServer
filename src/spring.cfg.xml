@@ -100,17 +100,49 @@
     </bean>
 
 
+
+
+
+
     <!--病人生理数值模块-->
     <bean  id="bloodPressureDao" class="dao.impl.BloodPressureDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="temperatureDao" class="dao.impl.TemperatureDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean class="dao.impl.HeartRateDaoImpl" id="heartRateDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean class="dao.impl.BloodGlucoseDaoImpl" id="bloodGlucoseDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean class="dao.impl.BloodOxygenSaturationDaoImpl" id="bloodOxygenSaturationDao">
         <property name="hibernateTemplate" ref="hibernateTemplate"></property>
     </bean>
 
     <bean id="bloodPressureService" class="service.impl.BloodPressureServiceImpl">
         <property name="bloodPressureDao" ref="bloodPressureDao"></property>
     </bean>
+    <bean class="service.impl.TemperatureServiceImpl" id="temperatureService">
+        <property name="temperatureDao" ref="temperatureDao"></property>
+    </bean>
+    <bean class="service.impl.HeartRateServiceImpl" id="heartRateService">
+        <property name="heartRateDao" ref="heartRateDao"></property>
+    </bean>
+    <bean class="service.impl.BloodGlucoseServiceImpl" id="bloodGlucoseService">
+        <property name="bloodGlucoseDao" ref="bloodGlucoseDao"></property>
+    </bean>
+    <bean class="service.impl.BloodOxygenSaturationServiceImpl" id="bloodOxygenSaturationService">
+        <property name="bloodOxygenSaturationDao" ref="bloodOxygenSaturationDao"></property>
+    </bean>
 
     <bean  id="physiologyAction" class="action.PhysiologyAction" >
         <property name="bloodPressureService" ref="bloodPressureService"></property>
+        <property name="temperatureService" ref="temperatureService"></property>
+        <property name="heartRateService" ref="heartRateService"></property>
+        <property name="bloodGlucoseService" ref="bloodGlucoseService"></property>
+        <property name="bloodOxygenSaturationService" ref="bloodOxygenSaturationService"></property>
     </bean>
 
 

@@ -102,6 +102,9 @@
             <interceptor-ref name="json"/>
             <result name="success" type="json">
                 <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    success.*.patient
+                </param>
             </result>
         </action>
 
