@@ -9,6 +9,7 @@ public class Patient {
     private int patientId;
     private String name;
     private byte sex;
+    private String picturePath;
     private String phone;
     private Date dateOfBirth;
     private String address;
@@ -39,6 +40,14 @@ public class Patient {
 
     public void setSex(byte sex) {
         this.sex = sex;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     public String getPhone() {

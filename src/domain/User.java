@@ -10,6 +10,7 @@ public class User {
     private String name;
     private String password;
     private byte sex;
+    private String picturePath;
     private String phone;
     private String address;
     private String remarks;
@@ -44,6 +45,14 @@ public class User {
 
     public void setSex(byte sex) {
         this.sex = sex;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     public String getPhone() {

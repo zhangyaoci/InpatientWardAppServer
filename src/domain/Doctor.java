@@ -8,10 +8,12 @@ public class Doctor {
     private int doctorId;
     private String name;
     private byte sex;
+    private String picturePath;
     private String phone;
     private String department;
     private String introduction;
     private String remarks;
+
 
     public int getDoctorId() {
         return doctorId;
@@ -35,6 +37,14 @@ public class Doctor {
 
     public void setSex(byte sex) {
         this.sex = sex;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 
     public String getPhone() {

@@ -10,6 +10,7 @@
         </id>
         <property name="name" column="name"/>
         <property name="sex" column="sex"/>
+        <property name="picturePath" column="picturePath"/>
         <property name="phone" column="phone"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>

@@ -58,7 +58,6 @@ public class UserAction extends ActionSupport {
 
     /*根据电话号码获取用户基础信息*/
     public String getUserByPhone(){
-
         System.out.println("获取用户信息"+this.phone);
         if(this.phone!=null){
             List<User> users =  this.userService.findUserByPhone(this.phone);
@@ -69,13 +68,13 @@ public class UserAction extends ActionSupport {
                 return SUCCESS;
             }
             else{
-                jsonData.put("message","没有该电话号码");
-                return ERROR;
+                jsonData.put("error","没有该电话号码");
+                return SUCCESS;
             }
         }
         else {
-            jsonData.put("message","获取用户基本信息失败");
-            return ERROR;
+            jsonData.put("error","获取用户基本信息失败");
+            return SUCCESS;
         }
     }
 
@@ -84,7 +83,7 @@ public class UserAction extends ActionSupport {
         if(this.user!=null){
             try{
                 this.userService.updateUser(this.user);
-                jsonData.put("success","用户修改信息成功");
+                jsonData.put("success",this.user);
                 return  SUCCESS;
             }
             catch (Exception e){

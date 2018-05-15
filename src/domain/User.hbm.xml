@@ -11,6 +11,7 @@
         <property name="name" column="name"/>
         <property name="password" column="password"/>
         <property name="sex" column="sex"/>
+        <property name="picturePath" column="picturePath"/>
         <property name="phone" column="phone"/>
         <property name="address" column="address"/>
         <property name="remarks" column="remarks"/>

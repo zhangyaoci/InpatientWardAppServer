@@ -61,7 +61,7 @@ public class MD5Util {
             byte[] bs = md5.digest(string.getBytes());
             return new String(new Hex().encode(bs));
         } catch (Exception e) {
-            return null;
+                        return null;
         }
     }
 
