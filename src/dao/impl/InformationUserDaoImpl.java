@@ -69,7 +69,6 @@ public class InformationUserDaoImpl implements InformationUserDao{
       for(InformationUser informationUser:informationUserList){
           informationUser.setIsPop(0);
           this.hibernateTemplate.save(informationUser);
-          return "拉取状态修改成功";
       }
       return "拉取状态修改成功";
     }
