@@ -6,6 +6,8 @@ public class InformationUser {
     private int informationUserId;
     private int isRead;//判定该消息是否被用户已读
 
+    private int isPop; //判断该消息是否已经被用户拉去
+
     public int getInformationUserId() {
         return informationUserId;
     }
@@ -22,6 +24,13 @@ public class InformationUser {
         this.isRead = isRead;
     }
 
+    public int getIsPop() {
+        return isPop;
+    }
+
+    public void setIsPop(int isPop) {
+        this.isPop = isPop;
+    }
 
     /*对应的消息信息*/
     private Information information;

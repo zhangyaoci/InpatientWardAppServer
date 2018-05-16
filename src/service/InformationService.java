@@ -10,5 +10,8 @@ public interface InformationService {
 
     /*修改消息状态为已读*/
     public String alterReadingStateByUserIdAndInformationId(Integer userId,Integer informationId);
+
+    /*修改消息拉取状态为0*/
+    public String setIsPopToZeroForInformationUser(Integer userId);
 }
 

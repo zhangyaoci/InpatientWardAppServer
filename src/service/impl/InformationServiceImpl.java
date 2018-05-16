@@ -30,6 +30,8 @@ public class InformationServiceImpl implements InformationService {
         List<InformationUser> informationUserList =this.informationUserDao.findInformationUserByUserId(userId);
         for (InformationUser informationUser:informationUserList){
             System.out.println("消息的ID号" + informationUser.getInformation().getInformationId());
+            /*修改消息拉取状态为已经拉取*/
+            this.informationUserDao.updateisPopforInformationUser(informationUser.getInformationUserId());
             Information information= this.informationDao.findInformationByInformationId(informationUser.getInformation().getInformationId());
             informationList.add(information);
         }
@@ -41,6 +43,15 @@ public class InformationServiceImpl implements InformationService {
     public String alterReadingStateByUserIdAndInformationId(Integer userId, Integer informationId) {
 
         String result = this.informationUserDao.updateReadStateByInformationIdAndUserId(userId,informationId);
+        return result;
+    }
+
+
+
+    /*修改拉取状态为0*/
+    @Override
+    public String setIsPopToZeroForInformationUser(Integer userId) {
+        String result = this.informationUserDao.updateisPopToZero(userId);
         return result;
     }
 }

@@ -65,8 +65,10 @@ public class InformationAction extends ActionSupport {
             }
             jsonData.put("success",informationList);
             return  SUCCESS;
+        }else{
+            jsonData.put("error","拉取消息失败");
+            return  SUCCESS;
         }
-        return ERROR;
     }
 
     /*修改消息的状态为已读*/
@@ -87,5 +89,18 @@ public class InformationAction extends ActionSupport {
             return SUCCESS;
         }
 
+    }
+
+    /*修改消息的拉取状态为未被拉取*/
+    public String changeIsPopToZeroForInformationUser(){
+        if(this.userId!=null){
+            this.informationService.setIsPopToZeroForInformationUser(this.userId);
+            this.jsonData.put("success", "消息拉取状态修改成功");
+            return SUCCESS;
+        }
+        else{
+            this.jsonData.put("error","消息拉取状态修改失败");
+            return SUCCESS;
+        }
     }
 }
