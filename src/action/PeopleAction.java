@@ -69,7 +69,7 @@ public class PeopleAction extends ActionSupport {
             return SUCCESS;
         }
         else{
-            this.jsonData.put("error","获取用户当前关注病人信息失败");
+            this.jsonData.put("error","后台获取用户当前关注病人信息失败");
             return SUCCESS;
         }
     }
@@ -81,7 +81,10 @@ public class PeopleAction extends ActionSupport {
             this.jsonData.put("success",hospitalizationList);
             return "hospitalizationSuccess";
         }
-        return ERROR;
+        else{
+            this.jsonData.put("error","后台获取病人住院信息失败");
+            return "hospitalizationSuccess";
+        }
     }
 
     /*通过病人的ID号，获取病人相关的医生和护士信息*/
@@ -126,7 +129,10 @@ public class PeopleAction extends ActionSupport {
            jsonData.put("successOfNurse",nurseList);
 
            return "DoctorAndNurseSuccess";
+        }else{
+            jsonData.put("error", "后台获取医生和护士信息失败");
+            return "DoctorAndNurseSuccess";
         }
-        return ERROR;
+
     }
 }

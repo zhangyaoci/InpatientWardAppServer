@@ -2,19 +2,20 @@
   Created by IntelliJ IDEA.
   User: zhangyaoci
   Date: 2018/5/20
-  Time: 20:38
+  Time: 20:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>移动病人APP后台管理系统</title>
+    <meta charset="UTF-8">
+    <title>医生管理模块</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
-
 </head>
+
 <body>
+
 <div class="header">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -25,8 +26,8 @@
             <div>
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="./index.jsp">病人管理模块</a></li>
-                    <li ><a href="./doctor.jsp">医生管理模块</a></li>
+                    <li ><a href="./index.jsp">病人管理模块</a></li>
+                    <li class="active"><a href="./doctor.jsp">医生管理模块</a></li>
                     <li ><a href="./nurse.jsp">护士管理模块</a></li>
                     <li ><a href="./user.jsp">病人家属管理模块</a></li>
                 </ul>
@@ -47,6 +48,9 @@
             </div>
         </div>
     </nav>
+
+
+
 </div>
 
 <div class="main " style="padding-left: 6%;">

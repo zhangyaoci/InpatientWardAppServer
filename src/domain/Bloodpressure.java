@@ -8,6 +8,7 @@ public class Bloodpressure {
     private int bpId;
     private Double value;
     private Timestamp time;
+    private int type;/*1 代表收缩压  0 代表舒张压*/
     private String remarks;
 
     public int getBpId() {
@@ -32,6 +33,14 @@ public class Bloodpressure {
 
     public void setTime(Timestamp time) {
         this.time = time;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getRemarks() {
@@ -66,7 +75,6 @@ public class Bloodpressure {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(bpId,value, time, remarks);
     }
 }

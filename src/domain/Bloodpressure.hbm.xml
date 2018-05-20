@@ -10,6 +10,7 @@
         </id>
         <property name="value" column="value"/>
         <property name="time" column="time"/>
+        <property name="type" column="type"/>
         <property name="remarks" column="remarks"/>
         <many-to-one name="patient" class="domain.Patient" column="patientId"></many-to-one>
     </class>
