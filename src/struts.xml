@@ -10,6 +10,14 @@
         <global-allowed-methods>regex:.*</global-allowed-methods>
 
 
+
+
+        <action name="serverLoginAction_*" class="action.ServerLoginAction" method="{1}">
+            <result name="success">index.jsp</result>
+        </action>
+
+
+
         <!--登录模块-->
         <action name="loginAction_*" class="loginAction" method="{1}">
             <interceptor-ref name="json"/>
