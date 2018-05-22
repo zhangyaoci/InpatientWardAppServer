@@ -1,14 +1,22 @@
-body{
-    background: url("../../images/login_1.jpg");
+body {
+    background: url("../../images/login_5.jpg");
 }
-.container{
+
+.container {
     height: 100%;
 }
+
 .form-signin {
     max-width: 300px;
-    margin: 18% auto 0;
+    margin: 15% auto 0;
 }
 
 .form-header {
     margin-bottom: 20px;
 }
+
+.message_alert {
+    color: red;
+    margin-bottom: 5px;
+}
+

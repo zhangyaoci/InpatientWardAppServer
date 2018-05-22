@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import domain.AdminUser;
 import service.ServerAdminUserService;
+import util.MD5Util;
 
 import java.util.Map;
 
@@ -35,7 +36,8 @@ public class ServerLoginAction extends ActionSupport {
         if(adminUser!=null){
             AdminUser adminUserTemp = this.serverAdminUserService.getAdminUserByName(adminUser.getName());
             if(adminUserTemp!=null){
-                if(adminUser.getPassword().equals(adminUserTemp.getPassword())){
+                String passwordTemp = MD5Util.md5Hex(adminUserTemp.getPassword());
+                if(adminUser.getPassword().equals(passwordTemp)){
                     /*在session中保持用户信息*/
                     ActionContext actionContext = ActionContext.getContext();
                     Map session = actionContext.getSession();
