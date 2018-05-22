@@ -11,13 +11,18 @@
 
 
 
-
-        <action name="serverLoginAction_*" class="action.ServerLoginAction" method="{1}">
+<!--后台拂去器中action的配置-->
+        <action name="serverLoginAction_*" class="serverLoginAction" method="{1}">
             <result name="success">index.jsp</result>
+            <result name="error">login.jsp</result>
         </action>
 
 
 
+
+
+
+<!--手机App中的Action配置-->
         <!--登录模块-->
         <action name="loginAction_*" class="loginAction" method="{1}">
             <interceptor-ref name="json"/>

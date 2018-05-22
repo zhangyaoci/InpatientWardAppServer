@@ -3,8 +3,17 @@ package domain;
 import java.util.Objects;
 
 public class AdminUser {
+    private int adminUserId;
     private String name;
     private String password;
+
+    public int getAdminUserId() {
+        return adminUserId;
+    }
+
+    public void setAdminUserId(int adminUserId) {
+        this.adminUserId = adminUserId;
+    }
 
     public String getName() {
         return name;

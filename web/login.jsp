@@ -20,21 +20,23 @@
             <form action="serverLoginAction_adminLogin" method="post" class="form-signin" role="form">
                 <h2 class="text-center form-header">用户登录</h2>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="adminUser.name" placeholder="邮箱" required autofocus />
+                    <input type="text" class="form-control" name="adminUser.name" placeholder="用户名" required autofocus />
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" name="adminUser.password" placeholder="密码" required />
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="checkbox" value="remember-me" />记住密码
-                    </label>
+
+                <div>
+                    <s:property value="errorMessage"/>
                 </div>
+
                 <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
         </div>
 <script src="./js/jquery.js"></script>
 <script src="./js/popper.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script>
+</script>
 </body>
 </html>

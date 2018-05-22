@@ -33,7 +33,7 @@ public class SessionCheckFilter  implements Filter {
             return;
         }
         if ((!checkRequestURIIntNotFilterList(request))
-                && session.getAttribute("users") == null) {
+                && session.getAttribute("adminUser") == null) {
             response.sendRedirect(request.getContextPath() + redirectURL);
             return;
         }

@@ -25,7 +25,11 @@
             <div>
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="./index.jsp">病人管理模块</a></li>
+                    <li class="active"><a href="./index.jsp">
+                        <%
+                        session.setAttribute("users",  "222");
+                        %>
+                        病人管理模块</a></li>
                     <li ><a href="./doctor.jsp">医生管理模块</a></li>
                     <li ><a href="./nurse.jsp">护士管理模块</a></li>
                     <li ><a href="./user.jsp">病人家属管理模块</a></li>
