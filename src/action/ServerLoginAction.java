@@ -10,12 +10,21 @@ import java.util.Map;
 
 public class ServerLoginAction extends ActionSupport {
 
-    private AdminUser adminUser;
-    public AdminUser getAdminUser() {
-        return adminUser;
+    private String name;
+    public String getName() {
+        return name;
     }
-    public void setAdminUser(AdminUser adminUser) {
-        this.adminUser = adminUser;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    private String password;
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /*错误信息处理*/
@@ -33,11 +42,11 @@ public class ServerLoginAction extends ActionSupport {
     }
 
     public String adminLogin(){
-        if(adminUser!=null){
-            AdminUser adminUserTemp = this.serverAdminUserService.getAdminUserByName(adminUser.getName());
+        if(this.name!=null&&this.password!=null){
+            AdminUser adminUserTemp = this.serverAdminUserService.getAdminUserByName(this.name);
             if(adminUserTemp!=null){
                 String passwordTemp = MD5Util.md5Hex(adminUserTemp.getPassword());
-                if(adminUser.getPassword().equals(passwordTemp)){
+                if(this.password.equals(passwordTemp)){
                     /*在session中保持用户信息*/
                     ActionContext actionContext = ActionContext.getContext();
                     Map session = actionContext.getSession();
@@ -56,6 +65,7 @@ public class ServerLoginAction extends ActionSupport {
 
         }
         else{
+            this.errorMessage="空值";
             return  ERROR;
         }
 

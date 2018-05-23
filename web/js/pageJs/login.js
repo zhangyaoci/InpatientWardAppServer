@@ -1,16 +1,67 @@
-var code ;
+let code ;
 
 $(function() {
+    /*创建初始验证码*/
     createCode();
+    /*表单验证*/
+    $('#loginForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 10,
+                        message: '用户名最小长度为5，最大长度10'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '用户名只能由数字和字母构成'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    }
+                }
+            },
+            IDcode: {
+                validators: {
+                    notEmpty: {
+                        message: '验证码不能为空'
+                    },
+                    callback:{
+                        message: '验证码错误',
+                        callback:function(value, validator,$field){
+                            let codeTemp = document.getElementById("code").innerHTML;
+                           // console.log("生产的验证码",codeTemp)
+                            return value===codeTemp;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
 })
 
 function submitForm() {
-    /*进行验证码验证*/
-    validate();
     /*密码加密*/
     encryptPassword();
 }
 
+/*生产验证码*/
 function createCode(){
     code = "";
     var codeLength = 4;
@@ -25,22 +76,7 @@ function createCode(){
 }
 
 
-function validate(){
-    var inputCode = document.getElementById("idcode-btn").value.toUpperCase();
-    if(inputCode.length <= 0) {
-        alert("请输入验证码！");
-    }
-    else if(inputCode != code ) {
-        alert("验证码输入错误！");
-        createCode();//刷新验证码
-        document.getElementById("input").value = "";
-    }
-    else {
-        alert("^-^");
-    }
-}
-
-
+/*密码进行加密*/
 function encryptPassword() {
     var hash=hex_md5(document.getElementById("password").value);
     document.getElementById("password").value=hash;

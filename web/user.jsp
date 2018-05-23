@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Admin
+                            ${sessionScope.get("adminUser")["name"]}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -43,7 +43,7 @@
                             <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;登录日志</a></li>
                         </ul>
                     </li>
-                    <li><a href="./login.html"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                    <li><a <a href="login.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
                 </ul>
             </div>
         </div>

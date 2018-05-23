@@ -35,7 +35,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Admin
+                            ${sessionScope.get("adminUser")["name"]}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
@@ -43,7 +43,7 @@
                             <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;登录日志</a></li>
                         </ul>
                     </li>
-                    <li><a href="./login.html"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
+                    <li> <a href="login.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
                 </ul>
             </div>
         </div>
@@ -57,18 +57,31 @@
     <div class="row">
         <div class="col-lg-2">
             <div class="list-group" >
-                <a href="#main" class="list-group-item ">主帖审核</a>
-                <a href="#reply" class="list-group-item">回复审核</a>
-                <a href="#user" class="list-group-item">用户管理</a>
+                <a href="javascript:void(0)" onclick="choosePanel(1)" class="list-group-item ">医生基本信息</a>
+                <a href="javascript:void(0)" onclick="choosePanel(2)" class="list-group-item">医嘱管理</a>
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">面板标题</h3>
+
+            <div id="panel_1" >
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">医生信息基本信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        这是一个基本的面板
+                    </div>
                 </div>
-                <div class="panel-body">
-                    这是一个基本的面板
+            </div>
+
+            <div id="panel_2" hidden>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">医嘱管理</h3>
+                    </div>
+                    <div class="panel-body">
+                        这是一个基本的面板
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,5 +93,6 @@
 <script src="./js/jquery.js"></script>
 <script src="./js/popper.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script src="./js/pageJs/doctor.js"></script>
 </body>
 </html>
