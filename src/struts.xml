@@ -12,12 +12,29 @@
 
 
 <!--后台拂去器中action的配置-->
+        <!--后台登录模块-->
         <action name="serverLoginAction_*" class="serverLoginAction" method="{1}">
             <result name="success">index.jsp</result>
             <result name="error">login.jsp</result>
         </action>
 
-
+        <!--后台病人模块-->
+       <action name="serverPatientAction_*" class="serverPatientAction" method="{1}">
+           <interceptor-ref name="json"/>
+           <result name="success" type="json">
+               <param name="root">jsonData</param>
+               <param name="excludeProperties">
+                   patientList.*.userPatients,
+                   patientList.*.informations,
+                   patientList.*.hospitalizations,
+                   patientList.*.bloodglucoses,
+                   patientList.*.bloodoxygensaturations,
+                   patientList.*.bloodpressures,
+                   patientList.*.heartrates,
+                   patientList.*.temperatures
+               </param>
+           </result>
+       </action>
 
 
 

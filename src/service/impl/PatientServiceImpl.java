@@ -39,4 +39,9 @@ public class PatientServiceImpl implements PatientService {
       }
       return patientList;
     }
+
+    @Override
+    public List<Patient> getPatientByPageAndRows(int page, int rows) {
+        return this.patientDao.findPatientByPageAndRows(page,rows);
+    }
 }

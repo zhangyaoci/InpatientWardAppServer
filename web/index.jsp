@@ -13,6 +13,7 @@
     <title>移动病人APP后台管理系统</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-table.css">
 
 </head>
 <body>
@@ -51,7 +52,7 @@
 </div>
 
 <div class="main " style="padding-left: 6%;">
-    <div class="row">
+    <div class="row" style="margin: 0px;">
         <div class="col-lg-2">
             <div class="list-group" >
                 <a href="javascript:void(0)" onclick="choosePanel(1)"  class="list-group-item ">基本信息</a>
@@ -70,7 +71,7 @@
                         <h3 class="panel-title">病人基本信息</h3>
                     </div>
                     <div class="panel-body">
-                        这是一个基本的面板
+                        <table id="panel_1_table"></table>
                     </div>
                 </div>
             </div>
@@ -149,6 +150,8 @@
 <script src="./js/jquery.js"></script>
 <script src="./js/popper.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script src="./js/bootstrap-table.js"></script>
+<script src="./js/bootstrap-table-zh-CN.js"></script>
 <script src="./js/pageJs/index.js"></script>
 </body>
 </html>

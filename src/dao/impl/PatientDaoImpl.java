@@ -4,10 +4,13 @@ import dao.PatientDao;
 import domain.Patient;
 import domain.User;
 import domain.UserPatient;
+import org.hibernate.HibernateException;
+import org.hibernate.query.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +54,6 @@ public class PatientDaoImpl implements PatientDao {
             Patient patient = userPatient.getPatient();
             patient.setRelationShip(userPatient.getRelation());
 
-
             /*这里很可能引起空指针异常*//*
             patient.setBloodglucoses(null);
             patient.setBloodoxygensaturations(null);
@@ -68,5 +70,22 @@ public class PatientDaoImpl implements PatientDao {
 
 
         return patients;
+    }
+
+    /*实现病人数据分页获取*/
+    @Override
+    public List<Patient> findPatientByPageAndRows(int page, int row) {
+      List<Patient> patientList= this.hibernateTemplate.execute(new HibernateCallback<List<Patient>>() {
+            @Override
+            public List<Patient> doInHibernate(Session session) throws HibernateException {
+             Query query= session.createQuery(" from Patient");
+             query.setFirstResult((page - 1) * row);
+             query.setMaxResults(row);
+             return query.list();
+
+            }
+        });
+
+      return patientList;
     }
 }

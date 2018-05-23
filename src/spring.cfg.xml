@@ -34,10 +34,14 @@
     <bean class="service.impl.ServerAdminUserServiceImpl"  id="serverAdminUserService">
         <property name="serverAdminUserDao" ref="serverAdminUserDao"></property>
     </bean>
-    <bean class="action.ServerLoginAction" id="serverLoginAction">
+    <bean class="action.ServerLoginAction" id="serverLoginAction" scope="prototype">
         <property name="serverAdminUserService" ref="serverAdminUserService"></property>
     </bean>
 
+    <!--病人信息服务-->
+    <bean class="action.ServerPatientAction" id="serverPatientAction" scope="prototype">
+        <property name="patientService" ref="patientService"></property>
+    </bean>
 
 
 
