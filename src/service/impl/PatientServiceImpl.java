@@ -44,4 +44,9 @@ public class PatientServiceImpl implements PatientService {
     public List<Patient> getPatientByPageAndRows(int page, int rows) {
         return this.patientDao.findPatientByPageAndRows(page,rows);
     }
+
+    @Override
+    public Integer getPatientSize() {
+        return this.patientDao.findPatientSize();
+    }
 }

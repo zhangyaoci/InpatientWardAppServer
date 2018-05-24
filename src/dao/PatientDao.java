@@ -14,4 +14,6 @@ public interface PatientDao {
 
     /*分页获取病人数据*/
     public List<Patient> findPatientByPageAndRows(int page,int row);
+
+    public Integer findPatientSize();
 }

@@ -12,4 +12,7 @@ public interface PatientService {
 
     /*分页获取病人数据*/
     public List<Patient> getPatientByPageAndRows(int page,int rows);
+
+    /*获取病人数据的大小*/
+    public Integer getPatientSize();
 }

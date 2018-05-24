@@ -45,8 +45,11 @@ public class ServerPatientAction extends ActionSupport {
 
     public String acquirePatientList() {
         if (this.parameter!= null) {
+            /*获取数据的大小*/
+            Integer size = this.patientService.getPatientSize();
             List<Patient> patientList = this.patientService.getPatientByPageAndRows(this.parameter.getPage(), this.parameter.getRows());
             this.jsonData.put("patientList",patientList);
+            this.jsonData.put("size",size);
             return SUCCESS;
         } else {
             return SUCCESS;

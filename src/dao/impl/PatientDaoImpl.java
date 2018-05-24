@@ -4,6 +4,7 @@ import dao.PatientDao;
 import domain.Patient;
 import domain.User;
 import domain.UserPatient;
+import jdk.nashorn.internal.ir.IdentNode;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
@@ -87,5 +88,12 @@ public class PatientDaoImpl implements PatientDao {
         });
 
       return patientList;
+    }
+
+    /*获取所有病人信息*/
+    @Override
+    public Integer findPatientSize() {
+       String size = this.hibernateTemplate.find("select  count (*) from Patient ").get(0).toString();
+       return Integer.parseInt(size);
     }
 }
