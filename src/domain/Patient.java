@@ -220,4 +220,41 @@ public class Patient {
 
         return Objects.hash(patientId, name, sex, phone, dateOfBirth, address, introduction, remarks);
     }
+
+
+
+
+    /*监护人名字*/
+    private  String guardianName;
+
+    public String getGuardianName() {
+        return guardianName;
+    }
+
+    public void setGuardianName(String guardianName) {
+        this.guardianName = guardianName;
+    }
+
+
+    /*监护人号码*/
+    private String guardianPhone;
+
+    public String getGuardianPhone() {
+        return guardianPhone;
+    }
+
+    public void setGuardianPhone(String guardianPhone) {
+        this.guardianPhone = guardianPhone;
+    }
+
+    /*临时时间变量*/
+    private java.util.Date tempDate;
+
+    public java.util.Date getTempDate() {
+        return tempDate;
+    }
+
+    public void setTempDate(java.util.Date tempDate) {
+        this.tempDate = tempDate;
+    }
 }

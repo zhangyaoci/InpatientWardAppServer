@@ -41,6 +41,7 @@
     <!--病人信息服务-->
     <bean class="action.ServerPatientAction" id="serverPatientAction" scope="prototype">
         <property name="patientService" ref="patientService"></property>
+        <property name="userService" ref="userService"></property>
     </bean>
 
 

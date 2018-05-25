@@ -50,10 +50,10 @@
             <span class="glyphicon  glyphicon-trash" aria-hidden="true"></span>删除
         </button>
         <button id="btn_import" type="button" class="btn btn-default">
-            <span class="glyphicon  glyphicon-log-in" aria-hidden="true"></span>导入
+            <span class="glyphicon  glyphicon-import" aria-hidden="true"></span>导入
         </button>
         <button id="btn_export" type="button" class="btn btn-default">
-            <span class="glyphicon  glyphicon-log-out" aria-hidden="true"></span>导出
+            <span class="glyphicon  glyphicon-export" aria-hidden="true"></span>导出
         </button>
     </div>
 
@@ -68,39 +68,98 @@
                     <h4 class="modal-title" id="myModalLabel">新增病人数据</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="txt_departmentname">部门名称</label>
-                        <input type="text" name="txt_departmentname" class="form-control"
-                               id="txt_departmentname" placeholder="部门名称">
+                    <div class="row">
+                        <div class="col-md-1 col-sm-1"></div>
+                        <div class="col-md-8 col-sm-8">
+                            <form class="form-horizontal" role="form" id="patient_form"
+                                  style="margin-top: 25px">
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span>姓名：</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8">
+                                        <input type="text" class="form-control" id="patient_name"
+                                               name="patient_name" placeholder="姓名" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span>性别：</span>
+                                    </label>
+
+                                    <div class="col-md-8 col-sm-8">
+                                        <select  id="patient_sex" name="patient_sex"  class="form-control">
+                                            <option value="1">男</option>
+                                            <option value="0">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span>电话号码：</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8">
+                                        <input type="text" class="form-control" id="patient_phone"
+                                               name="patient_phone" placeholder="电话号码">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span>出生日期：</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8">
+                                        <input class="form_date form-control" id="patient_dateOfBirth" name="patient_dateOfBirth" value="2012-05-15" placeholder="出生日期">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span> 现住地址：</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8">
+                                        <input type="text" class="form-control" id="patient_address"
+                                               name="patient_address" placeholder="现住地址">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span> 病例简介：</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8">
+                                        <input type="text" class="form-control" id="patient_introduction"
+                                               name="patient_introduction" placeholder="病例简介">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label  class="control-label col-md-4 col-sm-4"> <span>头像选择：</span>
+                                    </label>
+
+                                    <div class="col-md-8 col-sm-8">
+                                        <select  id="patient_picturePath" name="patient_picturePath"  class="form-control">
+                                            <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
+                                            <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
+                                            <option value="./assets/imgs/25.png">./assets/imgs/25.png</option>
+                                            <option value="./assets/imgs/26.png">./assets/imgs/26.png</option>
+                                            <option value="./assets/imgs/27.png">./assets/imgs/27.png</option>
+                                            <option value="./assets/imgs/28.png">./assets/imgs/28.png</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-md-1 col-sm-1"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="txt_parentdepartment">上级部门</label>
-                        <input type="text" name="txt_parentdepartment" class="form-control"
-                               id="txt_parentdepartment" placeholder="上级部门">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_departmentlevel">部门级别</label>
-                        <input type="text" name="txt_departmentlevel" class="form-control"
-                               id="txt_departmentlevel" placeholder="部门级别">
-                    </div>
-                    <div class="form-group">
-                        <label for="txt_statu">描述</label>
-                        <input type="text" name="txt_statu" class="form-control" id="txt_statu"
-                               placeholder="状态">
-                    </div>
-                </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><span
                             class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                     </button>
-                    <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span
+                    <button type="button" id="add_btn_submit" class="btn btn-primary" ><span
                             class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
                     </button>
                 </div>
 
             </div>
         </div>
+         </div>
     </div>
 
 

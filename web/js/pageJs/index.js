@@ -22,3 +22,18 @@ var delay = (function(){
 })();
 
 
+// 显示操作结果提示模态框
+function showMsg(type, msg, append) {
+    $('#info_success').removeClass("hide");
+    $('#info_error').removeClass("hide");
+    if (type == "success") {
+        $('#info_error').addClass("hide");
+    } else if (type == "error") {
+        $('#info_success').addClass("hide");
+    }
+    $('#info_summary').text(msg);
+    $('#info_content').text(append);
+    $('#global_info_modal').modal("show");
+}
+
+

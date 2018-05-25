@@ -12,7 +12,7 @@
         <property name="sex" column="sex"/>
         <property name="picturePath" column="picturePath"/>
         <property name="phone" column="phone"/>
-        <property name="dateOfBirth" column="dateOfBirth"/>
+        <property name="dateOfBirth" column="dateOfBirth" />
         <property name="address" column="address"/>
         <property name="hospitalState" column="hospitalState"/>
         <property name="roomNumber" column="roomNumber"/>
