@@ -18,6 +18,12 @@
             <result name="error">login.jsp</result>
         </action>
 
+
+        <action name="uploadAction_*" class="action.FileUploadAction" method="{1}">
+            <result name="success">index.jsp</result>
+            <result name="error">login.jsp</result>
+        </action>
+
         <!--后台病人模块-->
        <action name="serverPatientAction_*" class="serverPatientAction" method="{1}">
            <interceptor-ref name="json"/>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap-select.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrapValidator.css">
+    <link rel="stylesheet" type="text/css" href="./css/fileinput.css">
 </head>
 <body>
 <div class="header">
@@ -131,6 +132,8 @@
 <script src="./js/bootstrap-datetimepicker.min.js"></script>
 <script src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="./js/bootstrapValidator.js"></script>
+<script src="./js/fileinput.js"></script>
+<script src="./js/fileinput-zh.js"></script>
 <script src="./js/pageJs/index.js"></script>
 </body>
 </html>

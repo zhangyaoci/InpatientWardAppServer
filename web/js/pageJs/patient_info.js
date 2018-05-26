@@ -19,6 +19,8 @@ $(function () {
     exportPatientAction()
 
 
+    import_exl_init();
+
 })
 
 
@@ -160,8 +162,6 @@ function patientListInit(){
         },
     });
 }
-
-
 
 function  addPatientAction() {
     $("#btn_add").click(function () {
@@ -325,9 +325,9 @@ function deletePatientAction() {
     });
 }
 
-function importPatientAction() {
-    
-}
+
+
+
 
 function exportPatientAction() {
     
@@ -447,5 +447,138 @@ function rowEditOperation(row) {
     $('#patient_introduction_edit').val(row.introduction);
     $('#patient_picturePath_edit').val(row.picturePath);
 
+
+}
+
+
+var import_step = 1;
+var import_start = 1;
+var import_end = 3;
+function importPatientAction() {
+    /*导入点击事件*/
+    $('#btn_import').click(function() {
+        $('#import_modal').modal("show");
+    });
+
+    /*当前步骤大于开始步骤才往前走*/
+    $('#previous').click(function() {
+        if (import_step > import_start) {
+            var preID = "step" + (import_step - 1)
+            var nowID = "step" + import_step;
+
+            $('#' + nowID).addClass("hide");
+            $('#' + preID).removeClass("hide");
+            import_step--;
+        }
+    })
+
+    /*当前步骤小于最后步骤才往后走*/
+    $('#next').click(function() {
+        if (import_step < import_end) {
+            var nowID = "step" + import_step;
+            var nextID = "step" + (import_step + 1);
+
+            $('#' + nowID).addClass("hide");
+            $('#' + nextID).removeClass("hide");
+            import_step++;
+        }
+    })
+
+    /*文件选择之后，才显示提交按钮*/
+    $('#file').on("change", function() {
+        $('#previous').addClass("hide");
+        $('#next').addClass("hide");
+        $('#submit').removeClass("hide");
+    })
+
+    $('#submit').click(function() {
+
+        /*隐藏提交按钮*/
+        $('#submit').addClass("hide");
+        /*提交文件*/
+        $("#file").fileinput("upload");
+
+        /*上传成功处理方法*/
+        $("#file").on("fileuploaded", function(event, data, previewId, index) {
+
+
+
+        });
+
+
+
+        // ajax
+        $.ajaxFileUpload({
+            url : "goodsManage/importGoods",
+            secureuri: false,
+            dataType: 'json',
+            fileElementId:"file",
+            success : function(data, status){
+                var total = 0;
+                var available = 0;
+                var msg1 = "货物信息导入成功";
+                var msg2 = "货物信息导入失败";
+                var info;
+
+                $('#import_progress_bar').addClass("hide");
+                if(data.result == "success"){
+                    total = data.total;
+                    available = data.available;
+                    info = msg1;
+                    $('#import_success').removeClass('hide');
+                }else{
+                    info = msg2
+                    $('#import_error').removeClass('hide');
+                }
+                info = info + ",总条数：" + total + ",有效条数:" + available;
+                $('#import_result').removeClass('hide');
+                $('#import_info').text(info);
+                $('#confirm').removeClass('disabled');
+            },error : function(data, status){
+                // handler error
+                handleAjaxError(status);
+            }
+        })
+    })
+
+    $('#confirm').click(function() {
+        // modal dissmiss
+        importModalReset();
+    })
+
+}
+/*文件上传*/
+function  import_exl_init() {
+    $('#file').fileinput({
+        showUpload : false,
+        showRemove : false,
+        uploadAsync: true,
+        uploadLabel: "上传",//设置上传按钮的汉字
+        uploadClass: "btn btn-primary",//设置上传按钮样式
+        showCaption: false,//是否显示标题
+        language: "zh",//配置语言
+        uploadUrl: "uploadAction_uploadAction",
+        maxFileSize : 0,//不限制文件上传大小
+        maxFileCount: 1,/*允许最大上传数，可以多个，当前设置单个*/
+        enctype: 'multipart/form-data',
+        allowedFileExtensions : ['xls', 'xlsx'],/*上传文件格式*/
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        dropZoneTitle: "请通过拖拽文件放到这里",
+        dropZoneClickTitle: "或者点击此区域添加文件",
+        showBrowse: false,
+        dropZoneEnabled:true,
+        browseOnZoneClick: true,
+        dropZoneTitleClass:'file-drop-zone-title',
+        slugCallback : function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+    /*当点击清空处理的时候*/
+    $("#file").on("filecleared",function(event, data, msg){
+        $('#previous').removeClass("hide");
+        $('#next').removeClass("hide");
+        $('#submit').addClass("hide");
+    });
 
 }

@@ -51,7 +51,7 @@
     </button>
 </div>
 
-
+<%--添加模态框--%>
 <div id="add_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -128,6 +128,7 @@
 
                                 <div class="col-md-8 col-sm-8">
                                     <select id="patient_picturePath" name="patient_picturePath" class="form-control">
+                                        <option value="./assets/imgs/22.png">./assets/imgs/22.png</option>
                                         <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
                                         <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
                                         <option value="./assets/imgs/25.png">./assets/imgs/25.png</option>
@@ -157,8 +158,7 @@
     </div>
 </div>
 
-
-<!-- 删除提示模态框 -->
+<%--删除提示模态框 --%>
 <div class="modal fade" id="deleteWarning_modal" table-index="-1"
      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -192,8 +192,83 @@
     </div>
 </div>
 
-
-<!-- 编辑病人模态框 -->
+<%--导入货物信息模态框--%>
+<div class="modal fade" id="import_modal" table-index="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static">
+    <div class="modal-dialog" style="height: 260px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel_3">导入病人信息</h4>
+            </div>
+            <div class="modal-body">
+                <div id="step1">
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-1 col-sm-1"></div>
+                        <div class="col-md-10 col-sm-10">
+                            <div>
+                                <h4>点击下面下载货物病人电子表格</h4>
+                            </div>
+                            <div style="margin-top: 30px; margin-buttom: 15px">
+                                <a class="btn btn-info"
+                                   href="./download/patientInfo.xlsx"
+                                   target="_blank"> <span class="glyphicon glyphicon-download"></span>
+                                    <span>下载</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step2" class="hide">
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-1 col-sm-1"></div>
+                        <div class="col-md-10 col-sm-10">
+                            <div>
+                                <h4>请按照病人信息电子表格中指定的格式填写</h4>
+                            </div>
+                            <div class="alert alert-info"
+                                 style="margin-top: 10px; margin-buttom: 30px">
+                                <p>注意：表格中各个列均不能为空，若存在未填写的项，则该条信息将不能成功导入</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step3" class="hide">
+                    <div class="row" style="margin-top: 15px">
+                        <div class="col-md-1 col-sm-1"></div>
+                        <div class="col-md-8 col-sm-10">
+                            <div>
+                                <div>
+                                    <h4>请点击下面上传病人信息电子表格</h4>
+                                </div>
+                                <div style="margin-top: 30px; margin-buttom: 15px">
+									<input type="file" id="file" name="file"  class="file-loading">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn ben-default" type="button" id="previous">
+                    <span>上一步</span>
+                </button>
+                <button class="btn btn-success" type="button" id="next">
+                    <span>下一步</span>
+                </button>
+                <button class="btn btn-success hide" type="button" id="submit">
+                    <span>&nbsp;&nbsp;&nbsp;上传&nbsp;&nbsp;&nbsp;</span>
+                </button>
+                <button class="btn btn-success hide disabled" type="button"
+                        id="confirm" data-dismiss="modal">
+                    <span>&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;</span>
+                </button>
+        </div>
+    </div>
+</div>
+<%--编辑病人模态框--%>
 <div id="edit_modal" class="modal fade" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">
@@ -272,6 +347,7 @@
 
                                 <div class="col-md-8 col-sm-8">
                                     <select id="patient_picturePath_edit" name="patient_picturePath_edit" class="form-control">
+                                        <option value="./assets/imgs/22.png">./assets/imgs/22.png</option>
                                         <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
                                         <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
                                         <option value="./assets/imgs/25.png">./assets/imgs/25.png</option>

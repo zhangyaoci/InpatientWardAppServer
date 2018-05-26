@@ -11,12 +11,25 @@ import service.PatientService;
 import service.UserPatientService;
 import service.UserService;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ServerPatientAction extends ActionSupport {
+
+
+    /*文件上传*/
+    private File file; //文件
+    private String fileFileName;  //文件名
+    private String fileContentType; //文件类型
+    public File getFile() {
+        return file;
+    }
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     /*病人序号*/
     private Integer patientId;
@@ -161,5 +174,12 @@ public class ServerPatientAction extends ActionSupport {
             this.jsonData.put("result","error");
             return SUCCESS;
         }
+    }
+
+    public String importPatientAction(){
+
+        System.out.println("文件上传");
+
+        return SUCCESS;
     }
 }
