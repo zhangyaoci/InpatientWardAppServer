@@ -29,8 +29,17 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public void update(Patient Patient) {
-        this.hibernateTemplate.update(Patient);
+    public void update(Patient patient) {
+        Patient patientTemp = this.hibernateTemplate.get(Patient.class,patient.getPatientId());
+        patientTemp.setName(patient.getName());
+        patientTemp.setSex(patient.getSex());
+        patientTemp.setPhone(patient.getPhone());
+        patientTemp.setDateOfBirth(patient.getDateOfBirth());
+        patientTemp.setAddress(patient.getAddress());
+        patientTemp.setIntroduction(patient.getIntroduction());
+        patientTemp.setPicturePath(patient.getPicturePath());
+        this.hibernateTemplate.save(patientTemp);
+
     }
 
     @Override

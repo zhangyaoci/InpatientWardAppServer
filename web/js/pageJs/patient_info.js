@@ -165,7 +165,7 @@ function patientListInit(){
 
 function  addPatientAction() {
     $("#btn_add").click(function () {
-        $('#panel_add').modal();
+        $('#add_modal').modal();
         $('#patient_dateOfBirth').datetimepicker(
             {
                 format:'yyyy-mm-dd',
@@ -177,8 +177,8 @@ function  addPatientAction() {
                 startView : 2,
                 forceParse : 0,
                 minView:2,
-                autoclose: true,
-                startDate: "2013-02-14"
+                autoclose: true
+
             }
         );
 
@@ -205,7 +205,7 @@ function  addPatientAction() {
                 contentType : "application/json",
                 data : JSON.stringify({'patient':data}),
                 success : function(response) {
-                    $('#panel_add').modal("hide");
+                    $('#add_modal').modal("hide");
                     var msg;
                     var type;
                     var append = '';
@@ -237,7 +237,55 @@ function  addPatientAction() {
 }
 
 function editPatientAction() {
-    
+    $('#edit_modal_submit').click(
+        function() {
+            $('#patient_form_edit').data('bootstrapValidator')
+                .validate();
+            let isValidOfPatient =$('#patient_form_edit').data('bootstrapValidator').isValid()
+            if (isValidOfPatient) {
+
+                let patient_dateOfBirth = new Date($('#patient_dateOfBirth_edit').val());
+                let data = {
+                    patientId:selectID,
+                    name : $('#patient_name_edit').val(),
+                    sex : $('#patient_sex_edit').val(),
+                    phone : $('#patient_phone_edit').val(),
+                    tempDate :patient_dateOfBirth,
+                    address : $('#patient_address_edit').val(),
+                    introduction : $('#patient_introduction_edit').val(),
+                    picturePath : $('#patient_picturePath_edit').val(),
+                }
+
+                // ajax
+                $.ajax({
+                    type : "POST",
+                    url : 'serverPatientAction_updatePatientAction',
+                    dataType : "json",
+                    contentType : "application/json",
+                    data : JSON.stringify({'patient':data}),
+                    success : function(response) {
+                        $('#edit_modal').modal("hide");
+                        var type;
+                        var msg;
+                        var append = '';
+                        if (response.result == "success") {
+                            type = "success";
+                            msg = "病人信息修改成功";
+                        } else if (resposne == "error") {
+                            type = "error";
+                            msg = "病人信息修改失败";
+                        }
+                        showMsg(type, msg, append);
+                        tableRefresh();
+                    },
+                    error : function(xhr, textStatus, errorThrow) {
+                        $('#edit_modal').modal("hide");
+                        // handler error
+                        handleAjaxError(xhr.status);
+                    }
+                });
+            }
+        });
 }
 
 function deletePatientAction() {
@@ -322,6 +370,43 @@ function bootstrapValidatorInit() {
             }
         }
     });
+
+    /*编辑模块框中的数据验证*/
+    $("#patient_form_edit").bootstrapValidator({
+        message : 'This is not valid',
+        feedbackIcons : {
+            valid : 'glyphicon glyphicon-ok',
+            invalid : 'glyphicon glyphicon-remove',
+            validating : 'glyphicon glyphicon-refresh'
+        },
+        excluded : [ ':disabled' ],
+        fields : {
+            patient_name_edit : {
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    }
+                }
+            },
+            patient_phone_edit : {
+                validators : {
+                    notEmpty : {
+                        message : '电话号码不能为空'
+                    },
+                    stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '电话号码必须为11位数字'
+                    },
+                    regexp: {
+                        regexp: /^1(3|4|5|7|8)\d{9}$/,
+                        message: '电话号码格式错误'
+                    }
+
+                }
+            }
+        }
+    });
 }
 
 // 表格刷新
@@ -329,4 +414,38 @@ function tableRefresh() {
     $('#table').bootstrapTable('refresh', {
         query : {}
     });
+}
+// 行编辑操作
+function rowEditOperation(row) {
+    $('#edit_modal').modal("show");
+    $('#patient_dateOfBirth_edit').datetimepicker(
+        {
+            format:'yyyy-mm-dd',
+            language : 'zh-CN',
+            weekStart : 1,
+            todayBtn : 1,
+            autoClose : 1,
+            todayHighlight : 1,
+            startView : 2,
+            forceParse : 0,
+            minView:2,
+            autoclose: true
+        }
+    );
+
+    /*添加数据到模块框*/
+    $('#patient_form_edit').bootstrapValidator("resetForm", true);
+
+
+    /*数据的初始化操作*/
+    let dateOfbirth_patient = row.dateOfBirth.split("T");
+    $('#patient_name_edit').val(row.name);
+    $('#patient_sex_edit').val(row.sex);
+    $('#patient_phone_edit').val(row.phone);
+    $('#patient_dateOfBirth_edit').val(dateOfbirth_patient[0]);
+    $('#patient_address_edit').val(row.address);
+    $('#patient_introduction_edit').val(row.introduction);
+    $('#patient_picturePath_edit').val(row.picturePath);
+
+
 }

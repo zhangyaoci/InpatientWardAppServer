@@ -26,6 +26,11 @@ public class PatientServiceImpl implements PatientService {
         patientDao.save(patient);
     }
 
+    @Override
+    public void update(Patient patient) {
+        this.patientDao.update(patient);
+    }
+
 
     /*通过用户的ID号，获取相关的病人列表*/
     @Override

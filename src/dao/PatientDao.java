@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PatientDao {
     public void save(Patient patient);
-    public void update(Patient Patient);
+    public void update(Patient patient);
     public Patient getPatientById(int patientId);
     public void delete(Patient patient);
 

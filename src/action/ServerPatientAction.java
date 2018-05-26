@@ -145,4 +145,21 @@ public class ServerPatientAction extends ActionSupport {
             return SUCCESS;
         }
     }
+
+
+    /*更新一条病人数据*/
+    public  String updatePatientAction(){
+        if(this.patient!=null){
+          /*java.util.date 转换成 java.sql.date*/
+            Date dateOfBirth = new Date(this.patient.getTempDate().getTime());
+            this.patient.setDateOfBirth(dateOfBirth);
+            this.patientService.update(this.patient);
+            this.jsonData.put("result","success");
+            return SUCCESS;
+        }
+        else {
+            this.jsonData.put("result","error");
+            return SUCCESS;
+        }
+    }
 }

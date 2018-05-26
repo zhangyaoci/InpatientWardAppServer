@@ -52,7 +52,7 @@
 </div>
 
 
-<div id="panel_add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div id="add_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -186,6 +186,113 @@
                 </button>
                 <button class="btn btn-danger" type="button" id="delete_confirm">
                     <span>确认删除</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 编辑病人模态框 -->
+<div id="edit_modal" class="modal fade" table-index="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel_2">编辑病人信息</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 模态框的内容 -->
+                <div class="row">
+                    <div class="col-md-1 col-sm-1"></div>
+                    <div class="col-md-8 col-sm-8">
+                        <form class="form-horizontal" role="form" id="patient_form_edit"
+                              style="margin-top: 25px">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>姓名：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <input type="text" class="form-control" id="patient_name_edit"
+                                           name="patient_name_edit" placeholder="姓名" maxlength="4">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>性别：</span>
+                                </label>
+
+                                <div class="col-md-8 col-sm-8">
+                                    <select id="patient_sex_edit" name="patient_sex_edit" class="form-control">
+                                        <option value="1">男</option>
+                                        <option value="0">女</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>电话号码：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <input type="text" class="form-control" id="patient_phone_edit"
+                                           name="patient_phone_edit" placeholder="电话号码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>出生日期：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <input class="form_date form-control" id="patient_dateOfBirth_edit"
+                                           name="patient_dateOfBirth_edit" placeholder="出生日期">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span> 现住地址：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <input type="text" class="form-control" id="patient_address_edit"
+                                           name="patient_address_edit" placeholder="现住地址">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span> 病例简介：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <input type="text" class="form-control" id="patient_introduction_edit"
+                                           name="patient_introduction_edit" placeholder="病例简介">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>头像选择：</span>
+                                </label>
+
+                                <div class="col-md-8 col-sm-8">
+                                    <select id="patient_picturePath_edit" name="patient_picturePath_edit" class="form-control">
+                                        <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
+                                        <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
+                                        <option value="./assets/imgs/25.png">./assets/imgs/25.png</option>
+                                        <option value="./assets/imgs/26.png">./assets/imgs/26.png</option>
+                                        <option value="./assets/imgs/27.png">./assets/imgs/27.png</option>
+                                        <option value="./assets/imgs/28.png">./assets/imgs/28.png</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-md-1 col-sm-1"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">
+                    <span>取消</span>
+                </button>
+                <button class="btn btn-success" type="button" id="edit_modal_submit">
+                    <span>确认更改</span>
                 </button>
             </div>
         </div>
