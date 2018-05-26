@@ -17,6 +17,7 @@ public class Patient {
     private String remarks;
     private int hospitalState;//数据库中 1代表正在住院 0代表已经出院
     private String roomNumber;
+    private int isDelete;
 
     public int getPatientId() {
         return patientId;
@@ -106,8 +107,13 @@ public class Patient {
         this.roomNumber = roomNumber;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
 
-
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     //描述当前病人与用户之间的关系，不在数据库存储（为方便操作临时添加的字段）
     private String relationShip;

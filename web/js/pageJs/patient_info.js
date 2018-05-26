@@ -1,6 +1,9 @@
 //# sourceURL=patient_info.js
 
+var selectID;
+
 $(function () {
+
     /*数据表格初始化*/
     patientListInit();
 
@@ -62,8 +65,8 @@ function patientListInit(){
             };
         },
         columns: [{
-            checkbox: true,
-            visible: true                  //是否显示复选框
+            field:'patientId',
+            title:"病人序号"                  //是否显示复选框
         }, {
             field: 'name',
             title: '姓名'
@@ -121,6 +124,29 @@ function patientListInit(){
                 }
                 else {
                     return value;
+                }
+            }
+        },{
+            field : 'operation',
+            title : '操作',
+            formatter : function(value, row, index) {
+                var s = '<button class="btn btn-info btn-sm edit"><span>编辑</span></button>';
+                var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
+                var fun = '';
+                return s + ' ' + d;
+            },
+            events : {
+                // 操作列中编辑按钮的动作,类名匹配
+                'click .edit' : function(e, value,
+                                         row, index) {
+                    selectID = row.patientId;
+                    rowEditOperation(row);
+                },
+                'click .delete' : function(e,
+                                           value, row, index) {
+                    selectID = row.patientId;
+                    $('#deleteWarning_modal').modal(
+                        'show');
                 }
             }
         }
@@ -215,7 +241,40 @@ function editPatientAction() {
 }
 
 function deletePatientAction() {
-    
+    $('#delete_confirm').click(function(){
+        var data = {
+            "patientId" : selectID
+        }
+        // ajax
+        $.ajax({
+            type : "post",
+            url : "serverPatientAction_deletePatientAction",
+            dataType : "json",
+            contentType : "application/json",
+            data : JSON.stringify(data),
+            success : function(response){
+                $('#deleteWarning_modal').modal("hide");
+                var type;
+                var msg;
+                var append = '';
+                if(response.result == "success"){
+                    type = "success";
+                    msg = "病人信息删除成功";
+                }else{
+                    type = "error";
+                    msg = "病人信息删除失败";
+                }
+                showMsg(type, msg, append);
+                tableRefresh();
+            },error : function(xhr, textStatus, errorThrow){
+                $('#deleteWarning_modal').modal("hide");
+                // handler error
+                handleAjaxError(xhr.status);
+            }
+        })
+
+        $('#deleteWarning_modal').modal('hide');
+    });
 }
 
 function importPatientAction() {

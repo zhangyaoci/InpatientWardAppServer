@@ -14,4 +14,5 @@ public interface UserPatientDao {
 
     /*找到病人和用户之间的亲戚关系*/
     public String findRelationShipByUserIdAndPatientId(Integer userId,Integer patientId);
+
 }

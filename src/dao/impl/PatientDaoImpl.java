@@ -79,7 +79,8 @@ public class PatientDaoImpl implements PatientDao {
       List<Patient> patientList= this.hibernateTemplate.execute(new HibernateCallback<List<Patient>>() {
             @Override
             public List<Patient> doInHibernate(Session session) throws HibernateException {
-             Query query= session.createQuery(" from Patient");
+             Query query= session.createQuery(" from Patient where isDelete=?");
+             query.setParameter(0,0);
              query.setFirstResult((page - 1) * row);
              query.setMaxResults(row);
              return query.list();
@@ -95,5 +96,20 @@ public class PatientDaoImpl implements PatientDao {
     public Integer findPatientSize() {
        String size = this.hibernateTemplate.find("select  count (*) from Patient ").get(0).toString();
        return Integer.parseInt(size);
+    }
+
+
+    /*服务器删除数据*/
+    @Override
+    public String deleteByPatientId(int patientId) {
+        try {
+            Patient patient= this.hibernateTemplate.get(Patient.class,patientId);
+            this.hibernateTemplate.delete(patient);
+            return "successResult";
+        }
+        catch (Exception e){
+            System.out.println("dao层删除异常");
+            return "errorResult";
+        }
     }
 }

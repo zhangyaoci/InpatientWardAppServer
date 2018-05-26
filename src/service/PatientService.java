@@ -15,4 +15,7 @@ public interface PatientService {
 
     /*获取病人数据的大小*/
     public Integer getPatientSize();
+
+    /*服务器删除操作*/
+    public String deletePatientByPatientId(int patientId);
 }

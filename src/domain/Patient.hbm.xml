@@ -16,6 +16,7 @@
         <property name="address" column="address"/>
         <property name="hospitalState" column="hospitalState"/>
         <property name="roomNumber" column="roomNumber"/>
+        <property name="isDelete" column="isDelete"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>
 

@@ -49,4 +49,9 @@ public class PatientServiceImpl implements PatientService {
     public Integer getPatientSize() {
         return this.patientDao.findPatientSize();
     }
+
+    @Override
+    public String deletePatientByPatientId(int patientId) {
+        return this.patientDao.deleteByPatientId(patientId);
+    }
 }

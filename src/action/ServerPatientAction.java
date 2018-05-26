@@ -1,10 +1,14 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import domain.Hospitalization;
 import domain.Patient;
 import domain.User;
+import domain.UserPatient;
 import entity.QueryParameter;
+import service.HospitalizationService;
 import service.PatientService;
+import service.UserPatientService;
 import service.UserService;
 
 import java.sql.Date;
@@ -13,6 +17,15 @@ import java.util.List;
 import java.util.Map;
 
 public class ServerPatientAction extends ActionSupport {
+
+    /*病人序号*/
+    private Integer patientId;
+    public Integer getPatientId() {
+        return patientId;
+    }
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
 
     private QueryParameter parameter;
 
@@ -48,7 +61,18 @@ public class ServerPatientAction extends ActionSupport {
         this.jsonData = jsonData;
     }
 
-   /*前台传入病人信息*/
+    /*住院记录服务*/
+    private HospitalizationService hospitalizationService;
+    public void setHospitalizationService(HospitalizationService hospitalizationService) {
+        this.hospitalizationService = hospitalizationService;
+    }
+    /*病人用户关联服务*/
+    private UserPatientService userPatientService;
+    public void setUserPatientService(UserPatientService userPatientService) {
+        this.userPatientService = userPatientService;
+    }
+
+    /*前台传入病人信息*/
     private Patient patient;
     public Patient getPatient() {
         return patient;
@@ -95,4 +119,30 @@ public class ServerPatientAction extends ActionSupport {
     }
 
 
+    /*删除一条病人数据*/
+    public String deletePatientAction(){
+        if(patientId!=null){
+          List<Hospitalization> hospitalizationList=  this.hospitalizationService.getHospitalizationByPatientId(this.patientId);
+          List<UserPatient> userPatientList = this.userPatientService.getUsersByPatientId(this.patientId);
+          if (hospitalizationList.size()==0&&userPatientList.size()==0){
+             String result = this.patientService.deletePatientByPatientId(this.patientId);
+             if(result.equals("successResult")){
+                 this.jsonData.put("result","success");
+                 return SUCCESS;
+             }else {
+                 this.jsonData.put("result","error");
+                 return SUCCESS;
+             }
+          }
+          else {
+              this.jsonData.put("result","error");
+              return SUCCESS;
+          }
+
+        }
+        else {
+            this.jsonData.put("result","error");
+            return SUCCESS;
+        }
+    }
 }

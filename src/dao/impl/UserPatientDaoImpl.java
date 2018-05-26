@@ -15,6 +15,7 @@ public class UserPatientDaoImpl implements UserPatientDao {
     }
 
     /*通过用户ID号获取用户和病人的消息*/
+    /*后台删除服务也到了该方法*/
     @Override
     public List<UserPatient> findUserPatientByUserId(int userId) {
       List<UserPatient> userPatientList =(List<UserPatient>)this.hibernateTemplate.findByNamedParam(
@@ -46,5 +47,6 @@ public class UserPatientDaoImpl implements UserPatientDao {
 
         return null;
     }
+
 
 }
