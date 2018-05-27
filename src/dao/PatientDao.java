@@ -17,6 +17,9 @@ public interface PatientDao {
 
     public Integer findPatientSize(String patientName);
 
+    /*根据病人名字，获取病人信息*/
+    public List<Patient> findPatientByPatientName(String patientName);
+
     /*服务器删除数据*/
     public String deleteByPatientId(int patientId);
 }

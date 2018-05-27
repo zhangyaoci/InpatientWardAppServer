@@ -330,12 +330,19 @@ function deletePatientAction() {
     });
 }
 
-
-
-
-
 function exportPatientAction() {
-    
+    $('#btn_export').click(function() {
+        $('#export_modal').modal("show");
+    })
+
+    $('#export_patient').click(function(){
+        var data = {
+            patientName : searchPatientName,
+        }
+        var url = "fileDownloadAction_exportPatient?" + $.param(data)
+        window.open(url, '_blank');
+        $('#export_modal').modal("hide");
+    })
 }
 
 /*提交表单数据认证*/

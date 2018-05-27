@@ -51,6 +51,12 @@
        <property name="patientService" ref="patientService"></property>
     </bean>
 
+    <!--文件下载-->
+    <bean class="action.FileDownloadAction" id="fileDownloadAction" scope="prototype">
+        <property name="patientService" ref="patientService"></property>
+        <property name="userService" ref="userService"></property>
+    </bean>
+
 
 
     <!--手机APP中的前台配置-->

@@ -26,6 +26,18 @@
             </result>
         </action>
 
+        <!--文件下载-->
+        <action name="fileDownloadAction_*" class="fileDownloadAction" method="{1}">
+             <!-- 导出excel -->
+            <result name="success" type="stream">
+                 <param name="contentType">application/vnd.ms-excel</param>    <!-- 注意这里的ContentType -->
+                 <param name="inputName">excelStream</param>                   <!-- 这里需要和Action里的变量名一致 -->
+                 <param name="contentDisposition">attachment;filename="${fileName}"</param> <!-- 下载文件的名字 -->
+                 <param name="bufferSize">10240</param>  <!-- 下载文件的大小 10485760=10M -->
+             </result>
+        </action>
+
+
         <!--后台病人模块-->
        <action name="serverPatientAction_*" class="serverPatientAction" method="{1}">
            <interceptor-ref name="json"/>

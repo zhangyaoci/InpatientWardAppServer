@@ -104,8 +104,14 @@ public class PatientDaoImpl implements PatientDao {
     /*获取所有病人信息*/
     @Override
     public Integer findPatientSize(String patientName) {
-       String size = this.hibernateTemplate.find("select  count (*) from Patient where name like ?","%"+patientName+"%").get(0).toString();
+       String size = this.hibernateTemplate.find("select  count (*) from Patient where isDelete=0 and name like ?","%"+patientName+"%").get(0).toString();
        return Integer.parseInt(size);
+    }
+
+    @Override
+    public List<Patient> findPatientByPatientName(String patientName) {
+        List<Patient> patientList = (List<Patient>) this.hibernateTemplate.find("from Patient where isDelete=0 and name like ?","%"+patientName+"%");
+        return patientList;
     }
 
 
@@ -114,7 +120,8 @@ public class PatientDaoImpl implements PatientDao {
     public String deleteByPatientId(int patientId) {
         try {
             Patient patient= this.hibernateTemplate.get(Patient.class,patientId);
-            this.hibernateTemplate.delete(patient);
+            patient.setIsDelete(1);
+            this.hibernateTemplate.save(patient);
             return "successResult";
         }
         catch (Exception e){

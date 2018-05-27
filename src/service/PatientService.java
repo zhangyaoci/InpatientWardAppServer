@@ -18,6 +18,8 @@ public interface PatientService {
     /*获取病人数据的大小*/
     public Integer getPatientSize(String patientName);
 
+    public List<Patient> getPatientByPatientName(String patientName);
+
     /*获取病人数据的大小，根据病人名字和监护人名字*/
     public Integer getPatientSizeByCondition(String patientName,String userName);
 

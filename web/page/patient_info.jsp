@@ -161,7 +161,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal"
-                        aria-hidden="true">&times;</button>
+                        aria-hidden="true">&times;
+                </button>
                 <h4 class="modal-title" id="myModalLabel_1">警告</h4>
             </div>
             <div class="modal-body">
@@ -196,7 +197,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal"
-                        aria-hidden="true">&times;</button>
+                        aria-hidden="true">&times;
+                </button>
                 <h4 class="modal-title" id="myModalLabel_3">导入病人信息</h4>
             </div>
             <div class="modal-body">
@@ -209,7 +211,7 @@
                             </div>
                             <div style="margin-top: 30px; padding-bottom: 15px">
                                 <a class="btn btn-info"
-                                   href="./download/patientInfo.xlsx"
+                                   href="./download/patientInfo.xls"
                                    target="_blank"> <span class="glyphicon glyphicon-download"></span>
                                     <span>下载</span>
                                 </a>
@@ -240,7 +242,7 @@
                                     <h4>请点击下面上传病人信息电子表格</h4>
                                 </div>
                                 <div style="margin-top: 30px; margin-buttom: 15px">
-                                    <form><input type="file" id="file" name="file"  class="file-loading"></form>
+                                    <form><input type="file" id="file" name="file" class="file-loading"></form>
                                 </div>
                             </div>
                         </div>
@@ -271,24 +273,27 @@
                         </div>
                         <div class="col-md-3 col-sm-3"></div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn ben-default" type="button" id="previous">
+                        <span>上一步</span>
+                    </button>
+                    <button class="btn btn-success" type="button" id="next">
+                        <span>下一步</span>
+                    </button>
+                    <button class="btn btn-success hide" type="button" id="submit">
+                        <span>&nbsp;&nbsp;&nbsp;上传&nbsp;&nbsp;&nbsp;</span>
+                    </button>
+                    <button class="btn btn-success hide" type="button"
+                            id="confirm" data-dismiss="modal">
+                        <span>&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;</span>
+                    </button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn ben-default" type="button" id="previous">
-                    <span>上一步</span>
-                </button>
-                <button class="btn btn-success" type="button" id="next">
-                    <span>下一步</span>
-                </button>
-                <button class="btn btn-success hide" type="button" id="submit">
-                    <span>&nbsp;&nbsp;&nbsp;上传&nbsp;&nbsp;&nbsp;</span>
-                </button>
-                <button class="btn btn-success hide" type="button"
-                        id="confirm" data-dismiss="modal">
-                    <span>&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;</span>
-                </button>
         </div>
     </div>
 </div>
+
 <%--编辑病人模态框--%>
 <div id="edit_modal" class="modal fade" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
@@ -297,7 +302,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal"
-                        aria-hidden="true">&times;</button>
+                        aria-hidden="true">&times;
+                </button>
                 <h4 class="modal-title" id="myModalLabel_2">编辑病人信息</h4>
             </div>
             <div class="modal-body">
@@ -367,7 +373,8 @@
                                 </label>
 
                                 <div class="col-md-8 col-sm-8">
-                                    <select id="patient_picturePath_edit" name="patient_picturePath_edit" class="form-control">
+                                    <select id="patient_picturePath_edit" name="patient_picturePath_edit"
+                                            class="form-control">
                                         <option value="./assets/imgs/22.png">./assets/imgs/22.png</option>
                                         <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
                                         <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
@@ -390,6 +397,42 @@
                 </button>
                 <button class="btn btn-success" type="button" id="edit_modal_submit">
                     <span>确认更改</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 导出货物信息模态框 -->
+<div class="modal fade" id="export_modal" table-index="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel_4">导出病人信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3" style="text-align: center;">
+                        <img src="./images/warning-icon.png" alt=""
+                             style="width: 70px; height: 70px; margin-top: 20px;">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h3>是否确认导出病人</h3>
+                        <p>(注意：请确定要导出的病人信息，导出的内容为当前列表的搜索结果)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">
+                    <span>取消</span>
+                </button>
+                <button class="btn btn-success" type="button" id="export_patient">
+                    <span>确认下载</span>
                 </button>
             </div>
         </div>

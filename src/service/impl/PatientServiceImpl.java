@@ -55,6 +55,10 @@ public class PatientServiceImpl implements PatientService {
         return this.patientDao.findPatientSize(patientName);
     }
 
+    @Override
+    public List<Patient> getPatientByPatientName(String patientName) {
+        return this.patientDao.findPatientByPatientName(patientName);
+    }
 
 
     @Override
