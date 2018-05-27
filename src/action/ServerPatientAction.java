@@ -28,6 +28,7 @@ public class ServerPatientAction extends ActionSupport {
         this.patientId = patientId;
     }
 
+    /*前台传入搜索参数*/
     private QueryParameter parameter;
 
     public QueryParameter getParameter() {
@@ -82,11 +83,13 @@ public class ServerPatientAction extends ActionSupport {
         this.patient = patient;
     }
 
+
+
     public String acquirePatientList() {
         if (this.parameter!= null) {
             /*获取数据的大小*/
-            Integer size = this.patientService.getPatientSize();
-            List<Patient> patientList = this.patientService.getPatientByPageAndRows(this.parameter.getPage(), this.parameter.getRows());
+            Integer size = this.patientService.getPatientSize(this.parameter.getPatientName());
+            List<Patient> patientList = this.patientService.getPatientByPageAndRows(this.parameter.getPage(), this.parameter.getRows(),this.parameter.getPatientName());
             for(Patient patient:patientList){
                 User user = this.userService.getUserOfGuardianByPatientId(patient.getPatientId());
                 if(user!=null){
@@ -162,12 +165,5 @@ public class ServerPatientAction extends ActionSupport {
             this.jsonData.put("result","error");
             return SUCCESS;
         }
-    }
-
-    public String importPatientAction(){
-
-        System.out.println("文件上传");
-
-        return SUCCESS;
     }
 }

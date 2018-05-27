@@ -84,12 +84,13 @@ public class PatientDaoImpl implements PatientDao {
 
     /*实现病人数据分页获取*/
     @Override
-    public List<Patient> findPatientByPageAndRows(int page, int row) {
+    public List<Patient> findPatientByPageAndRows(int page, int row,String patientName) {
       List<Patient> patientList= this.hibernateTemplate.execute(new HibernateCallback<List<Patient>>() {
             @Override
             public List<Patient> doInHibernate(Session session) throws HibernateException {
-             Query query= session.createQuery(" from Patient where isDelete=?");
+             Query query= session.createQuery(" from Patient where isDelete=? and name like ?");
              query.setParameter(0,0);
+             query.setParameter(1,"%"+patientName+"%");
              query.setFirstResult((page - 1) * row);
              query.setMaxResults(row);
              return query.list();
@@ -102,8 +103,8 @@ public class PatientDaoImpl implements PatientDao {
 
     /*获取所有病人信息*/
     @Override
-    public Integer findPatientSize() {
-       String size = this.hibernateTemplate.find("select  count (*) from Patient ").get(0).toString();
+    public Integer findPatientSize(String patientName) {
+       String size = this.hibernateTemplate.find("select  count (*) from Patient where name like ?","%"+patientName+"%").get(0).toString();
        return Integer.parseInt(size);
     }
 

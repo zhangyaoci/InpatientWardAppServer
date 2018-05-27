@@ -69,12 +69,69 @@ public class FileUploadAction extends ActionSupport {
         this.jsonData = jsonData;
     }
 
+    /*遍历存储数据*/
+    private List<Map<String,Object>> list = new ArrayList<>();
 
 
     /*病人数据上传*/
     public String patientUpload(){
 
         /*文件先保存到服务器上，然后进行数据的导入*/
+      if(this.file!=null){
+          /*保存文件*/
+         String message_tep1 = this.fileSave();
+
+         String message_tep2="tep2_success";
+
+         if(message_tep1.equals("file_success")){
+             for(int i=0;i<list.size();i++){
+                 try{
+                     Patient patient = new Patient();
+                     patient.setName(list.get(i).get("姓名").toString());
+                     patient.setSex(list.get(i).get("性别").toString().equals("男")?1:0);
+                     patient.setPhone(list.get(i).get("电话号码").toString());
+                     java.sql.Date dateTemp = new java.sql.Date(Long.parseLong(list.get(i).get("出身日期").toString()));
+                     patient.setDateOfBirth(dateTemp);
+                     patient.setAddress(list.get(i).get("现住地址").toString());
+                     patient.setIntroduction(list.get(i).get("病例简介").toString());
+                     patientService.save(patient);
+                 }catch (Exception e){
+                      message_tep2="tep2_error";
+                      e.printStackTrace();
+                      break;
+                 }
+
+             }
+
+             if(message_tep2.equals("tep2_success")){
+                 this.jsonData.put("result","success");
+                 this.jsonData.put("message","成功导入"+list.size()+"数据");
+                 return SUCCESS;
+             }
+             else {
+                 this.jsonData.put("result","error");
+                 return SUCCESS;
+             }
+
+         }
+         else {
+             this.jsonData.put("result","error");
+             return SUCCESS;
+         }
+
+
+      }else{
+          this.jsonData.put("result","error");
+          return SUCCESS;
+      }
+
+    }
+
+
+
+    private String fileSave(){
+
+        String message="file_success";
 
         /*建立一个文件夹*/
         String tempDir = "/upload/Excel";
@@ -89,11 +146,10 @@ public class FileUploadAction extends ActionSupport {
         try{
             FileUtils.copyFile(this.file,target);
         }catch (Exception e){
+            message="file_error";
             e.printStackTrace();
-        }
 
-        /*遍历存储数据*/
-        List<Map<String,Object>> list = new ArrayList<>();
+        }
 
         /*将文件导入到数据库中*/
         try {
@@ -133,26 +189,13 @@ public class FileUploadAction extends ActionSupport {
             }
 
         }catch (Exception e){
+            message="file_error";
             e.printStackTrace();
         }
 
 
-        for(int i=0;i<list.size();i++){
-            Patient patient = new Patient();
-            patient.setName(list.get(i).get("姓名").toString());
-            patient.setSex(list.get(i).get("性别").toString().equals("男")?1:0);
-            patient.setPhone(list.get(i).get("电话号码").toString());
-            java.sql.Date dateTemp = new java.sql.Date(Long.parseLong(list.get(i).get("出身日期").toString()));
-            patient.setDateOfBirth(dateTemp);
-            patient.setAddress(list.get(i).get("现住地址").toString());
-            patient.setIntroduction(list.get(i).get("病例简介").toString());
-            patientService.save(patient);
-        }
-
-        return SUCCESS;
+        return  message;
     }
-
-
 
     /*没有值，返回空*/
     private Object getCellFormatValue(Cell cell){

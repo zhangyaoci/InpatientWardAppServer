@@ -13,10 +13,14 @@ public interface PatientService {
     public List<Patient> getPatientByUserId(int userId);
 
     /*分页获取病人数据*/
-    public List<Patient> getPatientByPageAndRows(int page,int rows);
+    public List<Patient> getPatientByPageAndRows(int page,int rows,String patientName);
 
     /*获取病人数据的大小*/
-    public Integer getPatientSize();
+    public Integer getPatientSize(String patientName);
+
+    /*获取病人数据的大小，根据病人名字和监护人名字*/
+    public Integer getPatientSizeByCondition(String patientName,String userName);
+
 
     /*服务器删除操作*/
     public String deletePatientByPatientId(int patientId);

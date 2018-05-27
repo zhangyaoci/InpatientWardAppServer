@@ -20,16 +20,12 @@
     <div class="panel-body" style="padding-bottom: 0px">
         <form id="formSearch" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-sm-1" for="txt_search_departmentname">名称</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" id="txt_search_departmentname">
+                <label class="control-label col-xs-2" for="search_patient_name">病人姓名:</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="search_patient_name">
                 </div>
-                <label class="control-label col-sm-1" for="txt_search_statu">状态</label>
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" id="txt_search_statu">
-                </div>
-                <div class="col-sm-2" style="text-align:left;">
-                    <button type="button" style="margin-left:50px" id="btn_query"
+                <div class="col-xs-offset-2 col-xs-2" style="text-align:left;">
+                    <button type="button" style="margin-left:50px" id="btn_search"
                             class="btn btn-primary">查询
                     </button>
                 </div>
@@ -211,7 +207,7 @@
                             <div>
                                 <h4>点击下面下载货物病人电子表格</h4>
                             </div>
-                            <div style="margin-top: 30px; margin-buttom: 15px">
+                            <div style="margin-top: 30px; padding-bottom: 15px">
                                 <a class="btn btn-info"
                                    href="./download/patientInfo.xlsx"
                                    target="_blank"> <span class="glyphicon glyphicon-download"></span>
@@ -250,6 +246,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="hide" id="uploading">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4"></div>
+                        <div class="col-md-4 col-sm-4">
+                            <div id="import_result" class="hide">
+                                <div id="import_success" class="hide" style="text-align: center;">
+                                    <img src="./images/success-icon.png" alt=""
+                                         style="width: 100px; height: 100px;">
+                                </div>
+                                <div id="import_error" class="hide" style="text-align: center;">
+                                    <img src="./images/error-icon.png" alt=""
+                                         style="width: 100px; height: 100px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4"></div>
+                    </div>
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-md-3 col-sm-3"></div>
+                        <div class="col-md-6 col-sm-6" style="text-align: center;">
+                            <h4 id="import_info"></h4>
+                        </div>
+                        <div class="col-md-3 col-sm-3"></div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button class="btn ben-default" type="button" id="previous">
@@ -261,7 +282,7 @@
                 <button class="btn btn-success hide" type="button" id="submit">
                     <span>&nbsp;&nbsp;&nbsp;上传&nbsp;&nbsp;&nbsp;</span>
                 </button>
-                <button class="btn btn-success hide disabled" type="button"
+                <button class="btn btn-success hide" type="button"
                         id="confirm" data-dismiss="modal">
                     <span>&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;</span>
                 </button>

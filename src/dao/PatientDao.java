@@ -13,9 +13,9 @@ public interface PatientDao {
     public List<Patient> getPatientByUserId(int userId);
 
     /*分页获取病人数据*/
-    public List<Patient> findPatientByPageAndRows(int page,int row);
+    public List<Patient> findPatientByPageAndRows(int page,int row,String patientName);
 
-    public Integer findPatientSize();
+    public Integer findPatientSize(String patientName);
 
     /*服务器删除数据*/
     public String deleteByPatientId(int patientId);

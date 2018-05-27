@@ -46,13 +46,20 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<Patient> getPatientByPageAndRows(int page, int rows) {
-        return this.patientDao.findPatientByPageAndRows(page,rows);
+    public List<Patient> getPatientByPageAndRows(int page, int rows,String patientName) {
+        return this.patientDao.findPatientByPageAndRows(page,rows,patientName);
     }
 
     @Override
-    public Integer getPatientSize() {
-        return this.patientDao.findPatientSize();
+    public Integer getPatientSize(String patientName) {
+        return this.patientDao.findPatientSize(patientName);
+    }
+
+
+
+    @Override
+    public Integer getPatientSizeByCondition(String patientName, String userName) {
+        return null;
     }
 
     @Override

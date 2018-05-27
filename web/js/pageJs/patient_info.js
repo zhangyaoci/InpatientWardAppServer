@@ -1,6 +1,7 @@
 //# sourceURL=patient_info.js
 
 var selectID;
+var searchPatientName="";
 
 $(function () {
 
@@ -12,6 +13,7 @@ $(function () {
 
 
     /*按钮初始化*/
+    searchAction();
     addPatientAction();
     editPatientAction();
     deletePatientAction();
@@ -57,7 +59,9 @@ function patientListInit(){
             //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             var temp = {
                 rows: params.limit,                         //页面大小
-                page: (params.offset / params.limit) + 1  //页码
+                page: (params.offset / params.limit) + 1, //页码
+                patientName:searchPatientName
+
             };
             return {"parameter":temp};
         },
@@ -502,50 +506,33 @@ function importPatientAction() {
         /*上传成功处理方法*/
         $("#file").on("fileuploaded", function(event, data, previewId, index) {
 
+            $("#step3").addClass("hide");
+            $("#uploading").removeClass("hide");
 
+            var info;
+
+            if(data.response.result == "success"){
+                info = data.response.message;
+                $('#import_success').removeClass('hide');
+            }else{
+                info = "数据导入错误"
+                $('#import_error').removeClass('hide');
+            }
+            $('#import_result').removeClass('hide');
+            $('#import_info').text(info);
+            $('#confirm').removeClass("hide");
 
         });
 
-
-
-        // ajax
-        $.ajaxFileUpload({
-            url : "goodsManage/importGoods",
-            secureuri: false,
-            dataType: 'json',
-            fileElementId:"file",
-            success : function(data, status){
-                var total = 0;
-                var available = 0;
-                var msg1 = "货物信息导入成功";
-                var msg2 = "货物信息导入失败";
-                var info;
-
-                $('#import_progress_bar').addClass("hide");
-                if(data.result == "success"){
-                    total = data.total;
-                    available = data.available;
-                    info = msg1;
-                    $('#import_success').removeClass('hide');
-                }else{
-                    info = msg2
-                    $('#import_error').removeClass('hide');
-                }
-                info = info + ",总条数：" + total + ",有效条数:" + available;
-                $('#import_result').removeClass('hide');
-                $('#import_info').text(info);
-                $('#confirm').removeClass('disabled');
-            },error : function(data, status){
-                // handler error
-                handleAjaxError(status);
-            }
+        $('#confirm').click(function() {
+            // modal dissmiss
+            importModalReset();
+            tableRefresh();
         })
+
     })
 
-    $('#confirm').click(function() {
-        // modal dissmiss
-        importModalReset();
-    })
+
 
 }
 /*文件上传*/
@@ -580,6 +567,65 @@ function  import_exl_init() {
         $('#previous').removeClass("hide");
         $('#next').removeClass("hide");
         $('#submit').addClass("hide");
-    });
+    })
 
+    /*文件选择后事件*/
+    $("#file").on("filebatchselected", function(event, files) {
+        $('#previous').addClass("hide");
+        $('#next').addClass("hide");
+        $('#submit').removeClass("hide");
+    })
+}
+
+
+/* 导入货物模态框重置*/
+function importModalReset(){
+    var i;
+    for(i = import_start; i <= import_end; i++){
+        var step = "step" + i;
+        $('#' + step).removeClass("hide")
+    }
+    for(i = import_start; i <= import_end; i++){
+        var step = "step" + i;
+        $('#' + step).addClass("hide")
+    }
+    $('#step' + import_start).removeClass("hide");
+
+    $('#import_result').removeClass("hide");
+    $('#import_success').removeClass('hide');
+    $('#import_error').removeClass('hide');
+
+
+    $('#import_result').addClass("hide");
+    $('#import_success').addClass('hide');
+    $('#import_error').addClass('hide');
+    $('#import_info').text("");
+    $('#file').val("");
+
+    $('#previous').removeClass("hide");
+    $('#next').removeClass("hide");
+    $('#submit').removeClass("hide");
+    $('#confirm').removeClass("hide");
+    $('#submit').addClass("hide");
+    $('#confirm').addClass("hide");
+
+
+    $("#file").fileinput("clear");
+
+    $('#file').on("change", function() {
+        $('#previous').addClass("hide");
+        $('#next').addClass("hide");
+        $('#submit').removeClass("hide");
+    })
+
+    import_step = 1;
+}
+
+
+// 搜索动作
+function searchAction() {
+    $('#btn_search').click(function() {
+        searchPatientName = $('#search_patient_name').val();
+        tableRefresh();
+    })
 }

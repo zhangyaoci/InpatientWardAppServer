@@ -25,6 +25,15 @@ public class QueryParameter {
         this.rows = rows;
     }
 
+    private String patientName;
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
 
 
     @Override
