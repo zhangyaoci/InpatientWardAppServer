@@ -244,7 +244,7 @@
                                     <h4>请点击下面上传病人信息电子表格</h4>
                                 </div>
                                 <div style="margin-top: 30px; margin-buttom: 15px">
-									<input type="file" id="file" name="file"  class="file-loading">
+                                    <form><input type="file" id="file" name="file"  class="file-loading"></form>
                                 </div>
                             </div>
                         </div>

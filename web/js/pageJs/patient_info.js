@@ -19,6 +19,7 @@ $(function () {
     exportPatientAction()
 
 
+    /*导入按钮初始化*/
     import_exl_init();
 
 })
@@ -557,7 +558,7 @@ function  import_exl_init() {
         uploadClass: "btn btn-primary",//设置上传按钮样式
         showCaption: false,//是否显示标题
         language: "zh",//配置语言
-        uploadUrl: "uploadAction_uploadAction",
+        uploadUrl: "fileUploadAction_patientUpload",
         maxFileSize : 0,//不限制文件上传大小
         maxFileCount: 1,/*允许最大上传数，可以多个，当前设置单个*/
         enctype: 'multipart/form-data',

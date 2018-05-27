@@ -19,18 +19,6 @@ import java.util.Map;
 
 public class ServerPatientAction extends ActionSupport {
 
-
-    /*文件上传*/
-    private File file; //文件
-    private String fileFileName;  //文件名
-    private String fileContentType; //文件类型
-    public File getFile() {
-        return file;
-    }
-    public void setFile(File file) {
-        this.file = file;
-    }
-
     /*病人序号*/
     private Integer patientId;
     public Integer getPatientId() {

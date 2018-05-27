@@ -19,9 +19,11 @@
         </action>
 
 
-        <action name="uploadAction_*" class="action.FileUploadAction" method="{1}">
-            <result name="success">index.jsp</result>
-            <result name="error">login.jsp</result>
+        <!--文件上传-->
+        <action name="fileUploadAction_*" class="fileUploadAction" method="{1}">
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+            </result>
         </action>
 
         <!--后台病人模块-->

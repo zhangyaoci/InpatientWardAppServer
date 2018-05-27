@@ -8,7 +8,7 @@ import java.util.Set;
 public class Patient {
     private int patientId;
     private String name;
-    private byte sex;
+    private int sex;
     private String picturePath;
     private String phone;
     private Date dateOfBirth;
@@ -35,11 +35,11 @@ public class Patient {
         this.name = name;
     }
 
-    public byte getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(byte sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
