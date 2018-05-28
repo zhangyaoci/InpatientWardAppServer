@@ -12,6 +12,7 @@
         <property name="endTime" column="endTime"/>
         <property name="room" column="room"/>
         <property name="remarks" column="remarks"/>
+        <property name="isDelete" column="isDelete"/>
 
         <many-to-one name="nurse" class="domain.Nurse" column="nurseId" lazy="false"></many-to-one>
         <many-to-one name="doctor" class="domain.Doctor" column="doctorId" lazy="false"></many-to-one>

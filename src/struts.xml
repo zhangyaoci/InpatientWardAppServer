@@ -56,6 +56,18 @@
            </result>
        </action>
 
+        <!--后台病人住院模块-->
+        <action name="serverHospitalAction_*" class="serverHospitalAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    hospitalizationList.*.doctor,
+                    hospitalizationList.*.nurse,
+                    hospitalizationList.*.patient
+                </param>
+            </result>
+        </action>
 
 
 

@@ -20,4 +20,30 @@ public class HospitalizationServiceImpl implements HospitalizationService {
     public List<Hospitalization> getHospitalizationByPatientId(int patientId) {
         return this.hospitalizationDao.getHospitalizationBypatientId(patientId);
     }
+
+    @Override
+    public List<Hospitalization> getHospitalizationByPatientName(int page,int rows,String patientName) {
+       List<Hospitalization> hospitalizationList= this.hospitalizationDao.getHospitalizationByPatientName(page,rows,patientName);
+
+
+       /*要保存的数据传递到临时变量*/
+       for(Hospitalization hospitalization:hospitalizationList){
+           hospitalization.setDoctorName(hospitalization.getDoctor().getName());
+           hospitalization.setDoctorPhone(hospitalization.getDoctor().getPhone());
+           hospitalization.setNurseName(hospitalization.getNurse().getName());
+           hospitalization.setNursePhone(hospitalization.getNurse().getPhone());
+           hospitalization.setPatientName(hospitalization.getPatient().getName());
+           hospitalization.setPatientPhone(hospitalization.getPatient().getPhone());
+       }
+
+       /**/
+        return hospitalizationList;
+    }
+
+    @Override
+    public Integer getHospitalizationSizeByPatientName(String patientName) {
+        return this.hospitalizationDao.getHospitalizationSizeByPatientName(patientName);
+    }
+
+
 }

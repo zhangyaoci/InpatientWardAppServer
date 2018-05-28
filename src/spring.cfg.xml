@@ -46,6 +46,11 @@
         <property name="hospitalizationService" ref="hospitalizationService"></property>
     </bean>
 
+    <!--病人住院记录服务-->
+    <bean class="action.ServerHospitalAction" id="serverHospitalAction" scope="prototype">
+        <property name="hospitalizationService" ref="hospitalizationService"></property>
+    </bean>
+
     <!--文件上传-->
     <bean class="action.FileUploadAction" id="fileUploadAction" scope="prototype">
        <property name="patientService" ref="patientService"></property>

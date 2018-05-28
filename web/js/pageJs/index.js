@@ -1,5 +1,4 @@
 $(function() {
-
     /*首先展示病人信息*/
     $('#panel').load("page/patient_info.jsp");
 
