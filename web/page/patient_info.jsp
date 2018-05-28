@@ -13,6 +13,7 @@
 </head>
 <body>
 
+<%--panel 表头--%>
 <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">病人基本信息</h3>
@@ -34,6 +35,7 @@
     </div>
 </div>
 
+<%--对应的数据表--%>
 <table id="table"></table>
 <div id="toolbar" class="btn-group">
     <button id="btn_add" type="button" class="btn btn-default">

@@ -12,6 +12,12 @@
     <title>医生管理模块</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery.mloading.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrapValidator.css">
+    <link rel="stylesheet" type="text/css" href="./css/fileinput.css">
 </head>
 
 <body>
@@ -41,6 +47,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                             <li><a href=""><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;个人设置</a></li>
                             <li><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;登录日志</a></li>
+                            <li><a href=""><span class="glyphicon  glyphicon-bell"></span>&nbsp;&nbsp;系统消息</a> </li>
                         </ul>
                     </li>
                     <li> <a href="login.jsp"><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;退出</a></li>
@@ -57,42 +64,28 @@
     <div class="row">
         <div class="col-lg-2">
             <div class="list-group" >
-                <a href="javascript:void(0)" onclick="choosePanel(1)" class="list-group-item ">医生基本信息</a>
-                <a href="javascript:void(0)" onclick="choosePanel(2)" class="list-group-item">医嘱管理</a>
+                <a href="javascript:void(0)" name="page/doctor_info.jsp" class="list-group-item ">医生基本信息</a>
+                <a href="javascript:void(0)" name="page/doctor_advice.jsp" class="list-group-item">医嘱管理</a>
             </div>
         </div>
-        <div class="col-lg-9">
-
-            <div id="panel_1" >
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">医生信息基本信息</h3>
-                    </div>
-                    <div class="panel-body">
-                        这是一个基本的面板
-                    </div>
-                </div>
-            </div>
-
-            <div id="panel_2" hidden>
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">医嘱管理</h3>
-                    </div>
-                    <div class="panel-body">
-                        这是一个基本的面板
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-9" id="panel">
         </div>
     </div>
 </div>
 
 
-
 <script src="./js/jquery.js"></script>
-<script src="./js/popper.js"></script>
+<script src="./js/jquery.mloading.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap-table.js"></script>
+<script src="./js/bootstrap-table-zh-CN.js"></script>
+<script src="./js/bootstrap-select.js"></script>
+<script src="./js/bootstrap-datetimepicker.min.js"></script>
+<script src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="./js/bootstrapValidator.js"></script>
+<script src="./js/fileinput.js"></script>
+<script src="./js/fileinput-zh.js"></script>
 <script src="./js/pageJs/doctor.js"></script>
 </body>
 </html>
