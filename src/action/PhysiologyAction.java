@@ -78,8 +78,6 @@ public class PhysiologyAction extends ActionSupport {
     /*根据病人ID号获取病人的血压值*/
     public String  acquirePhysiologyDataOfBloodPressure(){
         if(this.startTime!=null&&this.endTime!=null&&this.patientId!=null){
-            this.startTime.setTime(this.startTime.getTime()+8*1000*60*60);
-            this.endTime.setTime(this.endTime.getTime()+8*1000*60*60);
             List<Bloodpressure> bloodpressureList =this.bloodPressureService.getBloodPressureByPatientIdAndTime(patientId,startTime,endTime);
             this.jsonData.put("success",bloodpressureList);
             return SUCCESS;

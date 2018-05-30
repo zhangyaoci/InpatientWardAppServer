@@ -11,6 +11,7 @@
 <% session.removeAttribute("adminUser");%>
 <html>
 <head>
+    <link rel="shortcut icon" href="./images/logo.ico" type="image/x-icon" />
     <meta charset="UTF-8">
     <title>登录首页</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
