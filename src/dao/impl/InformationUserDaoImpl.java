@@ -21,11 +21,11 @@ public class InformationUserDaoImpl implements InformationUserDao{
     @Override
     public List<InformationUser> findInformationUserByUserId(int useId) {
 
-        String[] paramName= new String[]{"isRead", "userId","isPop"};
+        String[] paramName= new String[]{"userId"};
 
-        Integer[] values = new Integer[]{0,useId,0};
+        Integer[] values = new Integer[]{useId};
 
-        List<InformationUser> informationUserList =(List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where isRead=:isRead and user.userId=:userId and isPop=:isPop"
+        List<InformationUser> informationUserList =(List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where  user.userId=:userId"
                 ,paramName,values);
         return informationUserList;
     }
@@ -45,31 +45,7 @@ public class InformationUserDaoImpl implements InformationUserDao{
             this.hibernateTemplate.save(informationUserList.get(0));
             return "succesOfUpdatingState";
         }
-
         return  "errorOfUpdatingState";
     }
 
-    @Override
-    public String updateisPopforInformationUser(Integer informationUserId) {
-      InformationUser informationUser =  this.hibernateTemplate.get(InformationUser.class,informationUserId);
-      if(informationUser!=null){
-          informationUser.setIsPop(1);
-          this.hibernateTemplate.save(informationUser);
-          return "成功修改为已拉取";
-      }
-      else{
-          return "消息拉取状态失败";
-      }
-
-    }
-
-    @Override
-    public String updateisPopToZero(Integer userId) {
-      List<InformationUser> informationUserList = (List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where user.userId=:userId","userId",userId);
-      for(InformationUser informationUser:informationUserList){
-          informationUser.setIsPop(0);
-          this.hibernateTemplate.save(informationUser);
-      }
-      return "拉取状态修改成功";
-    }
 }

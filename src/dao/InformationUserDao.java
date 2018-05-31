@@ -10,9 +10,5 @@ public interface InformationUserDao {
     /*修改消息的状态为已读*/
     public String updateReadStateByInformationIdAndUserId(Integer userId, Integer informationId);
 
-    /*修改消息是否被拉取，设置为拉取;通过informationUserId*/
-    public String updateisPopforInformationUser(Integer informationUserId);
 
-    /*根据用UseID号，把拉取状态全部设置为0*/
-    public String updateisPopToZero(Integer userId);
 }

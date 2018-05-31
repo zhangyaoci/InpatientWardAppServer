@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="shortcut icon" href="./images/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/logo_ico.png" type="image/x-icon" />
     <meta charset="UTF-8">
     <title>病人家属管理模块</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">

@@ -85,4 +85,15 @@ public class Information {
 
         return Objects.hash(informationId,content, time, remarks);
     }
+
+    /*用户消息临时存储*/
+    private int isRead;
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
 }

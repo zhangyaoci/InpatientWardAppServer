@@ -88,19 +88,5 @@ public class InformationAction extends ActionSupport {
             jsonData.put("error","消息状态修改失败");
             return SUCCESS;
         }
-
-    }
-
-    /*修改消息的拉取状态为未被拉取*/
-    public String changeIsPopToZeroForInformationUser(){
-        if(this.userId!=null){
-            this.informationService.setIsPopToZeroForInformationUser(this.userId);
-            this.jsonData.put("success", "消息拉取状态修改成功");
-            return SUCCESS;
-        }
-        else{
-            this.jsonData.put("error","消息拉取状态修改失败");
-            return SUCCESS;
-        }
     }
 }

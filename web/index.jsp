@@ -9,7 +9,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <link rel="shortcut icon" href="./images/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/logo_ico.png" type="image/x-icon" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>移动病人APP后台管理系统</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
