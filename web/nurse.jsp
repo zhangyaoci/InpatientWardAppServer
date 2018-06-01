@@ -13,6 +13,13 @@
     <title>护士管理模块</title>
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" href="./css/jquery.mloading.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrapValidator.css">
+    <link rel="stylesheet" type="text/css" href="./css/fileinput.css">
+
 </head>
 <body>
 
@@ -21,9 +28,16 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <img src="./images/logo.png" alt="Logo" style="width:40px;margin-top: 7px;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
             <div><p class="navbar-text">移动病人APP后台管理系统</p></div>
-            <div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
 
                 <ul class="nav navbar-nav">
                     <li ><a href="./index.jsp">病人管理模块</a></li>
@@ -58,20 +72,11 @@
     <div class="row">
         <div class="col-lg-2">
             <div class="list-group" >
-                <a href="#main" class="list-group-item ">主帖审核</a>
-                <a href="#reply" class="list-group-item">回复审核</a>
-                <a href="#user" class="list-group-item">用户管理</a>
+                <a href="javascript:void(0)" name="page/nurse_info.jsp" class="list-group-item ">护士基本信息</a>
             </div>
         </div>
-        <div class="col-lg-9">
-            <div class="panel panel-success">
-                <div class="panel-heading">
-                    <h3 class="panel-title">面板标题</h3>
-                </div>
-                <div class="panel-body">
-                    这是一个基本的面板
-                </div>
-            </div>
+        <div class="col-lg-9" id="panel">
+
         </div>
     </div>
 </div>
@@ -79,7 +84,17 @@
 
 
 <script src="./js/jquery.js"></script>
-<script src="./js/popper.js"></script>
+<script src="./js/jquery.mloading.js"></script>
 <script src="./js/bootstrap.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap-table.js"></script>
+<script src="./js/bootstrap-table-zh-CN.js"></script>
+<script src="./js/bootstrap-select.js"></script>
+<script src="./js/bootstrap-datetimepicker.min.js"></script>
+<script src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="./js/bootstrapValidator.js"></script>
+<script src="./js/fileinput.js"></script>
+<script src="./js/fileinput-zh.js"></script>
+<script src="./js/pageJs/nurse.js"></script>
 </body>
 </html>

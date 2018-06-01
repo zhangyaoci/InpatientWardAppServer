@@ -69,6 +69,18 @@
             </result>
         </action>
 
+        <!--医生信息管理模块-->
+        <action name="serverDoctorAction_*" class="serverDoctorAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    doctorList.*.informations,
+                    doctorList.*.hospitalizations
+                </param>
+            </result>
+        </action>
+
 
 
 <!--手机App中的Action配置-->

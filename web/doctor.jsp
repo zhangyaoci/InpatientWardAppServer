@@ -28,9 +28,16 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <img src="./images/logo.png" alt="Logo" style="width:40px;margin-top: 7px;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
             <div><p class="navbar-text">移动病人APP后台管理系统</p></div>
-            <div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
 
                 <ul class="nav navbar-nav">
                     <li ><a href="./index.jsp">病人管理模块</a></li>

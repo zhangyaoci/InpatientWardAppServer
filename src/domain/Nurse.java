@@ -13,6 +13,8 @@ public class Nurse {
     private String introduction;
     private String remarks;
 
+    private int isDelete;
+
     public int getNurseId() {
         return nurseId;
     }
@@ -69,6 +71,13 @@ public class Nurse {
         this.remarks = remarks;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     //病人的住院对应的护士，一个护士可以对多个住院记录
     private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();

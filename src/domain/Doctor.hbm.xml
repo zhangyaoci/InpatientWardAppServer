@@ -15,6 +15,7 @@
         <property name="department" column="department"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>
+        <property name="isDelete" column="isDelete"/>
 
         <set name="hospitalizations" cascade="all">
             <key column="doctorId"></key>

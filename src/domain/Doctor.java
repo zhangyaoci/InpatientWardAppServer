@@ -14,6 +14,8 @@ public class Doctor {
     private String introduction;
     private String remarks;
 
+    private int isDelete;
+
 
     public int getDoctorId() {
         return doctorId;
@@ -79,7 +81,13 @@ public class Doctor {
         this.remarks = remarks;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
 
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     //医生和病人的关系是由对应的住院记录来维系，医生和住院记录是一对多的情况
     private Set<Hospitalization> hospitalizations = new HashSet<Hospitalization>();

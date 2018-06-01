@@ -51,6 +51,18 @@
         <property name="hospitalizationService" ref="hospitalizationService"></property>
     </bean>
 
+    <!--医生信息管理模块-->
+    <bean class="dao.impl.DoctorDaoImpl" id="doctorDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean class="service.impl.DoctorServiceImpl" id="doctorService">
+        <property name="doctorDao" ref="doctorDao"></property>
+    </bean>
+    <bean class="action.ServerDoctorAction" id="serverDoctorAction">
+        <property name="doctorService" ref="doctorService"></property>
+    </bean>
+
+
     <!--文件上传-->
     <bean class="action.FileUploadAction" id="fileUploadAction" scope="prototype">
        <property name="patientService" ref="patientService"></property>

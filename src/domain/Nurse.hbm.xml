@@ -14,6 +14,7 @@
         <property name="phone" column="phone"/>
         <property name="introduction" column="introduction"/>
         <property name="remarks" column="remarks"/>
+        <property name="isDelete" column="isDelete"/>
         <set name="hospitalizations" cascade="all">
             <key column="nurseId"></key>
             <one-to-many class="domain.Hospitalization"></one-to-many>
