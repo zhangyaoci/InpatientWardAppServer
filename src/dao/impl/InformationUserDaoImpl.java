@@ -21,11 +21,11 @@ public class InformationUserDaoImpl implements InformationUserDao{
     @Override
     public List<InformationUser> findInformationUserByUserId(int useId) {
 
-        String[] paramName= new String[]{"userId"};
+        String[] paramName= new String[]{"userId","isDelete"};
 
-        Integer[] values = new Integer[]{useId};
+        Integer[] values = new Integer[]{useId,0};
 
-        List<InformationUser> informationUserList =(List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where  user.userId=:userId"
+        List<InformationUser> informationUserList =(List<InformationUser>) this.hibernateTemplate.findByNamedParam("from InformationUser where  user.userId=:userId and isDelete=:isDelete"
                 ,paramName,values);
         return informationUserList;
     }
@@ -35,17 +35,32 @@ public class InformationUserDaoImpl implements InformationUserDao{
     public String updateReadStateByInformationIdAndUserId(Integer userId, Integer informationId) {
         String[] paramName= new String[]{"userId","informationId"};
         Integer[] values = new Integer[]{userId,informationId};
-
         List<InformationUser> informationUserList = (List<InformationUser>) this.hibernateTemplate.findByNamedParam(
                 "from InformationUser where user.userId =:userId and information.informationId=:informationId order by information.time ",
                 paramName,values);
-
         if(informationUserList.size()!=0){
             informationUserList.get(0).setIsRead(1);
             this.hibernateTemplate.save(informationUserList.get(0));
             return "succesOfUpdatingState";
         }
         return  "errorOfUpdatingState";
+    }
+
+    @Override
+    public String deleteInformationByUserIdAndInformationId(Integer userId, Integer informationId) {
+        String[] paramName= new String[]{"userId","informationId"};
+        Integer[] values = new Integer[]{userId,informationId};
+
+        List<InformationUser> informationUserList = (List<InformationUser>) this.hibernateTemplate.findByNamedParam(
+                "from InformationUser where user.userId =:userId and information.informationId=:informationId",
+                paramName,values);
+
+        if(informationUserList.size()!=0){
+            informationUserList.get(0).setIsDelete(1);
+            this.hibernateTemplate.save(informationUserList.get(0));
+            return "succesOfDeleteState";
+        }
+        return  "errorOfDeleteState";
     }
 
 }

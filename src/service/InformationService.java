@@ -2,6 +2,7 @@ package service;
 
 import domain.Information;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface InformationService {
@@ -11,5 +12,7 @@ public interface InformationService {
     /*修改消息状态为已读*/
     public String alterReadingStateByUserIdAndInformationId(Integer userId,Integer informationId);
 
+    /*修改消息状态为删除*/
+    public String deleteInformationByUserIdAndInformationId(Integer userId, Integer informationId);
 }
 

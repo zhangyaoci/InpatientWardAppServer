@@ -43,5 +43,10 @@ public class InformationServiceImpl implements InformationService {
         return result;
     }
 
+    @Override
+    public String deleteInformationByUserIdAndInformationId(Integer userId, Integer informationId) {
+        return this.informationUserDao.deleteInformationByUserIdAndInformationId(userId,informationId);
+    }
+
 
 }

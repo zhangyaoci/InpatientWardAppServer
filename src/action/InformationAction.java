@@ -89,4 +89,22 @@ public class InformationAction extends ActionSupport {
             return SUCCESS;
         }
     }
+
+    public String deleteInformation(){
+        if(this.userId!=null){
+            String resultString = this.informationService.deleteInformationByUserIdAndInformationId(this.userId,this.informationId);
+            if(resultString.equals("succesOfDeleteState")){
+                this.jsonData.put("success","消息删除成功");
+                return SUCCESS;
+            }
+            else {
+                jsonData.put("error","消息删除失败");
+                return SUCCESS;
+            }
+        }
+        else {
+            jsonData.put("error","消息删除失败");
+            return SUCCESS;
+        }
+    }
 }

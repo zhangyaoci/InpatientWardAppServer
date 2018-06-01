@@ -5,6 +5,7 @@ import java.util.Objects;
 public class InformationUser {
     private int informationUserId;
     private int isRead;//判定该消息是否被用户已读
+    private int isDelete;
 
 
 
@@ -24,6 +25,13 @@ public class InformationUser {
         this.isRead = isRead;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     /*对应的消息信息*/
     private Information information;
