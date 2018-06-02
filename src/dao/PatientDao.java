@@ -22,4 +22,7 @@ public interface PatientDao {
 
     /*服务器删除数据*/
     public String deleteByPatientId(int patientId);
+
+    /*获取所有的病人*/
+    public List<Patient> findAllPatient();
 }

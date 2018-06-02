@@ -70,4 +70,10 @@ public class PatientServiceImpl implements PatientService {
     public String deletePatientByPatientId(int patientId) {
         return this.patientDao.deleteByPatientId(patientId);
     }
+
+    /*获取所有病人列表*/
+    @Override
+    public List<Patient> getALLPatientList() {
+        return this.patientDao.findAllPatient();
+    }
 }

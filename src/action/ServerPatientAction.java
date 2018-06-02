@@ -13,6 +13,7 @@ import service.UserService;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -165,5 +166,19 @@ public class ServerPatientAction extends ActionSupport {
             this.jsonData.put("result","error");
             return SUCCESS;
         }
+    }
+
+    /*获取所有病人的姓名和对应的序号*/
+    public String acquirePatientIdAndPatientName(){
+        List<Patient> patientList = this.patientService.getALLPatientList();
+        List<String[]> patientNameAndIdList = new ArrayList<>();
+        for(Patient patient:patientList){
+            String[] values = new String[2];
+            values[0] = String.valueOf(patient.getPatientId());
+            values[1] = patient.getName();
+            patientNameAndIdList.add(values);
+        }
+        this.jsonData.put("patientInfoList",patientNameAndIdList);
+        return SUCCESS;
     }
 }

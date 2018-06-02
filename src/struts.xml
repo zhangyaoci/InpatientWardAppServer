@@ -104,6 +104,15 @@
             </result>
         </action>
 
+        <action name="serverBPAction_*" class="serverBPAction" method="{1}">
+            <interceptor-ref name="json"/>
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    bloodpressureList.*.patient
+                </param>
+            </result>
+        </action>
 
 
 <!--手机App中的Action配置-->

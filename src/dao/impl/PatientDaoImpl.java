@@ -82,7 +82,7 @@ public class PatientDaoImpl implements PatientDao {
         return patients;
     }
 
-    /*实现病人数据分页获取*/
+    /*实现病人数据分页获取 后台服务*/
     @Override
     public List<Patient> findPatientByPageAndRows(int page, int row,String patientName) {
       List<Patient> patientList= this.hibernateTemplate.execute(new HibernateCallback<List<Patient>>() {
@@ -101,7 +101,7 @@ public class PatientDaoImpl implements PatientDao {
       return patientList;
     }
 
-    /*获取所有病人信息*/
+    /*获取所有病人信息 后台服务*/
     @Override
     public Integer findPatientSize(String patientName) {
        String size = this.hibernateTemplate.find("select  count (*) from Patient where isDelete=0 and name like ?","%"+patientName+"%").get(0).toString();
@@ -128,5 +128,12 @@ public class PatientDaoImpl implements PatientDao {
             System.out.println("dao层删除异常");
             return "errorResult";
         }
+    }
+
+    /*后台服务查找所有病人数据*/
+    @Override
+    public List<Patient> findAllPatient() {
+        List<Patient> patientList  = (List<Patient>) this.hibernateTemplate.find("from Patient where isDelete=0");
+        return patientList;
     }
 }

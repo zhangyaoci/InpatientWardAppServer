@@ -11,6 +11,8 @@ public class Bloodpressure {
     private int type;/*1 代表收缩压  0 代表舒张压*/
     private String remarks;
 
+    private int isDelete;
+
     public int getBpId() {
         return bpId;
     }
@@ -51,6 +53,13 @@ public class Bloodpressure {
         this.remarks = remarks;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     //血压值所对应的病人
     private  Patient patient;
@@ -76,5 +85,17 @@ public class Bloodpressure {
     @Override
     public int hashCode() {
         return Objects.hash(bpId,value, time, remarks);
+    }
+
+
+    /*临时存储变量*/
+    private String patientName;
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 }

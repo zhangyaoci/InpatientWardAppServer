@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class QueryParameter {
@@ -72,6 +73,39 @@ public class QueryParameter {
         return Objects.equals(page, that.page) &&
                 Objects.equals(rows, that.rows);
     }
+
+
+    private int patientId;
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+
+
+    private Date startTime;
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+
+    private Date endTime;
+    public Date getEndTime() {
+        return endTime;
+    }
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
 
     @Override
     public int hashCode() {

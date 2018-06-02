@@ -80,6 +80,12 @@
         <property name="userService" ref="userService"></property>
     </bean>
 
+    <!--血压数据管理-->
+    <bean class="action.ServerBPAction" id="serverBPAction" scope="prototype">
+        <property name="bloodPressureService" ref="bloodPressureService"></property>
+    </bean>
+
+
     <!--文件上传-->
     <bean class="action.FileUploadAction" id="fileUploadAction" scope="prototype">
        <property name="patientService" ref="patientService"></property>

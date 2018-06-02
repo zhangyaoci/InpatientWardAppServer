@@ -26,4 +26,7 @@ public interface PatientService {
 
     /*服务器删除操作*/
     public String deletePatientByPatientId(int patientId);
+
+    /*获取所有的病人姓名和病人的ID号*/
+    public List<Patient> getALLPatientList();
 }

@@ -12,6 +12,7 @@
         <property name="time" column="time"/>
         <property name="type" column="type"/>
         <property name="remarks" column="remarks"/>
+        <property name="isDelete" column="isDelete"/>
         <many-to-one name="patient" class="domain.Patient" column="patientId"></many-to-one>
     </class>
 </hibernate-mapping>
