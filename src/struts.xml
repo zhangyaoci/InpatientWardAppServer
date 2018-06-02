@@ -81,6 +81,29 @@
             </result>
         </action>
 
+        <!--护士信息管理模块-->
+        <action name="serverNurseAction_*" class="serverNurseAction" method="{1}">
+            <interceptor-ref name="json" />
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    nurseList.*.hospitalizations
+                </param>
+            </result>
+        </action>
+
+        <!--用户信息管理模块-->
+        <action name="serverUserAction_*" class="serverUserAction" method="{1}">
+            <interceptor-ref name="json" />
+            <result name="success" type="json">
+                <param name="root">jsonData</param>
+                <param name="excludeProperties">
+                    userList.*.userPatients,
+                    userList.*.password
+                </param>
+            </result>
+        </action>
+
 
 
 <!--手机App中的Action配置-->

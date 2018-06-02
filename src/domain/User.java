@@ -15,6 +15,8 @@ public class User {
     private String address;
     private String remarks;
 
+    private int isDelete;
+
     public int getUserId() {
         return userId;
     }
@@ -79,7 +81,13 @@ public class User {
         this.remarks = remarks;
     }
 
+    public int getIsDelete() {
+        return isDelete;
+    }
 
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
 
     //用户对应病人的关系表，采用两个一对多实现（多个病人、多个用户对应一个用户病人关系表）
     private Set<UserPatient> userPatients = new HashSet<UserPatient>();

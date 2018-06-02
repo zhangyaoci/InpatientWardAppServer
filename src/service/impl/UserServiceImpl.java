@@ -54,6 +54,19 @@ public class UserServiceImpl implements UserService {
     }
 
 
+    /*后台服务*/
+    @Override
+    public List<User> getUserListByUserName(int page, int rows, String userName) {
+        return this.userDao.findUserListByUserName(page,rows,userName);
+    }
+
+    /*后台服务*/
+    @Override
+    public int getUserListSizeByUserName(String userName) {
+        return this.userDao.findUserListSizeByUserName(userName);
+    }
+
+
     /*通过病人ID号，找到病人的监护人*/
     @Override
     public User getUserOfGuardianByPatientId(int patientId) {

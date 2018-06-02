@@ -32,6 +32,20 @@
     </div>
 </div>
 
+<%--对应的数据表--%>
+<table id="table"></table>
+<div id="toolbar" class="btn-group">
+    <button id="btn_add" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+    </button>
+    <button id="btn_import" type="button" class="btn btn-default">
+        <span class="glyphicon  glyphicon-import" aria-hidden="true"></span>导入
+    </button>
+    <button id="btn_export" type="button" class="btn btn-default">
+        <span class="glyphicon  glyphicon-export" aria-hidden="true"></span>导出
+    </button>
+</div>
+
 <script src="./js/pageJs/nurse_info.js"></script>
 </body>
 </html>

@@ -119,8 +119,6 @@ $(function () {
  }
 
 
- /*搜索*/
-
 
 // 搜索动作
 function searchAction() {

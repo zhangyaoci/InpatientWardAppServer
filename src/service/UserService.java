@@ -15,5 +15,10 @@ public interface UserService {
     public  List<User> findUserByPhone(String phone);
     public List<User> findAllUser();
 
+    /*后台服务，获取用户列表*/
+    public List<User> getUserListByUserName(int page, int rows, String userName);
+
+    /*后台服务，获取用户列表大小*/
+    public int getUserListSizeByUserName(String userName);
 
 }

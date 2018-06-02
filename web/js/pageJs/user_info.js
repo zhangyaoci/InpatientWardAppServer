@@ -1,19 +1,18 @@
-//# sourceURL=nurse_info.js
+//# sourceURL=user_info.js
+var searchUserName="";
 
-var searchNurseName="";
 $(function () {
-    /*数据列表的初始化*/
-    tableNurseListInit();
-
+    /*数据表的初始化*/
+    tableUserListInit();
 
     /*点击事件初始化*/
     searchAction();
 })
 
-function tableNurseListInit() {
+function tableUserListInit() {
     let rows =5;
     var panel_1_table = $('#table').bootstrapTable({
-        url: 'serverNurseAction_acquireNurseListByName',                      //请求后台的URL（*）
+        url: 'serverUserAction_acquireUserListByName',                      //请求后台的URL（*）
         method: 'post',                      //请求方式（*）
         striped: true,                      //是否显示行间隔色
         toolbar: '#toolbar',
@@ -41,7 +40,7 @@ function tableNurseListInit() {
             var temp = {
                 rows: params.limit,                         //页面大小
                 page: (params.offset / params.limit) + 1, //页码
-                nurseName:searchNurseName
+                userName:searchUserName
 
             };
             return {"queryParameter":temp};
@@ -49,12 +48,12 @@ function tableNurseListInit() {
         responseHandler: function(res) {
             return {
                 "total":res.size, //总页数
-                "rows":res.nurseList  //数据
+                "rows":res.userList  //数据
             };
         },
         columns: [{
-            field:'nurseId',
-            title:"医生序号"                  //是否显示复选框
+            field:'userId',
+            title:"用户序号"                  //是否显示复选框
         }, {
             field: 'name',
             title: '姓名'
@@ -73,32 +72,32 @@ function tableNurseListInit() {
             field:"phone",
             title:'联系电话'
         },{
-                field:'introduction',
-                title:'护士简介'
-            },{
-                field : 'operation',
-                title : '操作',
-                formatter : function(value, row, index) {
-                    var s = '<button class="btn btn-info btn-sm edit"><span>编辑</span></button>';
-                    var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
-                    var fun = '';
-                    return s + ' ' + d;
+            field:'address',
+            title:'现住地址'
+        },{
+            field : 'operation',
+            title : '操作',
+            formatter : function(value, row, index) {
+                var s = '<button class="btn btn-info btn-sm edit"><span>编辑</span></button>';
+                var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
+                var fun = '';
+                return s + ' ' + d;
+            },
+            events : {
+                // 操作列中编辑按钮的动作,类名匹配
+                'click .edit' : function(e, value,
+                                         row, index) {
+                    selectID = row.patientId;
+                    rowEditOperation(row);
                 },
-                events : {
-                    // 操作列中编辑按钮的动作,类名匹配
-                    'click .edit' : function(e, value,
-                                             row, index) {
-                        selectID = row.patientId;
-                        rowEditOperation(row);
-                    },
-                    'click .delete' : function(e,
-                                               value, row, index) {
-                        selectID = row.patientId;
-                        $('#deleteWarning_modal').modal(
-                            'show');
-                    }
+                'click .delete' : function(e,
+                                           value, row, index) {
+                    selectID = row.patientId;
+                    $('#deleteWarning_modal').modal(
+                        'show');
                 }
             }
+        }
         ],
         onLoadSuccess: function () {
         },
@@ -113,7 +112,7 @@ function tableNurseListInit() {
 // 搜索动作
 function searchAction() {
     $('#btn_search').click(function() {
-        searchNurseName= $('#search_nurse_name').val();
+        searchUserName= $('#search_user_name').val();
         tableRefresh();
     })
 }

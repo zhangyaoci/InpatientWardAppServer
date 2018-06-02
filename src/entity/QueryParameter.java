@@ -45,6 +45,25 @@ public class QueryParameter {
         this.doctorName = doctorName;
     }
 
+    private String nurseName;
+
+    public String getNurseName() {
+        return nurseName;
+    }
+
+    public void setNurseName(String nurseName) {
+        this.nurseName = nurseName;
+    }
+
+    private String userName;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -58,10 +58,27 @@
     <bean class="service.impl.DoctorServiceImpl" id="doctorService">
         <property name="doctorDao" ref="doctorDao"></property>
     </bean>
-    <bean class="action.ServerDoctorAction" id="serverDoctorAction">
+    <bean class="action.ServerDoctorAction" id="serverDoctorAction" scope="prototype">
         <property name="doctorService" ref="doctorService"></property>
     </bean>
 
+
+    <!--护士信息管理模块-->
+    <bean class="dao.impl.NurseDaoImpl" id="nurseDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean class="service.impl.NurseServiceImpl" id="nurseService">
+        <property name="nurseDao" ref="nurseDao"></property>
+    </bean>
+    <bean class="action.ServerNurseAction" id="serverNurseAction" scope="prototype">
+        <property name="nurseService" ref="nurseService"></property>
+    </bean>
+
+
+    <!--用户管理模块-->
+    <bean class="action.ServerUserAction" id="serverUserAction" scope="prototype">
+        <property name="userService" ref="userService"></property>
+    </bean>
 
     <!--文件上传-->
     <bean class="action.FileUploadAction" id="fileUploadAction" scope="prototype">

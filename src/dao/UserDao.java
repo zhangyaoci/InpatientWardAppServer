@@ -17,4 +17,13 @@ public  interface UserDao {
     public User getUserOfGuardianByPatientId(int patientId);
     public List<?> findAll();
 
+
+    /*根据用户名字，分页处理用户列表*/
+    public List<User> findUserListByUserName(int page, int rows, String userName);
+
+    /*根据用户名字，获取当前列表的大小*/
+    public int findUserListSizeByUserName(String userName);
+
+
+
 }
