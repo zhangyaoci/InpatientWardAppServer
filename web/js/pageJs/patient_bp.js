@@ -22,31 +22,26 @@ function searchDataInit() {
         {
             format:'yyyy-mm-dd hh:ii',
             language : 'zh-CN',
-            weekStart : 1,
-            todayBtn : 1,
-            autoClose : 1,
-            todayHighlight : 1,
-            startView : 2,
-            forceParse : 0,
-            minView:2,
-            autoclose: true
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-left"
         }
     );
+
+    let today= new Date();
+    $("#search_end_time").val(today.toISOString().split("T")[0]+" 00:00");
 
     $('#search_end_time').datetimepicker(
         {
             format:'yyyy-mm-dd hh:ii',
             language : 'zh-CN',
-            weekStart : 1,
-            todayBtn : 1,
-            autoClose : 1,
-            todayHighlight : 1,
-            startView : 2,
-            forceParse : 0,
-            minView:2,
-            autoclose: true
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: "bottom-left"
         }
     );
+
+
 
     // 通过ajax 获取选中的名字
     $.ajax({
