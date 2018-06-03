@@ -10,4 +10,6 @@ public interface NurseDao {
 
     public int  findNurseListSizeByNurseName(String nurseName);
 
+    /*获取所有的护士列表*/
+    public  List<Nurse> findAllNurseList();
 }

@@ -21,12 +21,12 @@
     <div class="panel-body" style="padding-bottom: 0px">
         <form id="formSearch" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-xs-2" for="search_patient_name">病人姓名:</label>
+                <label class="control-label col-xs-2"  style="width: 77px;text-align: left;padding-right: 0px;" for="search_patient_name">病人姓名:</label>
                 <div class="col-xs-6">
                     <input type="text" class="form-control" id="search_patient_name">
                 </div>
-                <div class="col-xs-offset-2 col-xs-2" style="text-align:left;">
-                    <button type="button" style="margin-left:50px" id="btn_search"
+                <div class="col-xs-offset-2 col-xs-2" style="text-align:right;margin-left: 215px">
+                    <button type="button"  id="btn_search"
                             class="btn btn-primary">查询
                     </button>
                 </div>
@@ -191,7 +191,7 @@
     </div>
 </div>
 
-<%--导入货物信息模态框--%>
+<%--导入病人信息模态框--%>
 <div class="modal fade" id="import_modal" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">
@@ -406,7 +406,7 @@
 </div>
 
 
-<!-- 导出货物信息模态框 -->
+<!-- 导出病人信息模态框 -->
 <div class="modal fade" id="export_modal" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">

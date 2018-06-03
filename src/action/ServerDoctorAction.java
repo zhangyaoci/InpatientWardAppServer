@@ -6,6 +6,7 @@ import entity.QueryParameter;
 import org.apache.commons.lang3.ObjectUtils;
 import service.DoctorService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,5 +49,19 @@ public class ServerDoctorAction extends ActionSupport {
             return SUCCESS;
         }
 
+    }
+
+    /*获取所有的医生名字和Id对应的信息*/
+    public String acquireAllDoctorList(){
+        List<Doctor> doctorList = this.doctorService.getAllDoctorList();
+        List<String[]> doctorNameList= new ArrayList<>();
+        for(Doctor doctor : doctorList){
+            String[] doctorNames = new String[2];
+            doctorNames[0] = String.valueOf(doctor.getDoctorId());
+            doctorNames[1] = doctor.getName();
+            doctorNameList.add(doctorNames);
+        }
+        this.jsonData.put("doctorNameList",doctorNameList);
+        return SUCCESS;
     }
 }

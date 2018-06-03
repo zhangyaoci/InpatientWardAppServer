@@ -42,4 +42,11 @@ public class DoctorDaoImpl implements DoctorDao {
         String size = this.hibernateTemplate.find("select count (*) from Doctor  where name like ? and isDelete=0","%"+doctorName+"%").get(0).toString();
         return Integer.parseInt(size);
     }
+
+    /*获取所有的医生列表*/
+    @Override
+    public List<Doctor> findAllDoctorList() {
+        List<Doctor> doctorList = (List<Doctor>) this.hibernateTemplate.find(" from Doctor  where isDelete=0");
+        return doctorList;
+    }
 }

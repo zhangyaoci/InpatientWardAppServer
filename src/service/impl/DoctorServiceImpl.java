@@ -23,4 +23,10 @@ public class DoctorServiceImpl implements DoctorService {
     public int getDoctorListSizeByDoctorName(String doctorName) {
         return this.doctorDao.findDoctorListSizeByDoctorName(doctorName);
     }
+
+    /*后台服务获取所有医生列表*/
+    @Override
+    public List<Doctor> getAllDoctorList() {
+        return this.doctorDao.findAllDoctorList();
+    }
 }

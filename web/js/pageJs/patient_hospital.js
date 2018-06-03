@@ -14,9 +14,9 @@ $(function () {
 
     /*按钮初始化*/
     searchAction();
-    addPatientAction();
+    addHospitalAction();
     editPatientAction();
-    deletePatientAction();
+    deleteHospitalizationAction();
     importPatientAction();
     exportPatientAction()
 
@@ -126,7 +126,7 @@ function patientListInit(){
                 },
                 'click .delete' : function(e,
                                            value, row, index) {
-                    selectID = row.patientId;
+                    selectID = row.hospitalId;
                     $('#deleteWarning_modal').modal(
                         'show');
                 }
@@ -143,47 +143,126 @@ function patientListInit(){
     });
 }
 
-function  addPatientAction() {
+
+/*新增一条住院记录*/
+function  addHospitalAction() {
+    /*弹框页面的初始化*/
     $("#btn_add").click(function () {
         $('#add_modal').modal();
-        $('#patient_dateOfBirth').datetimepicker(
+        $('#hospital_start_time').datetimepicker(
             {
-                format:'yyyy-mm-dd',
+                format:'yyyy-mm-dd hh:ii',
                 language : 'zh-CN',
-                weekStart : 1,
-                todayBtn : 1,
-                autoClose : 1,
-                todayHighlight : 1,
-                startView : 2,
-                forceParse : 0,
-                minView:2,
-                autoclose: true
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
 
             }
         );
+        $('#hospital_end_time').datetimepicker(
+            {
+                format:'yyyy-mm-dd hh:ii',
+                language : 'zh-CN',
+                autoclose: true,
+                todayBtn: true,
+                pickerPosition: "bottom-left"
+            }
+        );
+
+
+        // 通过ajax 获取选中的病人的名字
+        $.ajax({
+            type : "post",
+            url : "serverPatientAction_acquirePatientIdAndPatientName",
+            dataType : "json",
+            contentType : "application/json",
+            data:JSON.stringify({}),
+            success : function(response){
+                let patientInfoList = response["patientInfoList"];
+                for(let patientInfo of patientInfoList){
+                    $('#hospital_patient_name').append("<option value=" + patientInfo[0] + ">" + patientInfo[1] + "</option>");
+                }
+
+            },error : function(xhr, textStatus, errorThrow){
+                //handleAjaxError(xhr.status);
+            }
+        });
+
+        $.ajax({
+            type : "post",
+            url : "serverDoctorAction_acquireAllDoctorList",
+            dataType : "json",
+            contentType : "application/json",
+            data:JSON.stringify({}),
+            success : function(response){
+                let doctorNameList = response["doctorNameList"];
+                for(let doctorNames of doctorNameList){
+                    $('#hospital_doctor_name').append("<option value=" + doctorNames[0] + ">" + doctorNames[1] + "</option>");
+                }
+
+            },error : function(xhr, textStatus, errorThrow){
+                //handleAjaxError(xhr.status);
+            }
+        })
+
+
+        $.ajax({
+            type : "post",
+            url : "serverNurseAction_acquireAllNurseListName",
+            dataType : "json",
+            contentType : "application/json",
+            data:JSON.stringify({}),
+            success : function(response){
+                let nurseNameList = response["nurseNameList"];
+                for(let nurseNames of nurseNameList){
+                    $('#hospital_nurse_name').append("<option value=" + nurseNames[0] + ">" + nurseNames[1] + "</option>");
+                }
+
+            },error : function(xhr, textStatus, errorThrow){
+                //handleAjaxError(xhr.status);
+            }
+        })
+
+
 
     });
+
+
+
     $('#add_btn_submit').click(function() {
         /*验证表单数据是否合理*/
-        $("#patient_form").data("bootstrapValidator").validate()
-        let isValidOfPatient=$("#patient_form").data("bootstrapValidator").isValid();
+        $("#hospital_form").data("bootstrapValidator").validate()
+        let isValidOfPatient=$("#hospital_form").data("bootstrapValidator").isValid();
         if(isValidOfPatient){
-            let patient_dateOfBirth = new Date($('#patient_dateOfBirth').val());
-            var data = {
-                name : $('#patient_name').val(),
-                sex : $('#patient_sex').val(),
-                phone : $('#patient_phone').val(),
-                tempDate :patient_dateOfBirth,
-                address : $('#patient_address').val(),
-                introduction : $('#patient_introduction').val(),
-                picturePath : $('#patient_picturePath').val(),
+            let hospital_start_time = new Date($('#hospital_start_time').val());
+            var data;
+            if($("#hospital_end_time").val()==""){
+                data = {
+                    patientId : $('#hospital_patient_name').val(),
+                    room : $('#hospital_room').val(),
+                    doctor:{"doctorId": $('#hospital_doctor_name').val()},
+                    nurse : {"nurseId":$('#hospital_nurse_name').val()},
+                    startTime :hospital_start_time,
+                }
             }
+            else {
+                let hospital_end_time = new Date($("#hospital_end_time").val());
+                data = {
+                    patientId : $('#hospital_patient_name').val(),
+                    room : $('#hospital_room').val(),
+                    doctor:{"doctorId": $('#hospital_doctor_name').val()},
+                    nurse : {"nurseId":$('#hospital_nurse_name').val()},
+                    startTime :hospital_start_time,
+                    endTime : hospital_end_time,
+                }
+            }
+
             $.ajax({
                 type : "POST",
-                url : "serverPatientAction_addPatientAction",
+                url : "serverHospitalAction_addHospitalizationAction",
                 dataType : "json",
                 contentType : "application/json",
-                data : JSON.stringify({'patient':data}),
+                data : JSON.stringify({'hospitalization':data}),
                 success : function(response) {
                     $('#add_modal').modal("hide");
                     var msg;
@@ -268,15 +347,16 @@ function editPatientAction() {
         });
 }
 
-function deletePatientAction() {
+/*删除住院记录*/
+function deleteHospitalizationAction() {
     $('#delete_confirm').click(function(){
         var data = {
-            "patientId" : selectID
+            "hosiptalId" : selectID
         }
         // ajax
         $.ajax({
             type : "post",
-            url : "serverPatientAction_deletePatientAction",
+            url : "serverHospitalAction_eraseHospitalByHospitalId",
             dataType : "json",
             contentType : "application/json",
             data : JSON.stringify(data),
@@ -287,10 +367,10 @@ function deletePatientAction() {
                 var append = '';
                 if(response.result == "success"){
                     type = "success";
-                    msg = "病人信息删除成功";
+                    msg = "住院记录删除成功";
                 }else{
                     type = "error";
-                    msg = "病人信息删除失败";
+                    msg = "住院记录删除失败";
                 }
                 showMsg(type, msg, append);
                 tableRefresh();
@@ -304,6 +384,9 @@ function deletePatientAction() {
         $('#deleteWarning_modal').modal('hide');
     });
 }
+
+
+
 
 function exportPatientAction() {
     $('#btn_export').click(function() {
@@ -322,7 +405,7 @@ function exportPatientAction() {
 
 /*提交表单数据认证*/
 function bootstrapValidatorInit() {
-    $("#patient_form").bootstrapValidator({
+    $("#hospital_form").bootstrapValidator({
         message : 'This is not valid',
         feedbackIcons : {
             valid : 'glyphicon glyphicon-ok',
@@ -331,28 +414,18 @@ function bootstrapValidatorInit() {
         },
         excluded : [ ':disabled' ],
         fields : {
-            patient_name : {
+            hospital_start_time : {
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: '开始时间不能为空'
                     }
                 }
             },
-            patient_phone : {
-                validators : {
-                    notEmpty : {
-                        message : '电话号码不能为空'
-                    },
-                    stringLength: {
-                        min: 11,
-                        max: 11,
-                        message: '电话号码必须为11位数字'
-                    },
-                    regexp: {
-                        regexp: /^1(3|4|5|7|8)\d{9}$/,
-                        message: '电话号码格式错误'
+            hospital_room : {
+                validators: {
+                    notEmpty: {
+                        message: '房间号不能为空'
                     }
-
                 }
             }
         }

@@ -40,4 +40,11 @@ public class NurseDaoImpl implements NurseDao {
         String size = this.hibernateTemplate.find("select count(*) from Nurse where isDelete=0 and name like ?", "%" + nurseName + "%").get(0).toString();
         return Integer.parseInt(size);
     }
+
+    /*获取所有的护士列表*/
+    @Override
+    public List<Nurse> findAllNurseList() {
+        List<Nurse> nurseList = (List<Nurse>) this.hibernateTemplate.find("from Nurse  where isDelete=0");
+        return nurseList;
+    }
 }

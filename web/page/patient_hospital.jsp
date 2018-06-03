@@ -20,12 +20,12 @@
     <div class="panel-body" style="padding-bottom: 0px">
         <form id="formSearch" class="form-horizontal">
             <div class="form-group">
-                <label class="control-label col-xs-2" for="search_patient_name">病人姓名:</label>
+                <label class="control-label col-xs-2" style="width: 77px;text-align: left;padding-right: 0px;" for="search_patient_name">病人姓名:</label>
                 <div class="col-xs-6">
                     <input type="text" class="form-control" id="search_patient_name">
                 </div>
-                <div class="col-xs-offset-2 col-xs-2" style="text-align:left;">
-                    <button type="button" style="margin-left:50px" id="btn_search"
+                <div class="col-xs-offset-2 col-xs-2" style="text-align:right;margin-left: 215px">
+                    <button type="button"  id="btn_search"
                             class="btn btn-primary">查询
                     </button>
                 </div>
@@ -61,80 +61,58 @@
                 <div class="row">
                     <div class="col-md-1 col-sm-1"></div>
                     <div class="col-md-8 col-sm-8">
-                        <form class="form-horizontal" role="form" id="patient_form"
+                        <form class="form-horizontal" role="form" id="hospital_form"
                               style="margin-top: 25px">
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span>姓名：</span>
+                                <label class="control-label col-md-4 col-sm-4"> <span>病人姓名：</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8">
-                                    <input type="text" class="form-control" id="patient_name"
-                                           name="patient_name" placeholder="姓名" maxlength="4">
+                                   <select id = "hospital_patient_name" name="hospital_patient_name" class="form-control">
+                                   </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span>性别：</span>
+                                <label class="control-label col-md-4 col-sm-4"> <span>开始时间：</span>
                                 </label>
-
                                 <div class="col-md-8 col-sm-8">
-                                    <select id="patient_sex" name="patient_sex" class="form-control">
-                                        <option value="1">男</option>
-                                        <option value="0">女</option>
-                                    </select>
+                                    <input class="form_date form-control" id="hospital_start_time"
+                                           name="hospital_start_time"  placeholder="开始时间">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span>电话号码：</span>
+                                <label class="control-label col-md-4 col-sm-4"> <span>结束时间：</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8">
-                                    <input type="text" class="form-control" id="patient_phone"
-                                           name="patient_phone" placeholder="电话号码">
+                                    <input class="form_date form-control" id="hospital_end_time"
+                                           name="hospital_end_time"  placeholder="结束时间">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span>出生日期：</span>
+                                <label class="control-label col-md-4 col-sm-4"> <span>病房号：</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8">
-                                    <input class="form_date form-control" id="patient_dateOfBirth"
-                                           name="patient_dateOfBirth" value="2012-05-15" placeholder="出生日期">
+                                    <input type="text" class="form-control" id="hospital_room"
+                                           name="hospital_room" placeholder="病房号">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span> 现住地址：</span>
+                                <label class="control-label col-md-4 col-sm-4"> <span>医生姓名：</span>
                                 </label>
                                 <div class="col-md-8 col-sm-8">
-                                    <input type="text" class="form-control" id="patient_address"
-                                           name="patient_address" placeholder="现住地址">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span> 病例简介：</span>
-                                </label>
-                                <div class="col-md-8 col-sm-8">
-                                    <input type="text" class="form-control" id="patient_introduction"
-                                           name="patient_introduction" placeholder="病例简介">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class="control-label col-md-4 col-sm-4"> <span>头像选择：</span>
-                                </label>
-
-                                <div class="col-md-8 col-sm-8">
-                                    <select id="patient_picturePath" name="patient_picturePath" class="form-control">
-                                        <option value="./assets/imgs/22.png">./assets/imgs/22.png</option>
-                                        <option value="./assets/imgs/23.png">./assets/imgs/23.png</option>
-                                        <option value="./assets/imgs/24.png">./assets/imgs/24.png</option>
-                                        <option value="./assets/imgs/25.png">./assets/imgs/25.png</option>
-                                        <option value="./assets/imgs/26.png">./assets/imgs/26.png</option>
-                                        <option value="./assets/imgs/27.png">./assets/imgs/27.png</option>
-                                        <option value="./assets/imgs/28.png">./assets/imgs/28.png</option>
+                                    <select id = "hospital_doctor_name" class="form-control" name="hospital_doctor_name">
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4"> <span>护士姓名：</span>
+                                </label>
+                                <div class="col-md-8 col-sm-8">
+                                    <select id = "hospital_nurse_name" class="form-control" name="hospital_nurse_name">
+                                    </select>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="col-md-1 col-sm-1"></div>
@@ -154,6 +132,8 @@
     </div>
 </div>
 
+
+
 <%--删除提示模态框 --%>
 <div class="modal fade" id="deleteWarning_modal" table-index="-1"
      role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -172,8 +152,8 @@
                              style="width: 70px; height: 70px; margin-top: 20px;">
                     </div>
                     <div class="col-md-8 col-sm-8">
-                        <h3>是否删除该条病人信息</h3>
-                        <p>(注意：若该病人有住院记录、关联用户数据，则该病人信息将删除失败。如需删除该病人的信息，请先确保该病人没有关联住院记录和用户表)</p>
+                        <h3>是否删除该条住院信息</h3>
+                        <p>(注意：删除病人的住院信息，该条数据将不再显示)</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +169,7 @@
     </div>
 </div>
 
-<%--导入货物信息模态框--%>
+<%--导入模态框--%>
 <div class="modal fade" id="import_modal" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">
@@ -294,7 +274,7 @@
     </div>
 </div>
 
-<%--编辑病人模态框--%>
+<%--编辑模态框--%>
 <div id="edit_modal" class="modal fade" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">
@@ -403,8 +383,7 @@
     </div>
 </div>
 
-
-<!-- 导出货物信息模态框 -->
+<!-- 导出模态框 -->
 <div class="modal fade" id="export_modal" table-index="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true"
      data-backdrop="static">

@@ -66,13 +66,13 @@
     <div class="row" style="margin: 0px;">
         <div class="col-lg-2">
             <div class="list-group">
-                <a href="javascript:void(0)" name="page/patient_info.jsp" class="list-group-item">基本信息</a>
-                <a href="javascript:void(0)" name="page/patient_hospital.jsp" class="list-group-item ">住院记录</a>
-                <a href="javascript:void(0)" name="page/patient_bp.jsp" class="list-group-item ">血压</a>
-                <a href="javascript:void(0)" name="page/patient_temp.jsp" class="list-group-item ">体温</a>
-                <a href="javascript:void(0)" name="page/patient_hr.jsp" class="list-group-item ">心率</a>
-                <a href="javascript:void(0)" name="page/patient_bg.jsp" class="list-group-item">血糖</a>
-                <a href="javascript:void(0)" name="page/patient_bos.jsp" class="list-group-item ">血氧饱和度</a>
+                <a href="javascript:void(0)" name="page/patient_info.jsp" onclick="select_item(1)" id="itme_1" class="list-group-item active">基本信息</a>
+                <a href="javascript:void(0)" name="page/patient_hospital.jsp" onclick="select_item(2)"  id="itme_2" class="list-group-item ">住院记录</a>
+                <a href="javascript:void(0)" name="page/patient_bp.jsp"  onclick="select_item(3)"  id="itme_3" class="list-group-item ">血压</a>
+                <a href="javascript:void(0)" name="page/patient_temp.jsp" onclick="select_item(4)" id="itme_4" class="list-group-item ">体温</a>
+                <a href="javascript:void(0)" name="page/patient_hr.jsp" onclick="select_item(5)"  id="itme_5" class="list-group-item ">心率</a>
+                <a href="javascript:void(0)" name="page/patient_bg.jsp" onclick="select_item(6)"  id="itme_6" class="list-group-item">血糖</a>
+                <a href="javascript:void(0)" name="page/patient_bos.jsp" onclick="select_item(7)" id="itme_7" class="list-group-item ">血氧饱和度</a>
             </div>
         </div>
         <div class="col-lg-9" id="panel">

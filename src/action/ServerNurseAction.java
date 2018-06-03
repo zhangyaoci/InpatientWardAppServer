@@ -5,6 +5,7 @@ import domain.Nurse;
 import entity.QueryParameter;
 import service.NurseService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,6 +54,25 @@ public class ServerNurseAction extends ActionSupport {
         } else {
             return SUCCESS;
         }
+    }
+
+
+    /*获取所有的护士列表*/
+    public String acquireAllNurseListName(){
+
+        List<Nurse> nurseList = this.nurseService.getAllNurseList();
+        List<String[]> nurseNameList = new ArrayList<>();
+
+        for (Nurse nurse : nurseList) {
+            String[]  nurseNames = new String[2];
+            nurseNames[0] = String.valueOf(nurse.getNurseId());
+            nurseNames[1] = nurse.getName();
+            nurseNameList.add(nurseNames);
+        }
+
+        this.jsonData.put("nurseNameList",nurseNameList);
+        return SUCCESS;
+
     }
 
 }

@@ -11,4 +11,7 @@ public interface DoctorService {
 
     /*根据医生名字，获取医生列表的大小*/
     public int getDoctorListSizeByDoctorName(String doctorName);
+
+    /*获取所有的医生服务*/
+    public List<Doctor> getAllDoctorList();
 }

@@ -26,4 +26,10 @@ public class NurseServiceImpl implements NurseService {
     public int getNurseListSizeByNurseName(String nurseName) {
         return this.nurseDao.findNurseListSizeByNurseName(nurseName);
     }
+
+    /*获取所有的护士列表*/
+    @Override
+    public List<Nurse> getAllNurseList() {
+        return this.nurseDao.findAllNurseList();
+    }
 }

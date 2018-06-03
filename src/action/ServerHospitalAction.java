@@ -42,10 +42,28 @@ public class ServerHospitalAction extends ActionSupport{
         this.hospitalizationService = hospitalizationService;
     }
 
+    /*后台传递的参数*/
+    private Integer hospitalId;
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    /*后台传递的参数*/
+    public Hospitalization hospitalization;
+    public Hospitalization getHospitalization() {
+        return hospitalization;
+    }
+    public void setHospitalization(Hospitalization hospitalization) {
+        this.hospitalization = hospitalization;
+    }
+
+
     /*分页获取病人信息*/
     public String acquireHospitalList(){
         if(this.parameter!=null){
-
             Integer size = this.hospitalizationService.getHospitalizationSizeByPatientName(this.parameter.getPatientName());
             List<Hospitalization> hospitalizationList= this.hospitalizationService.getHospitalizationByPatientName(this.parameter.getPage(),this.parameter.getRows(),this.parameter.getPatientName());
             this.jsonData.put("hospitalizationList",hospitalizationList);
@@ -57,5 +75,30 @@ public class ServerHospitalAction extends ActionSupport{
             return SUCCESS;
         }
 
+    }
+
+    /*删除一条住院记录信息*/
+    public String eraseHospitalByHospitalId(){
+        if(this.hospitalId!=null){
+            String result = this.hospitalizationService.deleteHospitalizationById(this.hospitalId);
+            if(result.equals("delete_success")){
+                this.jsonData.put("result","success");
+                return SUCCESS;
+            }else{
+                this.jsonData.put("result", "error");
+                return SUCCESS;
+            }
+        }
+        else {
+            this.jsonData.put("result","error");
+            return  SUCCESS;
+        }
+    }
+
+    /*添加一条住院记录*/
+    public String addHospitalizationAction(){
+
+        System.out.println("222");
+        return SUCCESS;
     }
 }

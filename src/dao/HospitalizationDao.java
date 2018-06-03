@@ -13,4 +13,10 @@ public interface HospitalizationDao {
 
     /*根据名字获取病人的住院记录总数*/
     public Integer  getHospitalizationSizeByPatientName(String patientName);
+
+    /*后台服务，删除住院记录*/
+    public String deleteHospitalizationById(Integer hospitalId);
+
+    /*添加一条住院记录*/
+    public String  addHospitalization(Hospitalization hospitalization);
 }

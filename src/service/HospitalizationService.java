@@ -14,4 +14,7 @@ public interface HospitalizationService {
 
     /*根据病人名字，获取病人的住院记录的总记录数*/
     public Integer getHospitalizationSizeByPatientName(String patientName);
+
+    /*根据住院号，删除一条住院信息*/
+    public String deleteHospitalizationById(Integer hospitalId);
 }

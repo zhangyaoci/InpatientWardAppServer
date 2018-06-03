@@ -10,4 +10,7 @@ public interface DoctorDao {
 
     /*根据医生的名字获取，该医生列表的总数*/
     public int findDoctorListSizeByDoctorName(String doctorName);
+
+    /*获取所有的医生列表*/
+    public List<Doctor> findAllDoctorList();
 }

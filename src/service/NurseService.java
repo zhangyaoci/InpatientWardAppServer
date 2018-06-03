@@ -10,4 +10,7 @@ public interface NurseService {
 
     /*获取列表总页数*/
     public int getNurseListSizeByNurseName(String nurseName);
+
+    /*获取护士所有列表*/
+    public List<Nurse> getAllNurseList();
 }

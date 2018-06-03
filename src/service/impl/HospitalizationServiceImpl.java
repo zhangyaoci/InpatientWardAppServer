@@ -45,5 +45,11 @@ public class HospitalizationServiceImpl implements HospitalizationService {
         return this.hospitalizationDao.getHospitalizationSizeByPatientName(patientName);
     }
 
+    /*删除一条住院记录*/
+    @Override
+    public String deleteHospitalizationById(Integer hospitalId) {
+        return this.hospitalizationDao.deleteHospitalizationById(hospitalId);
+    }
+
 
 }
