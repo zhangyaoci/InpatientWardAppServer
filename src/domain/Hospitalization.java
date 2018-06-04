@@ -1,6 +1,7 @@
 package domain;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 public class Hospitalization {
@@ -109,6 +110,16 @@ public class Hospitalization {
     private String doctorName;
     private String doctorPhone;
 
+    private int doctorId;
+
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(int doctorId) {
+        this.doctorId = doctorId;
+    }
+
     public String getDoctorName() {
         return doctorName;
     }
@@ -127,6 +138,15 @@ public class Hospitalization {
 
     private String nurseName;
     private String nursePhone;
+    private int nurseId;
+
+    public int getNurseId() {
+        return nurseId;
+    }
+
+    public void setNurseId(int nurseId) {
+        this.nurseId = nurseId;
+    }
 
     public String getNurseName() {
         return nurseName;
@@ -142,6 +162,16 @@ public class Hospitalization {
 
     public void setNursePhone(String nursePhone) {
         this.nursePhone = nursePhone;
+    }
+
+    private int patientId;
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 
     private String patientName;
@@ -162,5 +192,24 @@ public class Hospitalization {
 
     public void setPatientPhone(String patientPhone) {
         this.patientPhone = patientPhone;
+    }
+
+    public Date tempStartTime;
+    public Date tempEndTime;
+
+    public Date getTempStartTime() {
+        return tempStartTime;
+    }
+
+    public void setTempStartTime(Date tempStartTime) {
+        this.tempStartTime = tempStartTime;
+    }
+
+    public Date getTempEndTime() {
+        return tempEndTime;
+    }
+
+    public void setTempEndTime(Date tempEndTime) {
+        this.tempEndTime = tempEndTime;
     }
 }

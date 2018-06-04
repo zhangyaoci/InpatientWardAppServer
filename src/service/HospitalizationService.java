@@ -17,4 +17,10 @@ public interface HospitalizationService {
 
     /*根据住院号，删除一条住院信息*/
     public String deleteHospitalizationById(Integer hospitalId);
+
+    /*添加一条住院记录*/
+    public String addHospitalization(Hospitalization hospitalization);
+
+    /*更新一条住院记录*/
+    public String updateHospitalization(Hospitalization hospitalization);
 }

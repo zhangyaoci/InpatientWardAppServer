@@ -28,10 +28,14 @@ public class HospitalizationServiceImpl implements HospitalizationService {
 
        /*要保存的数据传递到临时变量*/
        for(Hospitalization hospitalization:hospitalizationList){
+           /*临时存储变量*/
+           hospitalization.setDoctorId(hospitalization.getDoctor().getDoctorId());
            hospitalization.setDoctorName(hospitalization.getDoctor().getName());
            hospitalization.setDoctorPhone(hospitalization.getDoctor().getPhone());
+           hospitalization.setNurseId(hospitalization.getNurse().getNurseId());
            hospitalization.setNurseName(hospitalization.getNurse().getName());
            hospitalization.setNursePhone(hospitalization.getNurse().getPhone());
+           hospitalization.setPatientId(hospitalization.getPatient().getPatientId());
            hospitalization.setPatientName(hospitalization.getPatient().getName());
            hospitalization.setPatientPhone(hospitalization.getPatient().getPhone());
        }
@@ -49,6 +53,18 @@ public class HospitalizationServiceImpl implements HospitalizationService {
     @Override
     public String deleteHospitalizationById(Integer hospitalId) {
         return this.hospitalizationDao.deleteHospitalizationById(hospitalId);
+    }
+
+    /*添加一条住院记录*/
+    @Override
+    public String addHospitalization(Hospitalization hospitalization) {
+        return this.hospitalizationDao.addHospitalization(hospitalization);
+    }
+
+    /*更新一条住院记录*/
+    @Override
+    public String updateHospitalization(Hospitalization hospitalization) {
+        return this.hospitalizationDao.updateHospitalization(hospitalization);
     }
 
 

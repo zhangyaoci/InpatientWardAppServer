@@ -6,6 +6,7 @@ import entity.QueryParameter;
 import service.HospitalizationService;
 
 import java.lang.reflect.Parameter;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,8 +98,45 @@ public class ServerHospitalAction extends ActionSupport{
 
     /*添加一条住院记录*/
     public String addHospitalizationAction(){
+        if (this.hospitalization != null) {
+            /*进行时间转换*/
+           this.hospitalization.setStartTime(new Timestamp(this.hospitalization.getTempStartTime().getTime()+8*60*60*1000));
+           if(this.hospitalization.getTempEndTime()!=null){
+               this.hospitalization.setEndTime(new Timestamp(this.hospitalization.getTempEndTime().getTime()+8*60*60*1000));
+           }
 
-        System.out.println("222");
-        return SUCCESS;
+
+
+           String result = this.hospitalizationService.addHospitalization(this.hospitalization);
+            if (result.equals("add_success")) {
+                this.jsonData.put("result", "success");
+                return SUCCESS;
+            } else {
+                this.jsonData.put("result", "error");
+                this.jsonData.put("message",result);
+                return SUCCESS;
+            }
+        }else {
+            this.jsonData.put("result","error");
+            this.jsonData.put("message", "后台服务出错");
+            return SUCCESS;
+        }
+    }
+
+    /*更新一条住院记录*/
+    public String updateHospitalizationAction(){
+        if (this.hospitalization != null) {
+            String result = this.hospitalizationService.updateHospitalization(hospitalization);
+            if (result.equals("update_success")) {
+                this.jsonData.put("result", "success");
+                return SUCCESS;
+            } else {
+                this.jsonData.put("result", "error");
+                return SUCCESS;
+            }
+        }else{
+            this.jsonData.put("result", "error");
+            return SUCCESS;
+        }
     }
 }

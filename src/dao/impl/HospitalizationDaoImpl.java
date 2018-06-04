@@ -9,6 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -71,6 +72,58 @@ public class HospitalizationDaoImpl implements HospitalizationDao {
     /*添加一条住院记录*/
     @Override
     public String addHospitalization(Hospitalization hospitalization) {
-        return null;
+
+        /*判断该病人是否正在住院*/
+        try {
+         List<Hospitalization> hospitalizationList = (List<Hospitalization>) this.hibernateTemplate.find("from Hospitalization where patient.patientId=? and isDelete=0",hospitalization.getPatient().getPatientId());
+         boolean flag = true;
+         for (Hospitalization hospitalizationTemp : hospitalizationList) {
+            if(hospitalizationTemp.getEndTime()==null){
+                flag=false;
+                break;
+            }
+         }
+
+         if(flag){
+             this.hibernateTemplate.save(hospitalization);
+             return "add_success";
+         }
+         else {
+             return "该病人正在住院";
+         }
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "住院记录添加失败";
+        }
+
+    }
+
+
+    /*更新一条住院记录*/
+    @Override
+    public String updateHospitalization(Hospitalization hospitalization) {
+        Hospitalization hospitalization_temp = this.hibernateTemplate.get(Hospitalization.class,hospitalization.getHospitalId());
+        hospitalization_temp.setStartTime(new Timestamp(hospitalization.getTempStartTime().getTime()+8*60*60*1000));
+
+        if(hospitalization.getTempEndTime()!=null){
+            hospitalization_temp.setEndTime(new Timestamp(hospitalization.getTempEndTime().getTime()+8*60*60*1000));
+        }
+
+        hospitalization_temp.setRoom(hospitalization.getRoom());
+
+        hospitalization_temp.setPatient(hospitalization.getPatient());
+        hospitalization_temp.setDoctor(hospitalization.getDoctor());
+        hospitalization_temp.setNurse(hospitalization.getNurse());
+
+        try {
+            this.hibernateTemplate.save(hospitalization_temp);
+            return "update_success";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "update_error";
+        }
     }
 }

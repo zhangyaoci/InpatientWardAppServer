@@ -19,4 +19,7 @@ public interface HospitalizationDao {
 
     /*添加一条住院记录*/
     public String  addHospitalization(Hospitalization hospitalization);
+
+    /*更新一条住院记录*/
+    public String updateHospitalization(Hospitalization hospitalization);
 }
